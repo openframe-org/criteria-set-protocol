@@ -25,6 +25,9 @@ The [SEMVER](https://semver.org/)-formatted version of the protocol this Templat
 ### template
 The template metadata, such as the version, name, description, etc.
 
+#### ID
+The ID of the Template is a string which uniquely identifies the Template independently of the Template or Protocol version.
+
 #### Template versioning
 The individual version elements are meant to have a bearing on the Template definition:
 * **Patch version**: Intended to track strictly cosmetic changes to the Template, such as tweaks to label strings, names or descriptions (not data values, as this 
