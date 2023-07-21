@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "protocol": {
+      "$ref": "definitions/protocol.json"
+    },
+    "template": {
+      "$ref": "definitions/template.json"
+    },
+    "parameters": {},
+    "tasks": {
+      "$ref": "definitions/tasks.json"
+    },
+    "definitions": {
+    }
+  },
+  "required": ["protocol", "template", "criteria"],
+  "additionalProperties": false
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "point-option": {
+    "type": "object",
+    "properties": {
+      "label": {
+        "type": "string"
+      },
+      "value": {
+        "$comment": "This value can be of any type and does not need to be unique"
+      }
+    },
+    "required": ["label", "value"]
+  }
+}

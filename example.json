@@ -1,0 +1,148 @@
+{
+  "protocol": "1.0.0",
+  "template": {
+    "id": "61a01c88-0102-4332-96c6-6f60ba7a8763",
+    "version": "1.0.0",
+    "date": "2023-07-19T14:49:01.737Z",
+    "name": "Taksonomiforordning 2020/852",
+    "description": "7.1 Opførelse af nye bygninger",
+    "documentation": "https://taksonomiportalen.dk/vejledning/opf%C3%B8relse-af-nye-bygninger-2020"
+  },
+  "parameters": {
+    "buildingUse": {
+      "type": "string",
+      "enum": [
+        "Beboelse",
+        "Kontor",
+        "Uddannelse",
+        "Børneinstitution",
+        "Butik",
+        "Logistik",
+        "Hotel",
+        "Produktion",
+        "Blandet anvendelse",
+        "Andet"
+      ]
+    },
+    "significantContribution": {
+      "type": "string",
+      "enum": [
+        "Miljømål 1",
+        "Miljømål 2"
+      ]
+    },
+    "grossArea": {
+      "type": "integer",
+      "exclusiveMinimum": 0
+    },
+    "yearOfConstruction": {
+      "type": "integer",
+      "exclusiveMinimum": 1800,
+      "exclusiveMaximum": 2023
+    }
+  },
+  "tasks": [
+    {
+      "id": "SOC",
+      "text": "Sociale minimumsgarantier",
+      "children": [
+        {
+          "id": "1",
+          "text": "Due Diligence proces",
+          "description": "OECD´s retningslinjer for multinationale virksomheder, FN's vejledende principper for virksomhed og menneskerettigheder, ILO om grundlæggende principper og rettigheder på arbejdspladsen og den internationale menneskerettighedserklæring i forbindelse med erhvervelsen eller ejerskabet af bygningen\n1.1 Due Diligence politik\n  1.2 Risikoanalyse\n  1.3 Håndtering af risici\n  1.4 Effektivitet af Due Diligence processer\n  1.5 Kommunikation af Due Diligence processer\n  1.6 Klagemekanisme",
+          "definition": {
+            "$ref": "#/$defs/yesNoNotRelevantQuestion"
+          }
+        }
+      ]
+    },
+    {
+      "id": "MM",
+      "text": "Miljømål",
+      "children": [
+        {
+          "id": "M1",
+          "text": "Modvirkning af klimaændringer",
+          "children": [
+            {
+              "id": "1",
+              "text": "Energiforbrug",
+              "description": "Bygningen har energimærke A2020 eller en energimæssig ydeevne, som er minimum 10% mindre end A2015. Energimærke A2015 svarer til den nationale definition af næsten energineutrale bygninger, NZEB.\n\nHvis bygningen ikke er omfattet af Bygningsreglementets krav til energiramme skal energiforbruget dokumenteres med en energirammeberegning eller anden relevant dokumentation for energiforbrug for bygningen som udført.\n\n(Kriterie er er tilsvarende M1.2 for aktiviteten 7.1 Opførelse af nye bygninger)\nEnergimærke A2020 eller Energirammeberegning og energimærke A2015 for bygning\n\nHvis bygningens energiforbrug dokumenteres med energirammeberegning: \n- Be18-resultatudtræk, Be18 nøgletal, Be18 modeldokumentation",
+              "definition": {
+                "$ref": "#/$defs/yesNoNotRelevantQuestion"
+              }
+            }
+          ]
+        },
+        {
+          "id": "M2",
+          "text": "Klimatilpasning (Væsentlig bidrag)",
+          "children": [
+            {
+              "id": "1",
+              "text": "Risikoanalyse",
+              "description": "Baseret på minimum 50-års klimafremskrivninger:\nforetages en screening af de fysiske miljø påvirkninger (tillæg A) for bygningens forventede levetid og der udføres en sårbarhedsvurdering af identificerede risici\nHvis der i punkt a) indentificeres væsentlige risici \nvurderes sikkerhedsforanstaltninger/kompenserende tiltag til reducering af identificerede risici\n- Klassificering af risici iht. Tillæg A\n- Sandsynlighedsvurdering af identificererde risici\n- Vurdering af kompenserende tiltag",
+              "definition": {
+                "$ref": "#/$defs/yesNoNotRelevantQuestion"
+              }
+            },
+            {
+              "id": "2",
+              "text": "Betingelser for klimatilpasningsløsninger",
+              "description": "Klimatilpasningsløsninger i M2.3 opfylder følgende: \na) påvirker ikke andre udførte klimatilpasningsforanstaltninger, naturens/vandets, kulturarvens, menneskers, aktivers og andre økonomiske aktiviteters grad af modstandsdygtighed over for fysiske klimarisici. \nb) Inddrager naturbaserede løsninger eller er afhængige af blå/grøn infrastruktur i det omfang, det er muligt. \nc) er i overensstemmelse med lokale, sektorspecifikke, regionale eller nationale tilpasningsplaner og –strategier.\n- Redegørelse for at klimatilpasningsløsninger i M2.3 ikke påvirker omgivelser negativt \n- Redegørelse for, hvorvidt klimatilpasningsløsninger inddrager naturbaserede løsninger. Eksempler på naturbaserede løsninger er grønne tage/facader, regnvandsbassin, mv. \n- Udsnit/udpensling af evt. krav, løsninger og retningslinjer, som indgår i klimatilpasningsstrategi for området (eller anden myndighedsrapport) samt redegørelse for, hvorledes klimatilpasningsløsninger i M2.3 opfylder disse krav og retningslinjer \n\nOpfyldelse af dette kriterie, M2.2, understøttes yderligere af dokumentation i M2.3.",
+              "definition": {
+                "$ref": "#/$defs/yesNoNotRelevantQuestion"
+              }
+            },
+            {
+              "id": "3",
+              "text": "Klimatilpasningsløsninger",
+              "description": "Hvis der identificeres væsentlige risici \nPå grundlag af de identificerende fysiske miljørisici (i M2.1) implementeres fysiske og ikke fysiske klimatilpasningsløsninger til markant reducering af de mest væsentlige risici.\nForslag til dokumentation:\n- Beskrivelse/tegningsmateriale dokumenterende sikkerhedsforanstaltninger/kompenserede tiltag og/eller\n- Udsnit/udpensling af evt. krav og løsninger, som indgår i lokalplan, byggetilladelse eller anden myndighedsrapport\n- 5-års strategi til reducering af de mest væsentlige risici\n\nEksempler på kompenserende tiltag i form af fysiske løsninger er stormflods-sikring og stormsikring. Beredskabs-plan eller anden form for varsling/oplysning ift. akutte risici er eksempler på ikke-fysiske løsninger.",
+              "definition": {
+                "$ref": "#/$defs/yesNoNotRelevantQuestion"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$defs": {
+      "yesNoNotRelevantQuestion": {
+        "$id": "/yesNoNotRelevantQuestion",
+        "oneOf": [
+          {
+            "$schema": "/definitions/pointOption",
+            "label": {
+              "const": "Ja"
+            },
+            "value": {
+              "const": 1
+            }
+          },
+          {
+            "$schema": "/definitions/pointOption",
+            "label": {
+              "const": "Nej"
+            },
+            "value": {
+              "const": 0
+            }
+          },
+          {
+            "$schema": "/definitions/pointOption",
+            "label": {
+              "const": "Ikke relevant"
+            },
+            "value": {
+              "const": null
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

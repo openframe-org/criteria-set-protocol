@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openframe.org/schemas/criteria-template",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "string.json#/uuid"
+    },
+    "version": {
+      "$ref": "string.json#/semver"
+    },
+    "date": {
+      "$ref": "string.json#/date-time"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "documentation": {
+      "type": "string"
+    },
+    "author": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "$ref": "string.json#email"
+        }
+      },
+      "required": ["email"],
+      "additionalProperties": false
+    },
+    "required": ["id", "version", "date", "name", "description"],
+    "additionalProperties": false
+  }
+}

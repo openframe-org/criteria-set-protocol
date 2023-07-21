@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "array",
+  "items": {
+    "oneOf": [
+      { "$ref": "#/$defs/task" },
+      { "$ref": "#/$defs/task-group" }
+    ]
+  },
+  "$defs": {
+    "id": {
+      "$comment": "The ID of a task or task group identifies it among its sibling elements. This means that the ID does not need to be unique to the full definition, as the group or task will be referenced using its unique path, assembled by using the IDs of its parent elements.",
+      "type": "string"
+    },
+    "task": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "text": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "definition": {
+          "$comment": "The task definition is a JSON schema definition itself. For example, look at data.json/point-option"
+        },
+        "required": ["id", "text", "description", "definition"],
+        "additionalProperties": false
+      }
+    },
+    "task-group": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "text": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              { "$ref": "#/$defs/task" },
+              { "$ref": "#/$defs/task-group" }
+            ]
+          }
+        },
+        "required": ["id", "text", "children"],
+        "additionalProperties": false
+      }
+    }
+  }
+}
