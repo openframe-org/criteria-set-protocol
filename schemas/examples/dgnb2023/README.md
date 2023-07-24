@@ -36,3 +36,7 @@ The resulting response is [this Criteria Template Task Tree schema](task-tree.js
 the fraction of the spreadsheet (sheet NKB) that the example pertains to:
 
 ![Fraction of the document the example pertains to](fraction-screenshot.png)
+
+Note the `result` property which contains all the calculated values on the top part of the spreadsheet
+(in orange), and the `calculatedValue` property of task group `PRO1.1` which was calculated by the sheet
+and passed alongside the data.
