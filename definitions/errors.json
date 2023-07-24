@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "array",
+  "items": {
+    "$ref": "#/$defs/error"
+  },
+  "$defs": {
+    "error": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "arguments": {
+          "type": "object"
+        },
+        "required": ["path", "code"],
+        "additionalProperties": false
+      }
+    }
+  }
+}
