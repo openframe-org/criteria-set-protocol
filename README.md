@@ -1,8 +1,28 @@
 <img alt="Frame ApS" src="https://openframe-public.s3.eu-west-1.amazonaws.com/assets/logo-text-google-admin.png" width="200" />
 
 # Frame Protocol
+
+## Introduction
 The Frame Protocol specifies the [Criteria Template Format](#criteria-template-format) and the [Criteria Template API](#criteria-template-api) 
 for retrieving, formatting and working with Criteria Templates.
+
+## Table of Contents
+- [Criteria Template Format](#criteria-template-format)
+  - [Criteria Template Metadata schema](#criteria-template-metadata-schema)
+    - [protocol](#protocol)
+    - [template](#template)
+    - [parameters (optional)](#parameters-optional)
+    - [result (optional)](#result-optional)
+    - [definitions (optional)](#definitions-optional)
+  - [Criteria Template Task Tree schema](#criteria-template-task-tree-schema)
+    - [tasks](#tasks)
+    - [errors](#errors)
+    - [result](#result)
+    - [definitions (optional)](#definitions-optional-1)
+  - [Validation](#validation)
+    - [parameter validation](#parameter-validation)
+    - [task validation](#task-validation)
+- [Criteria Template API](#criteria-template-api)
 
 ## Criteria Template Format
 The Criteria Template Format has been designed to extensively use the latest draft of the [JSON Schema](https://json-schema.org/)
@@ -246,7 +266,7 @@ in the parameters and result in order to reduce duplication and complexity.
 
 The above uses a standard `point-option` data type defined in the [Frame Data Types](definitions/data.json) specification.
 
-#### Validation
+### Validation
 There are two types of validation that can be performed on a task tree: **parameter validation** and **task validation**.
 Either of these result in the **errors** property being present in the response. The following is an example of an error:
 
@@ -267,10 +287,12 @@ for these error codes.
 The **errors** property must never be empty, that is to say, either it has one or more items, or it should be excluded from the
 response entirely.
 
-- **Parameter validation**: If there is an error in the parameters, the `errors` property **must** be present and **must** be the
+#### Parameter validation
+If there is an error in the parameters, the `errors` property **must** be present and **must** be the
 only property returned.
 
-- **Task validation**: If there is an error in the task values, the `errors` property **must** be present, though the rest of the
+#### Task validation
+If there is an error in the task values, the `errors` property **must** be present, though the rest of the
 task tree must be returned as well.
 
 ---
@@ -278,6 +300,8 @@ task tree must be returned as well.
 ### Criteria Template API
 The Criteria Template API is a simple JSON-formatted REST API for retrieving Criteria Template Metadata
 and Task Trees.
+
+The Swagger/OpenAPI specification for the API can be found in the [api.swagger.yml](api.swagger.yml) file.
 
 `GET` endpoints are used to retrieve the [Metadata](#criteria-template-metadata-schema) of a given Criteria Template.
 They require the following headers:

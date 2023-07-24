@@ -1,0 +1,135 @@
+openapi: 3.0.3
+info:
+  title: Criteria Template API
+  description: |-
+    The Criteria Template API is a simple JSON-formatted REST API for retrieving
+    Criteria Template Metadata and Task Trees.
+  contact:
+    email: api@openframe.org
+  version: "1"
+externalDocs:
+  description: Find out more about Frame
+  url: http://openframe.org
+paths:
+  /{protocol}/templates/{templateId}:
+    parameters:
+      - name: protocol
+        in: path
+        description: The version of the Frame Criteria Protocol to use
+        required: true
+        schema:
+          type: integer
+          format: int
+      - name: templateId
+        in: path
+        description: The ID of the Criteria Template to retrieve
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      summary: Get the latest version of the Metadata for the Criteria Template with the given ID
+      description: Get the latest version of the Metadata for the Criteria Template with the given ID
+      operationId: getMetadataForLatestVersion
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataResponse'
+        '404':
+          description: Template not found, or the latest version of the template does not satisfy the protocol version
+    post:
+      summary: Get the latest version of the Metadata for the Criteria Template with the given ID
+      description: Get the latest version of the Metadata for the Criteria Template with the given ID
+      operationId: getTaskTreeForLatestVersion
+      requestBody:
+        description: Parameters and task values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskTreeRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskTreeResponse'
+        '404':
+          description: Template not found, or the latest version of the template does not satisfy the protocol version
+        '422':
+          description: Parameter validation errors
+  /{protocol}/templates/{templateId}/{version}:
+    parameters:
+      - name: protocol
+        in: path
+        description: The version of the Frame Criteria Protocol to use
+        required: true
+        schema:
+          type: integer
+          format: int
+      - name: templateId
+        in: path
+        description: The ID of the Criteria Template to retrieve
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: version
+        in: path
+        description: The SemVer-formatted version of the Criteria Template to retrieve
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get the requested version of the Metadata for the Criteria Template with the given ID
+      description: Get the requested version of the Metadata for the Criteria Template with the given ID
+      operationId: getMetadataForVersion
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataResponse'
+        '404':
+          description: Template not found, the version does not exist, or the existing version does not satisfy the protocol version
+    post:
+      summary: Get the requested version of the Metadata for the Criteria Template with the given ID
+      description: Get the requested version of the Metadata for the Criteria Template with the given ID
+      operationId: getTaskTreeForVersion
+      requestBody:
+        description: Parameters and task values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskTreeRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskTreeResponse'
+        '404':
+          description: Template not found, the version does not exist, or the existing version does not satisfy the protocol version
+        '422':
+          description: Parameter validation errors
+components:
+  schemas:
+    MetadataResponse:
+      $ref: 'https://openframe.org/schemas/definitions/criteria-template-metadata'
+    TaskTreeRequest:
+      type: object
+      properties:
+        parameters:
+          description: A key-value map of parameters and their values. Required if the Metadata has required parameters.
+          type: object
+        values:
+          description: A key-value map of Task paths and their values.
+    TaskTreeResponse:
+      $ref: 'https://openframe.org/schemas/definitions/criteria-template-task-tree'
