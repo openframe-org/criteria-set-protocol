@@ -1,0 +1,45 @@
+{
+  "protocol": 1,
+  "template": {
+    "id": "61a01c88-0102-4332-96c6-6f60ba7a8763",
+    "version": "1.0.0",
+    "date": "2023-07-19T14:49:01.737Z",
+    "name": "Taksonomiforordning 2020/852",
+    "description": "7.1 Opførelse af nye bygninger",
+    "documentation": "https://taksonomiportalen.dk/vejledning/opf%C3%B8relse-af-nye-bygninger-2020"
+  },
+  "parameters": {
+    "buildingUse": {
+      "type": "string",
+      "enum": [
+        "Beboelse",
+        "Kontor",
+        "Uddannelse",
+        "Børneinstitution",
+        "Butik",
+        "Logistik",
+        "Hotel",
+        "Produktion",
+        "Blandet anvendelse",
+        "Andet"
+      ]
+    },
+    "significantContribution": {
+      "type": "string",
+      "enum": [
+        "Miljømål 1",
+        "Miljømål 2"
+      ]
+    },
+    "grossArea": {
+      "type": "integer",
+      "exclusiveMinimum": 0
+    },
+    "yearOfConstruction": {
+      "type": "integer",
+      "exclusiveMinimum": 1800,
+      "exclusiveMaximum": 2023
+    }
+  }
+}
+
