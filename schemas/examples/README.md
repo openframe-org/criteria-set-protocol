@@ -6,7 +6,7 @@
 ### Taxonomies
 EU Taxonomy regulation 2020/852: Guide 7.1, v2:
 - [Sample Criteria Template Metadata schema](taxonomy/metadata.json)
-- [Sample Criteria Template Task Tree schema](taxonomy/task-tree.json): With the following request body:
+- [Sample Criteria Template Task Tree schema](taxonomy/task-tree.json) with the following request body:
 ```json5
 {
   "parameters": {
