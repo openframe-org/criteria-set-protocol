@@ -15,7 +15,9 @@ defining Criteria Templates which includes:
 ### Criteria Template API
 The Criteria Template API is a simple REST API for retrieving Criteria Templates. It is designed to be as simple as possible.
 
-## Structure
+---
+
+## Criteria Template Format
 The format of a Criteria Template is specified in the [template.json](template.json) file. The format is specified using
 the [JSON Schema](https://json-schema.org/). A Criteria Template at its core is an object with the following properties:
 
@@ -191,3 +193,22 @@ in the parameters/tasks in order to reduce duplication and complexity. For the e
 ```
 
 The above uses a standard `point-option` data type defined in the [Frame Data Types](definitions/data.json) specification.
+
+---
+
+## Criteria Template API
+As mentioned above, the Criteria Template API is a simple JSON-formatted REST API for retrieving Criteria Templates. There are no specific
+headers that are required apart from the following:
+
+```
+Accept: application/json
+```
+
+Here is a list of the available endpoints:
+
+| Endpoint                                                  | Description                                                                                   |
+|-----------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| `GET /templates/{templateId}`                             | Returns the latest version of the Template with the given ID, for the latest protocol version |
+| `GET /templates/{templateId}/{version}`                   | Returns a specific version of the template with the given ID                                  |
+| `GET /{protocolVersion}/templates/{templateId}`           | Returns the latest version of the Template with the given ID                                  |
+| `GET /{protocolVersion}/templates/{templateId}/{version}` | Returns the specific version of the Template with the given ID                                |
