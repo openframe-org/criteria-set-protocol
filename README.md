@@ -1,10 +1,10 @@
 <img alt="Frame ApS" src="https://openframe-public.s3.eu-west-1.amazonaws.com/assets/logo-text-google-admin.png" width="200" />
 
 # Frame Protocol
-The Frame Protocol specifies the Criteria Template Format and the Criteria Template API for retrieving, formatting and working with Criteria Templates.
+The Frame Protocol specifies the [Criteria Template Format](#criteria-template-format) and the [Criteria Template API](#criteria-template-api) 
+for retrieving, formatting and working with Criteria Templates.
 
-## Definitions
-### Criteria Template Format
+## Criteria Template Format
 The Criteria Template Format has been designed to extensively use the latest draft of the [JSON Schema](https://json-schema.org/)
 specification wherever possible (draft 2020-12 by the time of this writing). This allows for a very flexible and powerful way of
 defining Criteria Templates which includes:
@@ -12,12 +12,6 @@ defining Criteria Templates which includes:
 - Inheritance/abstraction
 - Simple conditionals
 
-### Criteria Template API
-The Criteria Template API is a simple REST API for retrieving Criteria Templates. It is designed to be as simple as possible.
-
----
-
-## Criteria Template Format
 The Criteria Template Format comprises two different schemas: The [Criteria Template Metadata schema](#criteria-template-metadata-schema)
 and the [Criteria Template Task Tree schema](#criteria-template-task-tree-schema). The formats are specified using the
 [JSON Schema](https://json-schema.org/).
@@ -45,10 +39,10 @@ At its core, this schema is an object with the following properties:
 }
 ```
 
-### protocol
+#### protocol
 An integer representation of the version of the protocol this Template was designed for.
 
-### template
+#### template
 The template metadata:
 
 ```json5
@@ -79,7 +73,7 @@ The template metadata:
 
 - **template.documentation** (optional): A link to the documentation for this Template.
 
-### parameters (optional)
+#### parameters (optional)
 Individual JSON Schema definitions of the different parameters available.
 
 ```json5
@@ -112,7 +106,7 @@ Individual JSON Schema definitions of the different parameters available.
 }
 ```
 
-### result (optional)
+#### result (optional)
 The result definition is an optional JSON Schema definition for any result that may be returned by the Template when validated data is passed to the task tree.
 An example of this is the DGNB 2023 template - a final score is calculated based on the value of all the task items. In this case, the result definition
 would be:
@@ -126,13 +120,13 @@ would be:
 }
 ```
 
-### definitions (optional)
+#### definitions (optional)
 A space to add additional JSON Schema definitions ([$defs](https://json-schema.org/understanding-json-schema/structuring.html#defs)) to be used
 in the parameters and result in order to reduce duplication and complexity.
 
 For an example, see the definitions property in the [Criteria Template Task Tree schema](#criteria-template-task-tree-schema) below.
 
-## Criteria Template Task Tree schema
+### Criteria Template Task Tree schema
 The Criteria Template Task Tree schema is specified in the [task-tree.json](definitions/task-tree.json) file. The service that requests the
 task tree must have prior information about the parameters available and required - if parameters are required, the tree is assembled based
 on the value of these parameters.
@@ -157,11 +151,10 @@ though these values must have no bearing in the final structure of the tree.
   }
 }
 ```
-### tasks
+#### tasks
 The actual tasks which comprise the Template. The tasks list is a tree structure where each item can be either a task or a task group.
 
-#### task
-A task group can hold tasks and more task groups within it.
+- **task group**: A task group can hold tasks and more task groups within it.
 
 ```json5
 // Example task group
@@ -174,8 +167,7 @@ A task group can hold tasks and more task groups within it.
 }
 ```
 
-#### task
-A task represents a single task in the Template. A task is an object with the following properties:
+- **task**: A task represents a single task in the Template. A task is an object with the following properties:
 
 ```json5
 // Example task
@@ -196,18 +188,18 @@ This is a very powerful feature of JSON Schema, which allows for reusing definit
   A task and task group can, for example, both have an ID of `1`, as their unique ID is the combination of their ID and the ID of their parents,
   that is to say, **the unique ID of a task or task group is its path within the tree structure**.
 
-### errors
+#### errors
 See [validation](#validation) below.
 
 
-### result
+#### result
 If there is no result definition in the Metadata, the `result` property **must not** be present.
 If there is a result definition in the Metadata, either the `result` property **must** be present,
 or the `errors` property **must** have at least a single error.
 
 The result property is a property which is formatted according to the Metadata result definition.
 
-### definitions (optional)
+#### definitions (optional)
 A space to add additional JSON Schema definitions ([$defs](https://json-schema.org/understanding-json-schema/structuring.html#defs)) to be used
 in the parameters and result in order to reduce duplication and complexity.
 
@@ -254,7 +246,7 @@ in the parameters and result in order to reduce duplication and complexity.
 
 The above uses a standard `point-option` data type defined in the [Frame Data Types](definitions/data.json) specification.
 
-### Validation
+#### Validation
 There are two types of validation that can be performed on a task tree: **parameter validation** and **task validation**.
 Either of these result in the **errors** property being present in the response. The following is an example of an error:
 
@@ -275,17 +267,16 @@ for these error codes.
 The **errors** property must never be empty, that is to say, either it has one or more items, or it should be excluded from the
 response entirely.
 
-#### Parameter validation
-If there is an error in the parameters, the `errors` property **must** be present and **must** be the only property returned.
+- **Parameter validation**: If there is an error in the parameters, the `errors` property **must** be present and **must** be the
+only property returned.
 
-#### Task validation
-If there is an error in the task values, the `errors` property **must** be present, though the rest of the task tree must be
-returned as well.
+- **Task validation**: If there is an error in the task values, the `errors` property **must** be present, though the rest of the
+task tree must be returned as well.
 
 ---
 
-## Criteria Template API
-As mentioned above, the Criteria Template API is a simple JSON-formatted REST API for retrieving Criteria Template Metadata
+### Criteria Template API
+The Criteria Template API is a simple JSON-formatted REST API for retrieving Criteria Template Metadata
 and Task Trees.
 
 `GET` endpoints are used to retrieve the [Metadata](#criteria-template-metadata-schema) of a given Criteria Template.
