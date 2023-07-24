@@ -176,7 +176,8 @@
         "$id": "/yesNoNotRelevantQuestion",
         "oneOf": [
           {
-            "$ref": "/data/point-option",
+            "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
+            "id": "yes",
             "label": {
               "const": "Ja"
             },
@@ -185,7 +186,8 @@
             }
           },
           {
-            "$ref": "/data/point-option",
+            "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
+            "id": "no",
             "label": {
               "const": "Nej"
             },
@@ -194,7 +196,8 @@
             }
           },
           {
-            "$ref": "/data/point-option",
+            "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
+            "id": "notRelevant",
             "label": {
               "const": "Ikke relevant"
             },

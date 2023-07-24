@@ -3,6 +3,10 @@
   "point-option": {
     "type": "object",
     "properties": {
+      "$comment": "The ID is required, as point options can have the same label but different values or vice versa",
+      "id": {
+        "type": "string"
+      },
       "label": {
         "type": "string"
       },
@@ -10,6 +14,6 @@
         "$comment": "This value can be of any type and does not need to be unique"
       }
     },
-    "required": ["label", "value"]
+    "required": ["id", "label", "value"]
   }
 }

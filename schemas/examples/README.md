@@ -2,19 +2,6 @@
 
 # Frame Protocol
 
-## Example schemas
-### Taxonomies
-EU Taxonomy regulation 2020/852: Guide 7.1, v2:
-- [Sample Criteria Template Metadata schema](taxonomy/metadata.json)
-- [Sample Criteria Template Task Tree schema](taxonomy/task-tree.json) with the following request body:
-```json5
-{
-  "parameters": {
-    "buildingUse": "Kontor",
-    "significantContribution": "Miljømål 1",
-    "grossArea": 5500,
-    "yearOfConstruction": 2019
-  }
-}
-```
-
+## Examples
+- [EU Taxonomy regulation 2020/852: Guide 7.1, v2](taxonomy/README.md)
+- [DGNB 2023](dgnb2023/README.md)

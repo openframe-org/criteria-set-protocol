@@ -24,10 +24,12 @@
         "description": {
           "type": "string"
         },
+        "calculatedValue": {},
+        "providedValue": {},
         "definition": {
           "$comment": "The task definition is a JSON schema definition itself. For example, look at data.json/point-option"
         },
-        "required": ["id", "text", "description", "definition"],
+        "required": ["id", "definition"],
         "additionalProperties": false
       }
     },
@@ -43,6 +45,7 @@
         "description": {
           "type": "string"
         },
+        "calculatedValue": {},
         "children": {
           "type": "array",
           "items": {
