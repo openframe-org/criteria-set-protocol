@@ -3,7 +3,7 @@
 # Frame Protocol
 
 ## Examples
-### Taxonomies
+### DGNB2023
 The following example is for the NKB/PRO1.1 criteria of DGNB 2023. It is intended to show the following represented
 in our schema:
 - Point data
