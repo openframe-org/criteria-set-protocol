@@ -17,7 +17,7 @@ GET /1/templates/b018ed4a-4fb9-4bc8-989e-5f003cbf5d45
 
 Which results in [this Criteria Template Metadata schema](metadata.json).
 
-The user then makes a request to retrieve the task tree providing the following parameters:
+The user then makes a request to retrieve the task tree without any parameters:
 
 ```
 POST /1/templates/b018ed4a-4fb9-4bc8-989e-5f003cbf5d45
