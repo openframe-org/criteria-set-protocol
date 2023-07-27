@@ -17,9 +17,9 @@
                   "id": "1",
                   "providedValue": 20,
                   "definition": {
+                    "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
                     "oneOf": [
                       {
-                        "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
                         "id": {
                           "const": "1"
                         },
@@ -31,7 +31,6 @@
                         }
                       },
                       {
-                        "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
                         "id": {
                           "const": "2"
                         },
@@ -43,7 +42,6 @@
                         }
                       },
                       {
-                        "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
                         "id": {
                           "const": "3"
                         },
@@ -73,9 +71,9 @@
                   "id": "1",
                   "providedValue": 15,
                   "definition": {
+                    "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
                     "oneOf": [
                       {
-                        "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
                         "id": {
                           "const": "1"
                         },
@@ -87,7 +85,6 @@
                         }
                       },
                       {
-                        "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
                         "id": {
                           "const": "2"
                         },
@@ -116,9 +113,9 @@
                 {
                   "id": "1",
                   "definition": {
+                    "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
                     "oneOf": [
                       {
-                        "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
                         "id": {
                           "const": "1"
                         },
@@ -130,7 +127,6 @@
                         }
                       },
                       {
-                        "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
                         "id": {
                           "const": "2"
                         },
@@ -160,9 +156,9 @@
                   "id": "1",
                   "providedValue": 5,
                   "definition": {
+                    "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
                     "oneOf": [
                       {
-                        "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
                         "id": {
                           "const": "1"
                         },
@@ -174,7 +170,6 @@
                         }
                       },
                       {
-                        "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
                         "id": {
                           "const": "2"
                         },
