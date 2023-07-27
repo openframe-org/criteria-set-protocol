@@ -20,7 +20,9 @@
                     "oneOf": [
                       {
                         "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
-                        "id": "1",
+                        "id": {
+                          "const": "1"
+                        },
                         "label": {
                           "const": "Kravspecifikationen omfatter emnerne i det lille idéoplæg (se App. D, punkt 1) eller med lignende indhold. Kravspecifikationen skal foreligge senest ved afslutningen af ”Indledende rådgivning” iht. ydelsesbeskrivelsen for Byggeri og Landskab."
                         },
@@ -30,7 +32,9 @@
                       },
                       {
                         "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
-                        "id": "2",
+                        "id": {
+                          "const": "2"
+                        },
                         "label": {
                           "const": "Kravspecifikationen omfatter emnerne i idéoplægget (se App. D, punkt 2) eller med lignende indhold. Kravspecifikationen skal foreligge senest ved afslutningen af ”Indledende rådgivning” iht. ydelsesbeskrivelsen for Byggeri og Landskab."
                         },
@@ -40,7 +44,9 @@
                       },
                       {
                         "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
-                        "id": "3",
+                        "id": {
+                          "const": "3"
+                        },
                         "label": {
                           "const": "Kravspecifikationen omfatter emnerne i det udvidede idéoplæg (se App. D, punkt 3) eller med lignende indhold. Kravspecifikationen skal foreligge senest ved afslutningen af ”Indledende rådgivning” iht. ydelsesbeskrivelsen for Byggeri og Landskab."
                         },
@@ -70,7 +76,9 @@
                     "oneOf": [
                       {
                         "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
-                        "id": "1",
+                        "id": {
+                          "const": "1"
+                        },
                         "label": {
                           "const": "Der er udarbejdet detaljerede bæredygtighedsmål med hensyntagen til procesmæssige, miljømæssige, økonomiske, sociale og tekniske aspekter. Bæredygtighedsmålene skal foreligge senest ved afslutningen af ”Indledende rådgivning” iht. ydelsesbeskrivelsen for Byggeri og Landskab."
                         },
@@ -80,7 +88,9 @@
                       },
                       {
                         "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
-                        "id": "2",
+                        "id": {
+                          "const": "2"
+                        },
                         "label": {
                           "const": "Desuden er der for bæredygtighedsmålene defineret ansvarsområder for de involverede aktører samt udarbejdet en plan for hvilke beslutninger, der skal træffes i de enkelte faser for at opnå en optimal implementering."
                         },
@@ -109,7 +119,9 @@
                     "oneOf": [
                       {
                         "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
-                        "id": "1",
+                        "id": {
+                          "const": "1"
+                        },
                         "label": {
                           "const": "Der er gennemført forskellige initiativer til en inddragende brugerdeltagelse."
                         },
@@ -119,7 +131,9 @@
                       },
                       {
                         "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
-                        "id": "2",
+                        "id": {
+                          "const": "2"
+                        },
                         "label": {
                           "const": "Det dokumenteres, at de kommende brugere af bygningen, eller repræsentanter herfor, har haft mulighed for at være medbestemmende i planlægningen af projektet og dets udførelse."
                         },
@@ -149,7 +163,9 @@
                     "oneOf": [
                       {
                         "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
-                        "id": "1",
+                        "id": {
+                          "const": "1"
+                        },
                         "label": {
                           "const": "Der er gennemført forskellige initiativer til at informere offentligheden."
                         },
@@ -159,7 +175,9 @@
                       },
                       {
                         "$ref": "https://openframe.org/schemas/definitions/data#/point-option",
-                        "id": "2",
+                        "id": {
+                          "const": "2"
+                        },
                         "label": {
                           "const": "Folk i det omkringliggende kvarter er blevet informeret omkring byggearbejdet (f.eks. omkring byggevarighed, perioder med særligt støjende arbejder mv.). Desuden er der udpeget en kontaktperson i projektteamet til at besvare eventuelle spørgsmål."
                         },
