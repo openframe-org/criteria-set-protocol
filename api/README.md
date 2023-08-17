@@ -1,9 +1,9 @@
 <img alt="Frame ApS" src="https://openframe-public.s3.eu-west-1.amazonaws.com/assets/logo-text-google-admin.png" width="200" />
 
-# Criteria Tree Protocol
+# Criteria Set Protocol
 
-## Criteria Tree API
-The Criteria Tree API is a simple JSON-formatted REST API for retrieving criteria set metadata and trees.
+## Criteria Set API
+The Criteria Set API is a simple JSON-formatted REST API for retrieving criteria set metadata and trees.
 
 The Swagger/OpenAPI specification for the API can be found in the [api.swagger.yml](api.swagger.yml) file.
 

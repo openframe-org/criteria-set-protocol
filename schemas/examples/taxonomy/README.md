@@ -1,6 +1,6 @@
 <img alt="Frame ApS" src="https://openframe-public.s3.eu-west-1.amazonaws.com/assets/logo-text-google-admin.png" width="200" />
 
-# Criteria Tree Protocol
+# Criteria Set Protocol
 
 ## Examples
 ### Taxonomies

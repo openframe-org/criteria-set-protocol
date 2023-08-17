@@ -1,8 +1,8 @@
 <img alt="Frame ApS" src="https://openframe-public.s3.eu-west-1.amazonaws.com/assets/logo-text-google-admin.png" width="200" />
 
-# Criteria Tree Protocol
-The Criteria Tree Protocol specifies the Criteria Tree Format and the Criteria Tree API for retrieving, formatting
-and working with criteria trees.
+# Criteria Set Protocol
+The Criteria Set Protocol specifies the Criteria Set Format and the Criteria Set API for retrieving, formatting
+and working with criteria sets.
 
 ## Table of Contents
 - [Metadata schema](schemas/README.md#metadata-schema)

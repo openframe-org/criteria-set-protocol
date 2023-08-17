@@ -1,13 +1,13 @@
 <img alt="Frame ApS" src="https://openframe-public.s3.eu-west-1.amazonaws.com/assets/logo-text-google-admin.png" width="200" />
 
-# Criteria Tree Protocol
+# Criteria Set Protocol
 
-## Criteria Tree Format
-The Criteria Tree Format has been designed to be able to support the widest variety of criteria sets. The schema structure is
+## Criteria Set Format
+The Criteria Set Format has been designed to be able to support the widest variety of criteria sets. The schema structure is
 meant to be as simple as possible by design - this is because the criteria service is must be the only source of truth, as
 criteria sets in general are often not very transparent and validation happens behind the scenes.
 
-The Criteria Tree Format comprises a set of different schemas: The [metadata schema](#metadata-schema)
+The Criteria Set Format comprises a set of different schemas: The [metadata schema](#metadata-schema)
 and the [criteria tree schema](#criteria-tree-schema). These schemas are described using
 [JSON Schema draft 2020-12](https://json-schema.org/).
 
@@ -222,7 +222,7 @@ Either of these result in the **errors** property being present in the response.
 }
 ```
 
-It is up to the service which implements the Criteria Tree API to provide its own error codes and documentation
+It is up to the service which implements the Criteria Set API to provide its own error codes and documentation
 for these error codes.
 
 The **errors** property must never be empty, that is to say, either it has one or more items, or it should be excluded from the
