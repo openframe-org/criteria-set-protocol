@@ -1,45 +1,41 @@
 <img alt="Frame ApS" src="https://openframe-public.s3.eu-west-1.amazonaws.com/assets/logo-text-google-admin.png" width="200" />
 
-# Frame Protocol
+# Criteria Tree Protocol
 
-## Criteria Template Format
-The Criteria Template Format has been designed to extensively use the latest draft of the [JSON Schema](https://json-schema.org/)
-specification wherever possible (draft 2020-12 by the time of this writing). This allows for a very flexible and powerful way of
-defining Criteria Templates which includes:
-- A widely adopted, evolving standard
-- Inheritance/abstraction
-- Simple conditionals
+## Criteria Tree Format
+The Criteria Tree Format has been designed to be able to support the widest variety of criteria sets. The schema structure is
+meant to be as simple as possible by design - this is because the criteria service is must be the only source of truth, as
+criteria sets in general are often not very transparent and validation happens behind the scenes.
 
-The Criteria Template Format comprises two different schemas: The [Criteria Template Metadata schema](#criteria-template-metadata-schema)
-and the [Criteria Template Task Tree schema](#criteria-template-task-tree-schema). The formats are specified using the
-[JSON Schema](https://json-schema.org/).
+The Criteria Tree Format comprises a set of different schemas: The [metadata schema](#metadata-schema)
+and the [criteria tree schema](#criteria-tree-schema). These schemas are described using
+[JSON Schema draft 2020-12](https://json-schema.org/).
 
 ## Table of Contents
-- [Criteria Template Metadata schema](#criteria-template-metadata-schema)
+- [Metadata schema](#metadata-schema)
   - [protocol](#protocol)
-  - [template](#template)
+  - [metadata](#template)
   - [parameters (optional)](#parameters-optional)
   - [result (optional)](#result-optional)
   - [definitions (optional)](#definitions-optional)
-- [Criteria Template Task Tree schema](#criteria-template-task-tree-schema)
-  - [tasks](#tasks)
+- [Criteria tree schema](#criteria-tree-schema)
+  - [criteria](#criteria)
   - [errors](#errors)
   - [result](#result)
-  - [definitions (optional)](#definitions-optional-1)
 - [Validation](#validation)
   - [parameter validation](#parameter-validation)
-  - [task validation](#task-validation)
+  - [tree validation](#tree-validation)
 
-## Criteria Template Metadata schema
-The Criteria Template Metadata schema is specified in the [criteria-template-metadata.json](definitions/criteria-template-metadata.json) file.
-At its core, this schema is an object with the following properties:
+## Metadata schema
+The metadata schema is specified in the [metadata.json](definitions/metadata.json) file.
+It is an object with the following properties:
 
 ```json5
-// Criteria Template Metadata schema
+// Metadata schema
 {
   "protocol": 1, // protocol version
-  "template": {
-    // template metadata
+  "metadata": {
+    // tree metadata
   },
   "parameters": {
     // optional parameters
@@ -54,13 +50,13 @@ At its core, this schema is an object with the following properties:
 ```
 
 ### protocol
-An integer representation of the version of the protocol this Template was designed for.
+An integer representation of the version of the protocol this template was designed for.
 
-### template
-The template metadata:
+### metadata
+The tree metadata:
 
 ```json5
-// Example Template metadata
+// Example tree metadata
 {
   "id": "61a01c88-0102-4332-96c6-6f60ba7a8763", // The UUID of this Template
   "version": "1.0.0", // The current SemVer-formatted version of this Template
@@ -71,24 +67,24 @@ The template metadata:
 }
 ```
 
-- **template.id**: The ID of the Template is a string which uniquely identifies the Template independently of the Template or Protocol version.
+- **metadata.id**: The ID of the tree is a string which uniquely identifies the tree independently of the tree or protocol version.
 
-- **template.version**: The individual version elements are meant to have a bearing on the Template definition:
-  * **Patch version**: Intended to track strictly cosmetic changes to the Template, such as tweaks to label strings, names or descriptions (not
+- **metadata.version**: The individual version elements are meant to have a bearing on the tree definition:
+  * **Patch version**: Intended to track strictly cosmetic changes to the tree, such as tweaks to label strings, names or descriptions (not
   data values, as this is not strictly cosmetic).
-  * **Minor version**: Intended to track changes to the Template which are backwards-compatible. Changes to the Template structure which for
+  * **Minor version**: Intended to track changes to the tree which are backwards-compatible. Changes to the tree structure which for
   which older task data is still considered valid based on the new structure are considered changes to the minor version.
-  * **Major version**: Intended to track changes to the Template which are not backwards-compatible. Changes to the major version imply that
-  older data will no longer validate against the new Template structure.
+  * **Major version**: Intended to track changes to the tree which are not backwards-compatible. Changes to the major version imply that
+  older data will no longer validate against the new tree structure.
 
-- **template.date**: The date this Template was published at, formatted as a simplified ISO-8601 date string ([the same one used by Javascript's Date.toISOString()` method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)).
+- **metadata.date**: The date this template was published at, formatted as a [simplified ISO-8601 date string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString).
 
-- **template.name, template.description**: The name and description of the Template, respectively.
+- **metadata.name, metadata.description**: The name and description of the tree, respectively.
 
-- **template.documentation** (optional): A link to the documentation for this Template.
+- **metadata.documentation** (optional): A link to the documentation for this tree.
 
 ### parameters (optional)
-Individual JSON Schema definitions of the different parameters available.
+An object where each property is an individual JSON Schema definition for a specific available parameter.
 
 ```json5
 // Example parameters
@@ -121,7 +117,7 @@ Individual JSON Schema definitions of the different parameters available.
 ```
 
 ### result (optional)
-The result definition is an optional JSON Schema definition for any result that may be returned by the Template when validated data is passed to the task tree.
+The result definition is an optional JSON Schema definition for any result that may be returned by the tree when validated data is provided.
 An example of this is the DGNB 2023 template - a final score is calculated based on the value of all the task items. In this case, the result definition
 would be:
 
@@ -138,127 +134,66 @@ would be:
 A space to add additional JSON Schema definitions ([$defs](https://json-schema.org/understanding-json-schema/structuring.html#defs)) to be used
 in the parameters and result in order to reduce duplication and complexity.
 
-For an example, see the definitions property in the [Criteria Template Task Tree schema](#criteria-template-task-tree-schema) below.
-
-## Criteria Template Task Tree schema
-The Criteria Template Task Tree schema is specified in the [criteria-template-task-tree.json](definitions/criteria-template-task-tree.json) file. The service that requests the
-task tree must have prior information about the parameters available and required - if parameters are required, the tree is assembled based
+## Criteria tree schema
+The criteria tree schema is specified in the [criteria-tree.json](definitions/criteria-tree.json) file. The service that requests the
+criteria tree must have prior information about the parameters available and required - if parameters are required, the tree is assembled based
 on the value of these parameters.
 
 Values for the task items may also be passed alongside the parameters, these values can be used to fill in calculated data in tasks and groups,
-though these values must have no bearing in the final structure of the tree.
+and may also affect the final structure of the tree.
 
 ```json5
-// Criteria Template Task Tree schema
+// Criteria tree schema
 {
-  "tasks": {
-    // task tree
+  "criteria": {
+    // criteria tree
   },
   "errors": [
     // optional errors
   ],
   "result": {
-    // optional result formatted according to the Metadata result definition
-  },
-  "definitions": {
-    // optional additional definitions
+    // optional result formatted according to the metadata result definition
   }
 }
 ```
-### tasks
-The actual tasks which comprise the Template. The tasks list is a tree structure where each item can be either a task or a task group.
+### criteria
+The actual criteria which comprise the tree. The criteria list is a tree structured as follows:
 
-- **task group**: A task group can hold tasks and more task groups within it.
+- **criteria**: Criteria are the top-level items in the tree. A criterion can hold task groups and tasks. It can have read-only data.
+- **task group**: A task group can hold tasks and more task groups within it. It can have read-only data.
+- **task**: A task group can hold task items within it. It can have read-only data.
+- **task item**: A task item is the leaf, it has no children. It can have editable data as well as read-only data.
 
-```json5
-// Example task group
-{
-  "id": "SOC",
-  "text": "Sociale minimumsgarantier",
-  "children": [
-    // tasks and task groups
-  ]
-}
+```
+Criteria
+    +-- Task group
+             +-- Task
+                  +-- Task item
+                  +-- Task item
+                  +-- ...
+             +-- Task
+                  +-- ...
+             +-- ...
+    +-- Task group
+             +-- ...
+    +-- Task
+         +-- ...
+Criteria
+    +-- ...
+...
 ```
 
-- **task**: A task represents a single task in the Template. A task is an object with the following properties:
-
-```json5
-// Example task
-{
-  "id": "1",
-  "text": "Due Diligence proces",
-  "description": "OECD´s retningslinjer for multinationale virksomheder ...",
-  "definition": {
-    "$ref": "#/$defs/yesNoNotRelevantQuestion"
-  }
-}
-```
-
-In this example task, the definition is a reference to a definition called *yesNoNotRelevantQuestion* in the `definitions` object.
-This is a very powerful feature of JSON Schema, which allows for reusing definitions across multiple tasks.
-
-- **task.id, taskGroup.id**: The task and task group IDs are strings which uniquely identify the task or task group **among their siblings**.
-  A task and task group can, for example, both have an ID of `1`, as their unique ID is the combination of their ID and the ID of their parents,
-  that is to say, **the unique ID of a task or task group is its path within the tree structure**.
+- **criteria.id**, **taskGroup.id**, **task.id**, **taskItem.id**: The ID properties are UUID strings which uniquely identify
+the different elements. These are used to track elements across versions.
 
 ### errors
 See [validation](#validation) below.
 
 
 ### result
-If there is no result definition in the Metadata, the `result` property **must not** be present.
-If there is a result definition in the Metadata, either the `result` property **must** be present,
-or the `errors` property **must** have at least a single error.
+If there is no result definition in the metadata, the `result` property **must not** be present.
 
-The result property is a property which is formatted according to the Metadata result definition.
-
-### definitions (optional)
-A space to add additional JSON Schema definitions ([$defs](https://json-schema.org/understanding-json-schema/structuring.html#defs)) to be used
-in the parameters and result in order to reduce duplication and complexity.
-
-```json5
-// Example definitions object
-{
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$defs": {
-    "yesNoNotRelevantQuestion": {
-      "$id": "/yesNoNotRelevantQuestion",
-      "oneOf": [
-        {
-          "$ref": "/data/point-option",
-          "label": {
-            "const": "Ja"
-          },
-          "value": {
-            "const": 1
-          }
-        },
-        {
-          "$ref": "/data/point-option",
-          "label": {
-            "const": "Nej"
-          },
-          "value": {
-            "const": 0
-          }
-        },
-        {
-          "$ref": "/data/point-option",
-          "label": {
-            "const": "Ikke relevant"
-          },
-          "value": {
-            "const": null
-          }
-        }
-      ]
-    }
-  }
-}
-```
-
-The above uses a standard `point-option` data type defined in the [Frame Data Types](definitions/data.json) specification.
+The result property is a property which is formatted according to the metadata result definition.
 
 ## Validation
 There are two types of validation that can be performed on a task tree: **parameter validation** and **task validation**.
@@ -266,7 +201,7 @@ Either of these result in the **errors** property being present in the response.
 
 ```json5
 {
-  "path": "SOC2.1.2.1", // The path to the task or task group which has the error
+  "id": "f8ad4dfe-4319-4823-862e-67ed58df3689", // The id of the element that has the error
   "code": "value-is-too-high", // A string error code which can be used to localize the error message
   "arguments": { // An optional object with arguments to be used when localizing the error message
     "value": 100,
@@ -275,7 +210,7 @@ Either of these result in the **errors** property being present in the response.
 }
 ```
 
-It is up to the service which implements the Criteria Template API to provide its own error codes and documentation
+It is up to the service which implements the Criteria Tree API to provide its own error codes and documentation
 for these error codes.
 
 The **errors** property must never be empty, that is to say, either it has one or more items, or it should be excluded from the
@@ -285,6 +220,6 @@ response entirely.
 If there is an error in the parameters, the `errors` property **must** be present and **must** be the
 only property returned.
 
-### Task validation
+### Tree validation
 If there is an error in the task values, the `errors` property **must** be present, though the rest of the
 task tree must be returned as well.
