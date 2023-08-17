@@ -1,35 +1,35 @@
 openapi: 3.0.3
 info:
-  title: Criteria Template API
+  title: Criteria Tree API
   description: |-
-    The Criteria Template API is a simple JSON-formatted REST API for retrieving
-    Criteria Template Metadata and Task Trees.
+    The Criteria Tree API is a simple JSON-formatted REST API for retrieving
+    criteria set metadata and criteria trees.
   contact:
     email: api@openframe.org
   version: "1"
 externalDocs:
-  description: Find out more about Frame
+  description: Find out more about Openframe
   url: http://openframe.org
 paths:
-  /{protocol}/templates/{templateId}:
+  /{protocol}/{criteriaSetUuid}/:
     parameters:
       - name: protocol
         in: path
-        description: The version of the Frame Criteria Protocol to use
+        description: The version of the Criteria Tree Protocol to use
         required: true
         schema:
           type: integer
           format: int
-      - name: templateId
+      - name: criteriaSetUuid
         in: path
-        description: The ID of the Criteria Template to retrieve
+        description: The UUID of the criteria set to retrieve
         required: true
         schema:
           type: string
           format: uuid
     get:
-      summary: Get the latest version of the Metadata for the Criteria Template with the given ID
-      description: Get the latest version of the Metadata for the Criteria Template with the given ID
+      summary: Get the latest version of the metadata for the criteria set with the given UUID
+      description: Get the latest version of the metadata for the criteria set with the given UUID
       operationId: getMetadataForLatestVersion
       responses:
         '200':
@@ -39,17 +39,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/MetadataResponse'
         '404':
-          description: Template not found, or the latest version of the template does not satisfy the protocol version
+          description: Criteria set not found, or the latest version of the set does not satisfy the protocol version
     post:
-      summary: Get the latest version of the Metadata for the Criteria Template with the given ID
-      description: Get the latest version of the Metadata for the Criteria Template with the given ID
-      operationId: getTaskTreeForLatestVersion
+      summary: Get the latest version of the metadata for the criteria set with the given UUID
+      description: Get the latest version of the metadata for the criteria set with the given UUID
+      operationId: getCriteriaTreeForLatestVersion
       requestBody:
         description: Parameters and task values
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TaskTreeRequest'
+              $ref: '#/components/schemas/CriteriaTreeRequest'
         required: true
       responses:
         '200':
@@ -57,36 +57,65 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TaskTreeResponse'
+                $ref: '#/components/schemas/CriteriaTreeResponse'
         '404':
-          description: Template not found, or the latest version of the template does not satisfy the protocol version
+          description: Criteria set not found, or the latest version of the set does not satisfy the protocol version
         '422':
           description: Parameter validation errors
-  /{protocol}/templates/{templateId}/{version}:
+  /{protocol}/{criteriaSetUuid}/versions:
     parameters:
       - name: protocol
         in: path
-        description: The version of the Frame Criteria Protocol to use
+        description: The version of the Criteria Tree Protocol to use
         required: true
         schema:
           type: integer
           format: int
-      - name: templateId
+      - name: criteriaSetUuid
         in: path
-        description: The ID of the Criteria Template to retrieve
+        description: The UUID of the criteria set to retrieve
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      summary: Get criteria set versions
+      description: Get a list of versions for the criteria set with the given UUID
+      operationId: getVersions
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VersionsResponse'
+        '404':
+          description: Criteria set not found
+  /{protocol}/{criteriaSetUuid}/{version}:
+    parameters:
+      - name: protocol
+        in: path
+        description: The version of the Criteria Tree Protocol to use
+        required: true
+        schema:
+          type: integer
+          format: int
+      - name: criteriaSetUuid
+        in: path
+        description: The UUID of the criteria set to retrieve
         required: true
         schema:
           type: string
           format: uuid
       - name: version
         in: path
-        description: The SemVer-formatted version of the Criteria Template to retrieve
+        description: The SemVer-formatted version of the criteria set to retrieve
         required: true
         schema:
           type: string
     get:
-      summary: Get the requested version of the Metadata for the Criteria Template with the given ID
-      description: Get the requested version of the Metadata for the Criteria Template with the given ID
+      summary: Get the requested version of the metadata for the criteria set with the given UUID
+      description: Get the requested version of the metadata for the criteria set with the given UUID
       operationId: getMetadataForVersion
       responses:
         '200':
@@ -96,17 +125,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/MetadataResponse'
         '404':
-          description: Template not found, the version does not exist, or the existing version does not satisfy the protocol version
+          description: Criteria set not found, the version does not exist, or the existing version does not satisfy the protocol version
     post:
-      summary: Get the requested version of the Metadata for the Criteria Template with the given ID
-      description: Get the requested version of the Metadata for the Criteria Template with the given ID
-      operationId: getTaskTreeForVersion
+      summary: Get the requested version of the criteria tree for the criteria set with the given UUID
+      description: Get the requested version of the criteria tree for the criteria set with the given UUID
+      operationId: getCriteriaTreeForVersion
       requestBody:
-        description: Parameters and task values
+        description: Parameters and task item values
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TaskTreeRequest'
+              $ref: '#/components/schemas/CriteriaTreeRequest'
         required: true
       responses:
         '200':
@@ -114,22 +143,32 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TaskTreeResponse'
+                $ref: '#/components/schemas/CriteriaTreeResponse'
         '404':
-          description: Template not found, the version does not exist, or the existing version does not satisfy the protocol version
+          description: Criteria set not found, the version does not exist, or the existing version does not satisfy the protocol version
         '422':
           description: Parameter validation errors
 components:
   schemas:
     MetadataResponse:
-      $ref: 'https://openframe.org/schemas/definitions/criteria-template-metadata'
-    TaskTreeRequest:
+      $ref: 'https://openframe.org/schemas/definitions/metadata'
+    VersionsResponse:
+      type: array
+      items:
+        type: string
+    CriteriaTreeRequest:
       type: object
       properties:
+        locale:
+          description: The desired localization. Only available if the metadata has a list of available locales.
+          type: string
         parameters:
-          description: A key-value map of parameters and their values. Required if the Metadata has required parameters.
+          description: A key-value map of parameters and their values. Required if the metadata has required parameters.
           type: object
         values:
-          description: A key-value map of Task paths and their values.
-    TaskTreeResponse:
-      $ref: 'https://openframe.org/schemas/definitions/criteria-template-task-tree'
+          description: A key-value map of task item IDs and their values.
+          type: object
+          additionalProperties:
+            type: number
+    CriteriaTreeResponse:
+      $ref: 'https://openframe.org/schemas/definitions/criteria-tree'

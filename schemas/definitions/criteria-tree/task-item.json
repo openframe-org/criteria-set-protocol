@@ -3,7 +3,7 @@
   "type": "object",
   "properties": {
     "id": {
-      "$ref": "../string.json#/uuid"
+      "$ref": "https://openframe.org/schemas/definitions/string.json#/uuid"
     },
     "text": {
       "type": "string"
@@ -22,15 +22,15 @@
     },
     "definition": {
       "oneOf": [
-        { "$ref": "../data.json/#/select-single" },
-        { "$ref": "../data.json/#/select-multiple" },
-        { "$ref": "../data.json/#/number" },
-        { "$ref": "../data.json/#/boolean" }
+        { "$ref": "https://openframe.org/schemas/definitions/data.json#/select-single" },
+        { "$ref": "https://openframe.org/schemas/definitions/data.json#/select-multiple" },
+        { "$ref": "https://openframe.org/schemas/definitions/data.json#/number" },
+        { "$ref": "https://openframe.org/schemas/definitions/data.json#/boolean" }
       ]
     },
     "providedData": {},
     "calculatedData": {}
   },
-  "required": ["id", "type"],
+  "required": ["id", "definition"],
   "additionalProperties": false
 }

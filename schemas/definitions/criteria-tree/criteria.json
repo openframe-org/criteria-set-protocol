@@ -2,6 +2,6 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "array",
   "items": {
-    "$ref": "criterion.json"
+    "$ref": "https://openframe.org/schemas/definitions/criteria-tree/criterion.json"
   }
 }

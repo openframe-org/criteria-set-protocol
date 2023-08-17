@@ -3,7 +3,7 @@
   "type": "object",
   "properties": {
     "id": {
-      "$ref": "../string.json#uuid"
+      "$ref": "https://openframe.org/schemas/definitions/string.json#uuid"
     },
     "title": {
       "type": "string"
@@ -21,7 +21,7 @@
       "type": "array",
       "items": {
         "oneOf": [
-          { "$ref": "task.json" },
+          { "$ref": "https://openframe.org/schemas/definitions/criteria-tree/task.json" },
           { "$ref": "#" }
         ]
       }
