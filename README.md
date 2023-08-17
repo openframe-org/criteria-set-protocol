@@ -7,7 +7,8 @@ and working with criteria trees.
 ## Table of Contents
 - [Metadata schema](schemas/README.md#metadata-schema)
   - [protocol](schemas/README.md#protocol)
-  - [metadata](schemas/README.md#template)
+  - [metadata](schemas/README.md#metadata)
+  - [locales (optional)](schemas/README.md#locales-optional)
   - [parameters (optional)](schemas/README.md#parameters-optional)
   - [result (optional)](schemas/README.md#result-optional)
   - [definitions (optional)](schemas/README.md#definitions-optional)

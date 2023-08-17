@@ -1,6 +1,6 @@
 <img alt="Frame ApS" src="https://openframe-public.s3.eu-west-1.amazonaws.com/assets/logo-text-google-admin.png" width="200" />
 
-# Frame Protocol
+# Criteria Tree Protocol
 
 ## Examples
 ### Taxonomies
@@ -9,15 +9,15 @@ in our schema, and how the task tree is retrieved for a template which has param
 
 A request is made to retrieve the metadata:
 ```
-GET /1/templates/61a01c88-0102-4332-96c6-6f60ba7a8763
+GET /1/1.0.0/61a01c88-0102-4332-96c6-6f60ba7a8763
 ```
 
-Which results in [this Criteria Template Metadata schema](metadata.json).
+Which results in [this metadata schema](metadata.json).
 
 The user then makes a request to retrieve the task tree providing the following parameters:
 
 ```
-POST /1/templates/61a01c88-0102-4332-96c6-6f60ba7a8763
+POST /1/1.0.0/61a01c88-0102-4332-96c6-6f60ba7a8763
 ```
 ```json5
 {
@@ -30,4 +30,4 @@ POST /1/templates/61a01c88-0102-4332-96c6-6f60ba7a8763
 }
 ```
 
-The resulting response is [this Criteria Template Task Tree schema](task-tree.json).
+The resulting response is [this criteria tree schema](criteria-tree.json).

@@ -1,19 +1,85 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "point-option": {
+  "select-single": {
     "type": "object",
     "properties": {
-      "$comment": "The ID is required, as point options can have the same label but different values or vice versa",
-      "id": {
-        "type": "string"
+      "type": {
+        "const": "select-single"
       },
-      "label": {
-        "type": "string"
-      },
-      "value": {
-        "$comment": "This value can be of any type and does not need to be unique"
+      "options": {
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/point-option"
+        }
       }
     },
-    "required": ["id", "label", "value"]
+    "required": ["type", "options"]
+  },
+  "select-multiple": {
+    "type": "object",
+    "properties": {
+      "type": {
+        "const": "select-multiple"
+      },
+      "options": {
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/point-option"
+        }
+      }
+    },
+    "required": ["type", "options"]
+  },
+  "number": {
+    "type": "object",
+    "properties": {
+      "type": {
+        "const": "number"
+      },
+      "minimum": {
+        "type": "number"
+      },
+      "maximum": {
+        "type": "number"
+      },
+      "step": {
+        "type": "number"
+      }
+    },
+    "additionalProperties": false,
+    "required": ["type"]
+  },
+  "boolean": {
+    "type": "object",
+    "properties": {
+      "type": {
+        "const": "boolean"
+      }
+    }
+  },
+  "$defs": {
+    "point-option": {
+      "type": "object",
+      "properties": {
+        "$comment": "The ID is required, as point options can have the same label but different values or vice versa",
+        "id": {
+          "$comment": "This ID is for the internal use of the service and is meant to represent uniqueness for different options with the same value, if not provided, the value will be used as the ID",
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "value": {
+          "$comment": "This value does not need to be unique, uniqueness is provided by the ID",
+          "type": "number"
+        },
+        "annotation": {
+          "$comment": "Optional per-item annotations/observations",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": ["label", "value"]
+    }
   }
 }

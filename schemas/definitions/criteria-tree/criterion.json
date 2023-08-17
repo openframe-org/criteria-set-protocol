@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "../string.json#uuid"
+    },
+    "quality": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "$ref": "task.json" },
+          { "$ref": "task-group.json" }
+        ]
+      }
+    },
+    "calculatedData": {}
+  },
+  "required": ["id", "quality", "title", "items"],
+  "additionalProperties": false
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "../string.json#/uuid"
+    },
+    "text": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "definition": {
+      "oneOf": [
+        { "$ref": "../data.json/#/select-single" },
+        { "$ref": "../data.json/#/select-multiple" },
+        { "$ref": "../data.json/#/number" },
+        { "$ref": "../data.json/#/boolean" }
+      ]
+    },
+    "providedData": {},
+    "calculatedData": {}
+  },
+  "required": ["id", "type"],
+  "additionalProperties": false
+}

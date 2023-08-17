@@ -2,15 +2,14 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "properties": {
+    "criteria": {
+      "$ref": "criteria-tree/criteria.json"
+    },
     "errors": {
-      "$ref": "errors.json"
+      "$ref": "criteria-tree/errors.json"
     },
-    "tasks": {
-      "$ref": "tasks.json"
-    },
-    "result": {},
-    "definitions": {}
+    "result": {}
   },
-  "required": ["tasks"],
+  "required": ["criteria"],
   "additionalProperties": false
 }

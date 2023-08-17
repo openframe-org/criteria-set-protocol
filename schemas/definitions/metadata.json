@@ -3,14 +3,25 @@
   "type": "object",
   "properties": {
     "protocol": {
-      "$ref": "protocol.json"
+      "$ref": "metadata/protocol.json"
     },
-    "template": {
-      "$ref": "template.json"
+    "metadata": {
+      "$ref": "metadata/metadata.json"
     },
+    "locales": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "defaultLocale": "",
     "parameters": {},
+    "result": {},
     "definitions": {}
   },
-  "required": ["protocol", "template"],
+  "required": ["protocol", "metadata"],
+  "dependentRequired": {
+    "locales": ["defaultLocale"]
+  },
   "additionalProperties": false
 }

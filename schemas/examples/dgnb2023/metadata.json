@@ -7,5 +7,31 @@
     "name": "DGNB System: Version 2023",
     "description": "Deutsche Gesellschaft für Nachhaltiges Bauen 2023",
     "documentation": "https://www.dgnb.de/de/zertifizierung/gebaeude/neubau/version-2023"
+  },
+  "result": {
+    "miljø": {
+      "type": "number"
+    },
+    "økonomi": {
+      "type": "number"
+    },
+    "social": {
+      "type": "number"
+    },
+    "teknik": {
+      "type": "number"
+    },
+    "proces": {
+      "type": "number"
+    },
+    "område": {
+      "type": "number"
+    },
+    "samletDgnbScore": {
+      "type": "number"
+    },
+    "gdnbHjerte": {
+      "type": "number"
+    }
   }
 }

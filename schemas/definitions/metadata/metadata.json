@@ -3,13 +3,13 @@
   "type": "object",
   "properties": {
     "id": {
-      "$ref": "string.json#/uuid"
+      "$ref": "../string.json#/uuid"
     },
     "version": {
-      "$ref": "string.json#/semver"
+      "$ref": "../string.json#/semver"
     },
     "date": {
-      "$ref": "string.json#/date-time"
+      "$ref": "../string.json#/date-time"
     },
     "name": {
       "type": "string"
@@ -27,7 +27,7 @@
           "type": "string"
         },
         "email": {
-          "$ref": "string.json#email"
+          "$ref": "../string.json#email"
         }
       },
       "required": ["email"],

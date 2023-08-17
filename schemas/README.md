@@ -12,19 +12,24 @@ and the [criteria tree schema](#criteria-tree-schema). These schemas are describ
 [JSON Schema draft 2020-12](https://json-schema.org/).
 
 ## Table of Contents
-- [Metadata schema](#metadata-schema)
-  - [protocol](#protocol)
-  - [metadata](#template)
-  - [parameters (optional)](#parameters-optional)
-  - [result (optional)](#result-optional)
-  - [definitions (optional)](#definitions-optional)
-- [Criteria tree schema](#criteria-tree-schema)
-  - [criteria](#criteria)
-  - [errors](#errors)
-  - [result](#result)
-- [Validation](#validation)
-  - [parameter validation](#parameter-validation)
-  - [tree validation](#tree-validation)
+- Definitions
+  - [Metadata schema](#metadata-schema)
+    - [protocol](#protocol)
+    - [metadata](#metadata)
+    - [locales (optional)](#locales-optional)
+    - [parameters (optional)](#parameters-optional)
+    - [result (optional)](#result-optional)
+    - [definitions (optional)](#definitions-optional)
+  - [Criteria tree schema](#criteria-tree-schema)
+    - [criteria](#criteria)
+    - [errors](#errors)
+    - [result](#result)
+  - [Validation](#validation)
+    - [parameter validation](#parameter-validation)
+    - [tree validation](#tree-validation)
+- [Examples](examples/README.md)
+  - [EU Taxonomy regulation 2020/852: Guide 7.1, v2](examples/taxonomy/README.md)
+  - [DGNB 2023](examples/dgnb2023/README.md)
 
 ## Metadata schema
 The metadata schema is specified in the [metadata.json](definitions/metadata.json) file.
@@ -37,11 +42,15 @@ It is an object with the following properties:
   "metadata": {
     // tree metadata
   },
+  "locales": [
+    // available locales
+  ],
+  "defaultLocale": "en", // default locale must be in locales list
   "parameters": {
     // optional parameters
   },
   "result": {
-    // optional result definition
+    // optional result schema
   },
   "definitions": {
     // optional additional definitions
@@ -82,6 +91,10 @@ The tree metadata:
 - **metadata.name, metadata.description**: The name and description of the tree, respectively.
 
 - **metadata.documentation** (optional): A link to the documentation for this tree.
+
+### locales (optional)
+An array of strings, where each string represents an available locale to receive the data in. If the locales property is present,
+a `defaultLocale` **must** be provided.
 
 ### parameters (optional)
 An object where each property is an individual JSON Schema definition for a specific available parameter.
@@ -159,7 +172,7 @@ and may also affect the final structure of the tree.
 ### criteria
 The actual criteria which comprise the tree. The criteria list is a tree structured as follows:
 
-- **criteria**: Criteria are the top-level items in the tree. A criterion can hold task groups and tasks. It can have read-only data.
+- **criteria**: Criteria are the top-level items in the tree. A criterion can hold task groups and tasks and be grouped in a quality. It can have read-only data.
 - **task group**: A task group can hold tasks and more task groups within it. It can have read-only data.
 - **task**: A task group can hold task items within it. It can have read-only data.
 - **task item**: A task item is the leaf, it has no children. It can have editable data as well as read-only data.
@@ -189,11 +202,10 @@ the different elements. These are used to track elements across versions.
 ### errors
 See [validation](#validation) below.
 
-
 ### result
-If there is no result definition in the metadata, the `result` property **must not** be present.
+If there is no result schema in the metadata, the `result` property **must not** be present.
 
-The result property is a property which is formatted according to the metadata result definition.
+The result property is a property which is formatted according to the metadata schema definition.
 
 ## Validation
 There are two types of validation that can be performed on a task tree: **parameter validation** and **task validation**.
