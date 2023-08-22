@@ -62,6 +62,26 @@ paths:
           description: Criteria set not found, or the latest version of the set does not satisfy the protocol version
         '422':
           description: Parameter validation errors
+  /{protocol}/versions:
+    parameters:
+      - name: protocol
+        in: path
+        description: The version of the Criteria Set Protocol to use
+        required: true
+        schema:
+          type: integer
+          format: int
+    get:
+      summary: Get criteria sets and versions
+      description: Get a map of available criteria set IDs where the values are arrays of metadata representing the available versions
+      operationId: getCriteriaSetsAndVersions
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CriteriaSetsAndVersionsResponse'
   /{protocol}/{criteriaSetUuid}/versions:
     parameters:
       - name: protocol
@@ -80,8 +100,8 @@ paths:
           format: uuid
     get:
       summary: Get criteria set versions
-      description: Get a list of versions for the criteria set with the given UUID
-      operationId: getVersions
+      description: Get an array of metadata representing the available versions for the criteria set with the given UUID
+      operationId: getCriteriaSetVersions
       responses:
         '200':
           description: Successful operation
@@ -89,8 +109,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VersionsResponse'
-        '404':
-          description: Criteria set not found
   /{protocol}/{criteriaSetUuid}/{version}:
     parameters:
       - name: protocol
@@ -152,10 +170,16 @@ components:
   schemas:
     MetadataResponse:
       $ref: 'https://openframe.org/schemas/definitions/metadata'
+    CriteriaSetsAndVersionsResponse:
+      type: object
+      additionalProperties:
+        type: array
+        items:
+          $ref: 'https://openframe.org/schemas/definitions/metadata'
     VersionsResponse:
       type: array
       items:
-        type: string
+        $ref: 'https://openframe.org/schemas/definitions/metadata'
     CriteriaTreeRequest:
       type: object
       properties:
