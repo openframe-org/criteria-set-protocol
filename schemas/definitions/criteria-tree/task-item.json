@@ -3,7 +3,7 @@
   "type": "object",
   "properties": {
     "id": {
-      "$ref": "https://openframe.org/schemas/definitions/string.json#/uuid"
+      "$ref": "../string.json#/uuid"
     },
     "text": {
       "type": "string"
@@ -22,10 +22,10 @@
     },
     "definition": {
       "oneOf": [
-        { "$ref": "https://openframe.org/schemas/definitions/data.json#/select-single" },
-        { "$ref": "https://openframe.org/schemas/definitions/data.json#/select-multiple" },
-        { "$ref": "https://openframe.org/schemas/definitions/data.json#/number" },
-        { "$ref": "https://openframe.org/schemas/definitions/data.json#/boolean" }
+        { "$ref": "../data.json#/select-single" },
+        { "$ref": "../data.json#/select-multiple" },
+        { "$ref": "../data.json#/number" },
+        { "$ref": "../data.json#/boolean" }
       ]
     },
     "providedData": {},
