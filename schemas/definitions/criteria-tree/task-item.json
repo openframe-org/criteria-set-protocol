@@ -28,6 +28,9 @@
         { "$ref": "../data.json#/boolean" }
       ]
     },
+    "documentation": {
+      "$ref": "../documentation.json"
+    },
     "providedData": {},
     "calculatedData": {}
   },

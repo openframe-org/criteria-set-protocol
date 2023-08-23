@@ -26,6 +26,9 @@
         ]
       }
     },
+    "documentation": {
+      "$ref": "../documentation.json"
+    },
     "calculatedData": {}
   },
   "required": ["id", "title", "items"],

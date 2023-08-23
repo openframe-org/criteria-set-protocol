@@ -199,6 +199,67 @@ Criteria
 - **criteria.id**, **taskGroup.id**, **task.id**, **taskItem.id**: The ID properties are UUID strings which uniquely identify
 the different elements. These are used to track elements across versions.
 
+- **criteria.tags**, **taskGroup.tags**, **task.tags**, **taskItem.tags**: The tags properties are string arrays which are used
+during rendering. They can be coupled with the `calculatedData` or `providedData` properties to provide additional information,
+such as DGNB heart scores:
+
+```json5
+{
+  // Example from DGNB 2023 1.0.0
+  "criteria": [
+    {
+      "id": "d531a082-0757-46ca-b940-cdd788455462",
+      "quality": "ECO",
+      "label": "ECO2.1",
+      "title": "Fleksibilitet og tilpasningsevne",
+      "tags": [
+        "♥"
+      ],
+      "calculatedData": {
+        "score": 10,
+        "heartScore": 2
+      }
+    }
+  ]
+}
+```
+
+They can also lend serve a purely cosmetic purpose, such as the DGNB "planet" scores:
+
+```json5
+{
+  // Example from DGNB 2023 1.0.0
+  "criteria": [
+    {
+      "id": "238aea1e-2ba5-4846-82dc-98f46863ecd1",
+      "quality": "ENV",
+      "label": "ENV2.4",
+      "title": "Biodiversitet",
+      "tags": [
+        "🌍"
+      ]
+    }
+  ]
+}
+```
+
+- **criteria.documentation**, **taskGroup.documentation**, **task.documentation**, **taskItem.documentation**: The documentation properties are maps of documentation types
+containing arrays of string links. The reason for this is that documentation can take many forms, such as "definition" and "documentation", and there may be more than one
+document per documentation type:
+
+```json5
+{
+  "documentation": {
+    "definition": [
+      "https://www.dgnb.dk/standarder/2023/1.0.0/definitioner/definition-af-kravet-til-energiforsyning"
+    ],
+    "documentation": [
+      "https://www.dgnb.dk/standarder/2023/1.0.0/dokumentation/energiforsyning"
+    ]
+  }
+}
+```
+
 ### errors
 See [validation](#validation) below.
 
