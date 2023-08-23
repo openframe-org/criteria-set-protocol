@@ -158,9 +158,9 @@ and may also affect the final structure of the tree.
 ```json5
 // Criteria tree schema
 {
-  "criteria": {
+  "criteria": [
     // criteria tree
-  },
+  ],
   "errors": [
     // optional errors
   ],
