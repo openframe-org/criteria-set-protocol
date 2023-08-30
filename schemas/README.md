@@ -244,20 +244,23 @@ They can also lend serve a purely cosmetic purpose, such as the DGNB "planet" sc
 }
 ```
 
-- **criteria.documentation**, **taskGroup.documentation**, **task.documentation**, **taskItem.documentation**: The documentation properties are maps of documentation types
-containing arrays of string links. The reason for this is that documentation can take many forms, such as "definition" and "documentation", and there may be more than one
-document per documentation type:
+- **criteria.documentation**, **taskGroup.documentation**, **task.documentation**, **taskItem.documentation**: The documentation properties are arrays of objects containing
+documentation:
 
 ```json5
 {
-  "documentation": {
-    "definition": [
-      "https://www.dgnb.dk/standarder/2023/1.0.0/definitioner/definition-af-kravet-til-energiforsyning"
-    ],
-    "documentation": [
-      "https://www.dgnb.dk/standarder/2023/1.0.0/dokumentation/energiforsyning"
-    ]
-  }
+  "documentation": [
+    {
+      "type": "pdf",
+      "label": "Energiforsyning standard",
+      "url": "https://www.dgnb.dk/standarder/2023/1.0.0/dokumentation/energiforsyning"
+    },
+    {
+      "type": "pdf",
+      "label": "Definition af kravet til energiforsyning",
+      "url": "https://www.dgnb.dk/standarder/2023/1.0.0/definitioner/definition-af-kravet-til-energiforsyning"
+    }
+  ]
 }
 ```
 
