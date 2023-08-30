@@ -197,7 +197,8 @@ Criteria
 ```
 
 - **criteria.id**, **taskGroup.id**, **task.id**, **taskItem.id**: The ID properties are UUID strings which uniquely identify
-the different elements. These are used to track elements across versions.
+the different elements. These are used to track elements across versions. Only taskItems require IDs as they have user-provided
+data that must be tracked across versions, the other elements should have IDs if they must be uniquely followed.
 
 - **criteria.tags**, **taskGroup.tags**, **task.tags**, **taskItem.tags**: The tags properties are string arrays which are used
 during rendering. They can be coupled with the `calculatedData` or `providedData` properties to provide additional information,
