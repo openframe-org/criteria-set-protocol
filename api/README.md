@@ -3,24 +3,14 @@
 # Criteria Set Protocol
 
 ## Criteria Set API
-The Criteria Set API is a simple JSON-formatted REST API for retrieving criteria set metadata and trees.
+The Criteria Set API is a simple JSON-formatted REST API for retrieving criteria set metadata, trees and documents.
 
 The Swagger/OpenAPI specification for the API can be found in the [api.swagger.yml](api.swagger.yml) file.
 
 `GET` endpoints are used to retrieve the [metadata](../schemas/README.md#metadata-schema) of criteria sets.
-They require the following headers:
 
-```
-Accept: application/json
-```
-
-`POST` endpoints are used to retrieve the [criteria tree](../schemas/README.md#criteria-tree-schema) of a given criteria set.
-They require the following headers and request body:
-
-```
-Accept: application/json
-Content-Type: application/json
-```
+`POST` endpoints are used to retrieve the [criteria tree](../schemas/README.md#criteria-tree-schema) of a given criteria set, as well
+as to retrieve filled-out criteria set documents. For both of these operations, the request body looks like this:
 ```json5
 {
   "locale": "<locale>", // optional locale if the metadata had a locales property 
@@ -41,13 +31,15 @@ Each of these properties may be excluded if they are empty or not needed. If no 
 
 Here is a list of the available endpoints:
 
-| Method | Endpoint                                  | Description                                                                                                             |
-|--------|-------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| `GET`  | `/{protocol}/versions`                    | Returns a map of available criteria set IDs where the values are arrays of metadata representing the available versions |
-| `GET`  | `/{protocol}/{criteriaSetUuid}/versions`  | Returns a list of metadata representing the available versions for the criteria set with the given UUID                 |
-| `GET`  | `/{protocol}/{criteriaSetUuid}`           | Returns the latest version of the metadata for the criteria set with the given UUID                                     |
-| `GET`  | `/{protocol}/{criteriaSetUuid}/{version}` | Returns a specific version of the metadata for the criteria set with the given UUID                                     |
-| `POST` | `/{protocol}/{criteriaSetUuid}`           | Returns the latest version of the criteria tree for the criteria set with the given UUID                                |
-| `POST` | `/{protocol}/{criteriaSetUuid}/{version}` | Returns the specific version of the criteria tree for the criteria set with the given UUID                              |
+| Method | Endpoint                                           | Description                                                                                                             |
+|--------|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| `GET`  | `/{protocol}/versions`                             | Returns a map of available criteria set IDs where the values are arrays of metadata representing the available versions |
+| `GET`  | `/{protocol}/{criteriaSetUuid}/versions`           | Returns a list of metadata representing the available versions for the criteria set with the given UUID                 |
+| `GET`  | `/{protocol}/{criteriaSetUuid}`                    | Returns the latest version of the metadata for the criteria set with the given UUID                                     |
+| `GET`  | `/{protocol}/{criteriaSetUuid}/{version}`          | Returns a specific version of the metadata for the criteria set with the given UUID                                     |
+| `POST` | `/{protocol}/{criteriaSetUuid}/tree`               | Returns the latest version of the criteria tree for the criteria set with the given UUID                                |
+| `POST` | `/{protocol}/{criteriaSetUuid}/tree/{version}`     | Returns the specific version of the criteria tree for the criteria set with the given UUID                              |
+| `POST` | `/{protocol}/{criteriaSetUuid}/download`           | Downloads the latest version of the criteria tree document for the criteria set with the given UUID                     |
+| `POST` | `/{protocol}/{criteriaSetUuid}/download/{version}` | Downloads the specific version of the criteria tree document for the criteria set with the given UUID                   |
 
 The `{protocol}` parameter is the version of the protocol to use. The `{criteriaSetUuid}` parameter is the ID of the criteria set to retrieve.

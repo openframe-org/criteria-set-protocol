@@ -9,59 +9,8 @@ info:
   version: "1"
 externalDocs:
   description: Find out more about Openframe
-  url: http://openframe.org
+  url: https://openframe.org
 paths:
-  /{protocol}/{criteriaSetUuid}/:
-    parameters:
-      - name: protocol
-        in: path
-        description: The version of the Criteria Set Protocol to use
-        required: true
-        schema:
-          type: integer
-          format: int
-      - name: criteriaSetUuid
-        in: path
-        description: The UUID of the criteria set to retrieve
-        required: true
-        schema:
-          type: string
-          format: uuid
-    get:
-      summary: Get the latest version of the metadata for the criteria set with the given UUID
-      description: Get the latest version of the metadata for the criteria set with the given UUID
-      operationId: getMetadataForLatestVersion
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MetadataResponse'
-        '404':
-          description: Criteria set not found, or the latest version of the set does not satisfy the protocol version
-    post:
-      summary: Get the latest version of the metadata for the criteria set with the given UUID
-      description: Get the latest version of the metadata for the criteria set with the given UUID
-      operationId: getCriteriaTreeForLatestVersion
-      requestBody:
-        description: Parameters and task values
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CriteriaTreeRequest'
-        required: true
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CriteriaTreeResponse'
-        '404':
-          description: Criteria set not found, or the latest version of the set does not satisfy the protocol version
-        '422':
-          description: Parameter validation errors
   /{protocol}/versions:
     parameters:
       - name: protocol
@@ -109,6 +58,35 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VersionsResponse'
+  /{protocol}/{criteriaSetUuid}:
+    parameters:
+      - name: protocol
+        in: path
+        description: The version of the Criteria Set Protocol to use
+        required: true
+        schema:
+          type: integer
+          format: int
+      - name: criteriaSetUuid
+        in: path
+        description: The UUID of the criteria set to retrieve
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      summary: Get the latest version of the metadata for the criteria set with the given UUID
+      description: Get the latest version of the metadata for the criteria set with the given UUID
+      operationId: getMetadataForLatestVersion
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataResponse'
+        '404':
+          description: Criteria set not found, or the latest version of the set does not satisfy the protocol version
   /{protocol}/{criteriaSetUuid}/{version}:
     parameters:
       - name: protocol
@@ -144,16 +122,32 @@ paths:
                 $ref: '#/components/schemas/MetadataResponse'
         '404':
           description: Criteria set not found, the version does not exist, or the existing version does not satisfy the protocol version
+  /{protocol}/{criteriaSetUuid}/tree:
+    parameters:
+      - name: protocol
+        in: path
+        description: The version of the Criteria Set Protocol to use
+        required: true
+        schema:
+          type: integer
+          format: int
+      - name: criteriaSetUuid
+        in: path
+        description: The UUID of the criteria set to retrieve
+        required: true
+        schema:
+          type: string
+          format: uuid
     post:
-      summary: Get the requested version of the criteria tree for the criteria set with the given UUID
-      description: Get the requested version of the criteria tree for the criteria set with the given UUID
-      operationId: getCriteriaTreeForVersion
+      summary: Get the latest version of the criteria tree for the criteria set with the given UUID
+      description: Get the latest version of the criteria tree for the criteria set with the given UUID
+      operationId: getCriteriaTreeForLatestVersion
       requestBody:
-        description: Parameters and task item values
+        description: Parameters and task values
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CriteriaTreeRequest'
+              $ref: '#/components/schemas/CriteriaTreeOrDownloadRequest'
         required: true
       responses:
         '200':
@@ -163,9 +157,127 @@ paths:
               schema:
                 $ref: '#/components/schemas/CriteriaTreeResponse'
         '404':
-          description: Criteria set not found, the version does not exist, or the existing version does not satisfy the protocol version
+          description: Criteria set not found, or the latest version of the set does not satisfy the protocol version
         '422':
           description: Parameter validation errors
+  /{protocol}/{criteriaSetUuid}/tree/{version}:
+    parameters:
+      - name: protocol
+        in: path
+        description: The version of the Criteria Set Protocol to use
+        required: true
+        schema:
+          type: integer
+          format: int
+      - name: criteriaSetUuid
+        in: path
+        description: The UUID of the criteria set to retrieve
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: version
+        in: path
+        description: The SemVer-formatted version of the criteria tree to retrieve
+        required: true
+        schema:
+          type: string
+    post:
+      summary: Get the requested version of the criteria tree for the criteria set with the given UUID
+      description: Get the requested version of the criteria tree for the criteria set with the given UUID
+      operationId: getCriteriaTreeForVersion
+      requestBody:
+        description: Parameters and task values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CriteriaTreeOrDownloadRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CriteriaTreeResponse'
+        '404':
+          description: Criteria set not found, or the latest version of the set does not satisfy the protocol version
+        '422':
+          description: Parameter validation errors
+  /{protocol}/{criteriaSetUuid}/download:
+    parameters:
+      - name: protocol
+        in: path
+        description: The version of the Criteria Set Protocol to use
+        required: true
+        schema:
+          type: integer
+          format: int
+      - name: criteriaSetUuid
+        in: path
+        description: The UUID of the criteria set document to download
+        required: true
+        schema:
+          type: string
+          format: uuid
+    post:
+      summary: Download criteria set document for given UUID
+      description: Get a filled out version of the criteria set document with the given UUID
+      operationId: downloadCriteriaSetDocumentForLatestVersion
+      requestBody:
+        description: Parameters and task values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CriteriaTreeOrDownloadRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation, the document will be downloaded
+        '404':
+          description: Criteria set not found, or the latest version of the set does not satisfy the protocol version
+        '422':
+          description: Parameter or value validation errors
+  /{protocol}/{criteriaSetUuid}/download/{version}:
+    parameters:
+      - name: protocol
+        in: path
+        description: The version of the Criteria Set Protocol to use
+        required: true
+        schema:
+          type: integer
+          format: int
+      - name: criteriaSetUuid
+        in: path
+        description: The UUID of the criteria set to retrieve
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: version
+        in: path
+        description: The SemVer-formatted version of the criteria set to retrieve
+        required: true
+        schema:
+          type: string
+    post:
+      summary: Download the criteria set document for the requested version of the given UUID
+      description: Get a filled out version of the criteria set document with the given UUID and version
+      operationId: downloadCriteriaSetDocumentForVersion
+      requestBody:
+        description: Parameters and task values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CriteriaTreeOrDownloadRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation, the document will be downloaded
+        '404':
+          description: Criteria set not found, or the latest version of the set does not satisfy the protocol version
+        '422':
+          description: Parameter or value validation errors
 components:
   schemas:
     MetadataResponse:
@@ -180,7 +292,7 @@ components:
       type: array
       items:
         $ref: 'https://openframe.org/schemas/definitions/metadata'
-    CriteriaTreeRequest:
+    CriteriaTreeOrDownloadRequest:
       type: object
       properties:
         locale:
@@ -192,7 +304,5 @@ components:
         values:
           description: A key-value map of task item IDs and their values.
           type: object
-          additionalProperties:
-            type: number
     CriteriaTreeResponse:
       $ref: 'https://openframe.org/schemas/definitions/criteria-tree'
