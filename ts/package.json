@@ -1,17 +1,14 @@
 {
-  "name": "@Frame-ApS/criteria-set-protocol",
-  "version": "0.0.11",
+  "name": "@openframe-org/criteria-set-protocol",
+  "version": "1.0.0",
   "description": "A protocol and tools for defining and working with criteria sets",
   "private": false,
-  "author": {
-    "name": "Andrés Angulo",
-    "email": "aa@openframe.org"
-  },
+  "author": "Andrés Angulo <aa@openframe.org>",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "prepublishOnly": "npx tsc"
+    "prepublishOnly": "tsc"
   },
   "files": [
     "dist/**/*"
@@ -24,6 +21,7 @@
     "typescript": "^5.2.2"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
