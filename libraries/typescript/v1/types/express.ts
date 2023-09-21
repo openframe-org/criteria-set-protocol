@@ -2,7 +2,7 @@ import { Stream } from 'stream';
 import { Metadata, TaskItemValue } from './criteria';
 
 // Express schemas
-export type MetadataSchema<Parameters extends ParameterCombination = ParameterCombination> = {
+export type MetadataResponse<Parameters extends ParameterCombination = ParameterCombination> = {
   protocol: 1;
   metadata: Metadata;
   parameters: Parameters;

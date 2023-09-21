@@ -20,3 +20,7 @@ and working with criteria sets.
   - [parameter validation](schemas/README.md#parameter-validation)
   - [criteria validation](schemas/README.md#criteria-validation)
 - [Criteria Template API](api/README.md)
+
+### Libraries
+Included in this repository are libraries for working with criteria sets.
+- [TypeScript](libraries/typescript/README.md)

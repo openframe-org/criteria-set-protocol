@@ -1,5 +1,8 @@
 import * as yup from 'yup';
 
+/**
+ * Validates the version parameter for endpoints which use it
+ */
 export const versionParamSchema = yup.object({
   params: yup.object({
     version: yup.string()
