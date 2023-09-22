@@ -31,15 +31,15 @@ Each of these properties may be excluded if they are empty or not needed. If no 
 
 Here is a list of the available endpoints:
 
-| Method | Endpoint                                           | Description                                                                                                             |
-|--------|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| `GET`  | `/{protocol}/versions`                             | Returns a map of available criteria set IDs where the values are arrays of metadata representing the available versions |
-| `GET`  | `/{protocol}/{criteriaSetUuid}/versions`           | Returns a list of metadata representing the available versions for the criteria set with the given UUID                 |
-| `GET`  | `/{protocol}/{criteriaSetUuid}`                    | Returns the latest version of the metadata for the criteria set with the given UUID                                     |
-| `GET`  | `/{protocol}/{criteriaSetUuid}/{version}`          | Returns a specific version of the metadata for the criteria set with the given UUID                                     |
-| `POST` | `/{protocol}/{criteriaSetUuid}/tree`               | Returns the latest version of the criteria tree for the criteria set with the given UUID                                |
-| `POST` | `/{protocol}/{criteriaSetUuid}/tree/{version}`     | Returns the specific version of the criteria tree for the criteria set with the given UUID                              |
-| `POST` | `/{protocol}/{criteriaSetUuid}/download`           | Downloads the latest version of the criteria tree document for the criteria set with the given UUID                     |
-| `POST` | `/{protocol}/{criteriaSetUuid}/download/{version}` | Downloads the specific version of the criteria tree document for the criteria set with the given UUID                   |
+| Method | Endpoint                                         | Description                                                                                                             |
+|--------|--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| `GET`  | `/{protocol}/versions`                           | Returns a map of available criteria set IDs where the values are arrays of metadata representing the available versions |
+| `GET`  | `/{protocol}/{criteriaSetId}/versions`           | Returns a list of metadata representing the available versions for the criteria set with the given ID                   |
+| `GET`  | `/{protocol}/{criteriaSetId}`                    | Returns the latest version of the metadata for the criteria set with the given ID                                       |
+| `GET`  | `/{protocol}/{criteriaSetId}/{version}`          | Returns a specific version of the metadata for the criteria set with the given ID                                       |
+| `POST` | `/{protocol}/{criteriaSetId}/tree`               | Returns the latest version of the criteria tree for the criteria set with the given ID                                  |
+| `POST` | `/{protocol}/{criteriaSetId}/tree/{version}`     | Returns the specific version of the criteria tree for the criteria set with the given ID                                |
+| `POST` | `/{protocol}/{criteriaSetId}/download`           | Downloads the latest version of the criteria tree document for the criteria set with the given ID                       |
+| `POST` | `/{protocol}/{criteriaSetId}/download/{version}` | Downloads the specific version of the criteria tree document for the criteria set with the given ID                     |
 
-The `{protocol}` parameter is the version of the protocol to use. The `{criteriaSetUuid}` parameter is the ID of the criteria set to retrieve.
+The `{protocol}` parameter is the version of the protocol to use. The `{criteriaSetId}` parameter is the ID of the criteria set to retrieve.
