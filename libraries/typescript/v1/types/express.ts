@@ -12,7 +12,8 @@ export type StringParam<ParamName extends string> = Record<ParamName, string>;
 
 export type TaskItemValueMap = Record<string, TaskItemValue>;
 
-export type StreamCriteriaSetMatrixBody = {
+export type TreeAndMatrixRequestBody = {
+  locale?: string;
   parameters: ParameterCombination;
   values?: TaskItemValueMap;
 };
