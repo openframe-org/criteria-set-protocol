@@ -46,10 +46,10 @@ paths:
         required: true
         schema:
           type: string
-          format: uuid
+          pattern: '^[a-zA-Z0-9.-_]+$'
     get:
       summary: Get criteria set versions
-      description: Get an array of metadata representing the available versions for the criteria set with the given UUID
+      description: Get an array of metadata representing the available versions for the criteria set with the given ID
       operationId: getCriteriaSetVersions
       responses:
         '200':
@@ -73,10 +73,10 @@ paths:
         required: true
         schema:
           type: string
-          format: uuid
+          pattern: '^[a-zA-Z0-9.-_]+$'
     get:
-      summary: Get the latest version of the metadata for the criteria set with the given UUID
-      description: Get the latest version of the metadata for the criteria set with the given UUID
+      summary: Get the latest version of the metadata for the criteria set with the given ID
+      description: Get the latest version of the metadata for the criteria set with the given ID
       operationId: getMetadataForLatestVersion
       responses:
         '200':
@@ -102,7 +102,7 @@ paths:
         required: true
         schema:
           type: string
-          format: uuid
+          pattern: '^[a-zA-Z0-9.-_]+$'
       - name: version
         in: path
         description: The SemVer-formatted version of the criteria set to retrieve
@@ -110,8 +110,8 @@ paths:
         schema:
           type: string
     get:
-      summary: Get the requested version of the metadata for the criteria set with the given UUID
-      description: Get the requested version of the metadata for the criteria set with the given UUID
+      summary: Get the requested version of the metadata for the criteria set with the given ID
+      description: Get the requested version of the metadata for the criteria set with the given ID
       operationId: getMetadataForVersion
       responses:
         '200':
@@ -137,10 +137,10 @@ paths:
         required: true
         schema:
           type: string
-          format: uuid
+          pattern: '^[a-zA-Z0-9.-_]+$'
     post:
-      summary: Get the latest version of the criteria tree for the criteria set with the given UUID
-      description: Get the latest version of the criteria tree for the criteria set with the given UUID
+      summary: Get the latest version of the criteria tree for the criteria set with the given ID
+      description: Get the latest version of the criteria tree for the criteria set with the given ID
       operationId: getCriteriaTreeForLatestVersion
       requestBody:
         description: Parameters and task values
@@ -175,7 +175,7 @@ paths:
         required: true
         schema:
           type: string
-          format: uuid
+          pattern: '^[a-zA-Z0-9.-_]+$'
       - name: version
         in: path
         description: The SemVer-formatted version of the criteria tree to retrieve
@@ -183,8 +183,8 @@ paths:
         schema:
           type: string
     post:
-      summary: Get the requested version of the criteria tree for the criteria set with the given UUID
-      description: Get the requested version of the criteria tree for the criteria set with the given UUID
+      summary: Get the requested version of the criteria tree for the criteria set with the given ID
+      description: Get the requested version of the criteria tree for the criteria set with the given ID
       operationId: getCriteriaTreeForVersion
       requestBody:
         description: Parameters and task values
@@ -204,7 +204,7 @@ paths:
           description: Criteria set not found, or the latest version of the set does not satisfy the protocol version
         '422':
           description: Parameter validation errors
-  /{protocol}/{criteriaSetId}/download:
+  /{protocol}/{criteriaSetId}/matrix:
     parameters:
       - name: protocol
         in: path
@@ -215,15 +215,15 @@ paths:
           format: int
       - name: criteriaSetId
         in: path
-        description: The ID of the criteria set document to download
+        description: The ID of the criteria set matrix to stream
         required: true
         schema:
           type: string
-          format: uuid
+          pattern: '^[a-zA-Z0-9.-_]+$'
     post:
-      summary: Download criteria set document for given UUID
-      description: Get a filled out version of the criteria set document with the given UUID
-      operationId: downloadCriteriaSetDocumentForLatestVersion
+      summary: Stream criteria set matrix for given ID
+      description: Get a filled out version of the criteria set matrix with the given ID
+      operationId: streamCriteriaSetMatrixForLatestVersion
       requestBody:
         description: Parameters and task values
         content:
@@ -233,12 +233,12 @@ paths:
         required: true
       responses:
         '200':
-          description: Successful operation, the document will be downloaded
+          description: Successful operation, the matrix will be streamed
         '404':
           description: Criteria set not found, or the latest version of the set does not satisfy the protocol version
         '422':
           description: Parameter or value validation errors
-  /{protocol}/{criteriaSetId}/download/{version}:
+  /{protocol}/{criteriaSetId}/matrix/{version}:
     parameters:
       - name: protocol
         in: path
@@ -253,7 +253,7 @@ paths:
         required: true
         schema:
           type: string
-          format: uuid
+          pattern: '^[a-zA-Z0-9.-_]+$'
       - name: version
         in: path
         description: The SemVer-formatted version of the criteria set to retrieve
@@ -261,9 +261,9 @@ paths:
         schema:
           type: string
     post:
-      summary: Download the criteria set document for the requested version of the given UUID
-      description: Get a filled out version of the criteria set document with the given UUID and version
-      operationId: downloadCriteriaSetDocumentForVersion
+      summary: Stream the criteria set matrix for the requested version of the given id
+      description: Get a filled out version of the criteria set matrix with the given id and version
+      operationId: streamCriteriaSetMatrixForVersion
       requestBody:
         description: Parameters and task values
         content:
@@ -273,7 +273,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Successful operation, the document will be downloaded
+          description: Successful operation, the matrix will be streamed
         '404':
           description: Criteria set not found, or the latest version of the set does not satisfy the protocol version
         '422':
