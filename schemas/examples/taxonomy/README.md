@@ -9,7 +9,7 @@ in our schema, and how the task tree is retrieved for a template which has param
 
 A request is made to retrieve the metadata:
 ```
-GET /1/61a01c88-0102-4332-96c6-6f60ba7a8763/1.0.0
+GET /1/7.1/2.0.0
 ```
 
 Which results in [this metadata schema](metadata.json).
@@ -17,7 +17,7 @@ Which results in [this metadata schema](metadata.json).
 The user then makes a request to retrieve the task tree providing the following parameters:
 
 ```
-POST /1/61a01c88-0102-4332-96c6-6f60ba7a8763/1.0.0/tree
+POST /1/7.1/2.0.0/tree
 ```
 ```json5
 {

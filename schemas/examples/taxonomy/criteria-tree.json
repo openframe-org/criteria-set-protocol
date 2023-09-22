@@ -14,21 +14,7 @@
             {
               "id": "f11c29dc-504e-4367-81bc-c0dfa9cda4d3",
               "definition": {
-                "type": "select-single",
-                "options": [
-                  {
-                    "label": "Ja",
-                    "value": 1
-                  },
-                  {
-                    "label": "Nej",
-                    "value": 0
-                  },
-                  {
-                    "label": "Ikke relevant",
-                    "value": -1
-                  }
-                ]
+                "type": "boolean"
               }
             }
           ]
@@ -50,21 +36,7 @@
             {
               "id": "dda244cf-3d35-4857-8436-d4f9679e88f4",
               "definition": {
-                "type": "select-single",
-                "options": [
-                  {
-                    "label": "Ja",
-                    "value": 1
-                  },
-                  {
-                    "label": "Nej",
-                    "value": 0
-                  },
-                  {
-                    "label": "Ikke relevant",
-                    "value": -1
-                  }
-                ]
+                "type": "boolean"
               }
             }
           ]
@@ -79,21 +51,9 @@
               "id": "8940cf93-4f46-4085-95e0-3704ec98f614",
               "definition": {
                 "type": "select-single",
-                "options": [
-                  {
-                    "label": "Ja",
-                    "value": 1
-                  },
-                  {
-                    "label": "Nej",
-                    "value": 0
-                  },
-                  {
-                    "label": "Ikke relevant",
-                    "value": -1
-                  }
-                ]
-              }
+                "definition": {
+                  "type": "boolean"
+                }
             }
           ]
         },
@@ -106,21 +66,7 @@
             {
               "id": "63b02a7e-ad3c-4d65-b23a-3fb8fcd6f409",
               "definition": {
-                "type": "select-single",
-                "options": [
-                  {
-                    "label": "Ja",
-                    "value": 1
-                  },
-                  {
-                    "label": "Nej",
-                    "value": 0
-                  },
-                  {
-                    "label": "Ikke relevant",
-                    "value": -1
-                  }
-                ]
+                "type": "boolean"
               }
             }
           ]
@@ -142,21 +88,7 @@
             {
               "id": "e31aa455-cfbd-49ee-90ff-4cab45061d3d",
               "definition": {
-                "type": "select-single",
-                "options": [
-                  {
-                    "label": "Ja",
-                    "value": 1
-                  },
-                  {
-                    "label": "Nej",
-                    "value": 0
-                  },
-                  {
-                    "label": "Ikke relevant",
-                    "value": -1
-                  }
-                ]
+                "type": "boolean"
               }
             }
           ]
@@ -170,21 +102,7 @@
             {
               "id": "072b886d-385f-4e34-b0c3-29f0fbf287a8",
               "definition": {
-                "type": "select-single",
-                "options": [
-                  {
-                    "label": "Ja",
-                    "value": 1
-                  },
-                  {
-                    "label": "Nej",
-                    "value": 0
-                  },
-                  {
-                    "label": "Ikke relevant",
-                    "value": -1
-                  }
-                ]
+                "type": "boolean"
               }
             }
           ]
@@ -198,21 +116,7 @@
             {
               "id": "a3afb4d4-aa4d-4f2a-9607-9d23b722ab72",
               "definition": {
-                "type": "select-single",
-                "options": [
-                  {
-                    "label": "Ja",
-                    "value": 1
-                  },
-                  {
-                    "label": "Nej",
-                    "value": 0
-                  },
-                  {
-                    "label": "Ikke relevant",
-                    "value": -1
-                  }
-                ]
+                "type": "boolean"
               }
             }
           ]
@@ -234,21 +138,7 @@
             {
               "id": "87c1fa40-a793-4b6e-97b1-9fae3c20cb5d",
               "definition": {
-                "type": "select-single",
-                "options": [
-                  {
-                    "label": "Ja",
-                    "value": 1
-                  },
-                  {
-                    "label": "Nej",
-                    "value": 0
-                  },
-                  {
-                    "label": "Ikke relevant",
-                    "value": -1
-                  }
-                ]
+                "type": "boolean"
               }
             }
           ]
@@ -262,21 +152,7 @@
             {
               "id": "e3684555-185b-4c65-a1b3-849b5899d862",
               "definition": {
-                "type": "select-single",
-                "options": [
-                  {
-                    "label": "Ja",
-                    "value": 1
-                  },
-                  {
-                    "label": "Nej",
-                    "value": 0
-                  },
-                  {
-                    "label": "Ikke relevant",
-                    "value": -1
-                  }
-                ]
+                "type": "boolean"
               }
             }
           ]
@@ -290,21 +166,7 @@
             {
               "id": "a6a77161-bfba-478e-b1b9-2535ffdf3c40",
               "definition": {
-                "type": "select-single",
-                "options": [
-                  {
-                    "label": "Ja",
-                    "value": 1
-                  },
-                  {
-                    "label": "Nej",
-                    "value": 0
-                  },
-                  {
-                    "label": "Ikke relevant",
-                    "value": -1
-                  }
-                ]
+                "type": "boolean"
               }
             }
           ]
@@ -326,21 +188,7 @@
             {
               "id": "c8305e16-230d-4775-81c9-c87ccc7875f9",
               "definition": {
-                "type": "select-single",
-                "options": [
-                  {
-                    "label": "Ja",
-                    "value": 1
-                  },
-                  {
-                    "label": "Nej",
-                    "value": 0
-                  },
-                  {
-                    "label": "Ikke relevant",
-                    "value": -1
-                  }
-                ]
+                "type": "boolean"
               }
             }
           ]
@@ -354,21 +202,7 @@
             {
               "id": "5278589d-260a-499a-b093-92650e449158",
               "definition": {
-                "type": "select-single",
-                "options": [
-                  {
-                    "label": "Ja",
-                    "value": 1
-                  },
-                  {
-                    "label": "Nej",
-                    "value": 0
-                  },
-                  {
-                    "label": "Ikke relevant",
-                    "value": -1
-                  }
-                ]
+                "type": "boolean"
               }
             }
           ]
@@ -382,21 +216,7 @@
             {
               "id": "313fdf8d-01d9-417a-a8e0-45bc85f03c75",
               "definition": {
-                "type": "select-single",
-                "options": [
-                  {
-                    "label": "Ja",
-                    "value": 1
-                  },
-                  {
-                    "label": "Nej",
-                    "value": 0
-                  },
-                  {
-                    "label": "Ikke relevant",
-                    "value": -1
-                  }
-                ]
+                "type": "boolean"
               }
             }
           ]
@@ -418,21 +238,7 @@
             {
               "id": "40eb3200-353f-45e1-b7d9-7d37d998e46d",
               "definition": {
-                "type": "select-single",
-                "options": [
-                  {
-                    "label": "Ja",
-                    "value": 1
-                  },
-                  {
-                    "label": "Nej",
-                    "value": 0
-                  },
-                  {
-                    "label": "Ikke relevant",
-                    "value": -1
-                  }
-                ]
+                "type": "boolean"
               }
             }
           ]
@@ -446,21 +252,7 @@
             {
               "id": "05f2e283-2b48-4c2f-ba6f-03a7929cdfa2",
               "definition": {
-                "type": "select-single",
-                "options": [
-                  {
-                    "label": "Ja",
-                    "value": 1
-                  },
-                  {
-                    "label": "Nej",
-                    "value": 0
-                  },
-                  {
-                    "label": "Ikke relevant",
-                    "value": -1
-                  }
-                ]
+                "type": "boolean"
               }
             },
             {
@@ -472,21 +264,7 @@
                 {
                   "id": "6a3e9e17-ce63-447e-a2f9-7054cd520813",
                   "definition": {
-                    "type": "select-single",
-                    "options": [
-                      {
-                        "label": "Ja",
-                        "value": 1
-                      },
-                      {
-                        "label": "Nej",
-                        "value": 0
-                      },
-                      {
-                        "label": "Ikke relevant",
-                        "value": -1
-                      }
-                    ]
+                    "type": "boolean"
                   }
                 }
               ]
@@ -500,21 +278,7 @@
                 {
                   "id": "72b57bf1-3842-487d-b094-3135d4d7fca2",
                   "definition": {
-                    "type": "select-single",
-                    "options": [
-                      {
-                        "label": "Ja",
-                        "value": 1
-                      },
-                      {
-                        "label": "Nej",
-                        "value": 0
-                      },
-                      {
-                        "label": "Ikke relevant",
-                        "value": -1
-                      }
-                    ]
+                    "type": "boolean"
                   }
                 }
               ]
@@ -536,21 +300,7 @@
                 {
                   "id": "7385cef6-3e43-40fd-91af-240eeacaee75",
                   "definition": {
-                    "type": "select-single",
-                    "options": [
-                      {
-                        "label": "Ja",
-                        "value": 1
-                      },
-                      {
-                        "label": "Nej",
-                        "value": 0
-                      },
-                      {
-                        "label": "Ikke relevant",
-                        "value": -1
-                      }
-                    ]
+                    "type": "boolean"
                   }
                 }
               ]
@@ -564,21 +314,7 @@
                 {
                   "id": "03946f9c-de2b-4018-886d-f20ae53cf1cb",
                   "definition": {
-                    "type": "select-single",
-                    "options": [
-                      {
-                        "label": "Ja",
-                        "value": 1
-                      },
-                      {
-                        "label": "Nej",
-                        "value": 0
-                      },
-                      {
-                        "label": "Ikke relevant",
-                        "value": -1
-                      }
-                    ]
+                    "type": "boolean"
                   }
                 }
               ]
@@ -592,21 +328,7 @@
                 {
                   "id": "9377c3ea-dbc6-484f-9f6b-2b3905968dce",
                   "definition": {
-                    "type": "select-single",
-                    "options": [
-                      {
-                        "label": "Ja",
-                        "value": 1
-                      },
-                      {
-                        "label": "Nej",
-                        "value": 0
-                      },
-                      {
-                        "label": "Ikke relevant",
-                        "value": -1
-                      }
-                    ]
+                    "type": "boolean"
                   }
                 }
               ]

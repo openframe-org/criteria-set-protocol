@@ -6,7 +6,7 @@ import * as yup from 'yup';
 export const treeAndMatrixBodySchema = yup.object({
   body: yup.object({
     locale: yup.string(),
-    parameters: yup.object().required(),
+    parameters: yup.object(),
     values: yup.object()
   })
 });

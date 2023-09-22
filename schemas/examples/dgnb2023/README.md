@@ -12,7 +12,7 @@ in our schema:
 
 A request is made to retrieve the metadata:
 ```
-GET /1/b018ed4a-4fb9-4bc8-989e-5f003cbf5d45/1.0.0
+GET /1/2023/2.0.0
 ```
 
 Which results in [this metadata schema](metadata.json).
@@ -20,7 +20,7 @@ Which results in [this metadata schema](metadata.json).
 The user then makes a request to retrieve the criteria tree without any parameters:
 
 ```
-POST /1/b018ed4a-4fb9-4bc8-989e-5f003cbf5d45/tree/1.0.0
+POST /1/2023/tree/2.0.0
 ```
 ```json5
 {
