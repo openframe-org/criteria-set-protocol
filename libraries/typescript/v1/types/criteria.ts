@@ -42,6 +42,8 @@ export type TaskItem = {
   tags?: string[];
   definition: SelectSingleType | SelectMultipleType | NumberType | BooleanType;
   documentation?: Record<string, string[]>;
+  providedData?: Record<string, TaskItemValue>;
+  calculatedData?: Record<string, any>;
 };
 
 export type SelectSingleType = {
