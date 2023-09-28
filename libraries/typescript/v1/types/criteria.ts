@@ -72,7 +72,7 @@ export type BooleanType = {
 export type PointOption = {
   id?: string;
   label: string;
-  value: number;
+  value: string | number | boolean | null;
   annotation?: string;
 };
 
