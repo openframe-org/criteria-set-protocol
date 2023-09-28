@@ -10,6 +10,7 @@ export type Metadata = {
 export type CriteriaTree = Criterion[];
 
 export type Criterion = {
+  id: string;
   quality: string;
   title: string;
   label?: string;
@@ -27,8 +28,10 @@ export type TaskGroup = {
 };
 
 export type Task = {
+  id: string;
   title: string;
   label?: string;
+  description?: string;
   tags?: string[];
   items: TaskItem[];
   documentation?: Record<string, string[]>;
@@ -36,7 +39,6 @@ export type Task = {
 
 export type TaskItem = {
   id: string;
-  text?: string;
   description?: string;
   label?: string;
   tags?: string[];
