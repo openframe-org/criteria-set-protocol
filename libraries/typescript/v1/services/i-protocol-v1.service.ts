@@ -12,17 +12,17 @@ export interface IProtocolV1Service {
   /**
    * Get the criteria tree for the given criteria set ID and combination of parameters
    */
-  getCriteriaTree(criteriaSetId: string, rawParameters: Record<string, unknown>): Promise<CriteriaTree>;
+  getCriteriaTree<Parameters>(criteriaSetId: string, parameters: Parameters, values?: TaskItemValueMap, locale?: string): Promise<CriteriaTree>;
 
   /**
    * Validate the given parameters for the given criteria set ID
    */
-  validateParameters<RequestParameters>(criteriaSetId: string, parameters: RequestParameters): void;
+  validateParameters<Parameters>(criteriaSetId: string, parameters: Parameters): void;
 
   /**
    * Stream the matrix for the given criteria set ID, parameter combination and value map
    */
-  streamMatrix(criteriaSetId: string, rawParameters: Record<string, unknown>, values: TaskItemValueMap): Promise<StreamMatrixResponse>;
+  streamMatrix<Parameters>(criteriaSetId: string, parameters: Parameters, values?: TaskItemValueMap, locale?: string): Promise<StreamMatrixResponse>;
 
   /**
    * Get the metadata of all criteria sets supported by this service
