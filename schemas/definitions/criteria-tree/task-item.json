@@ -1,5 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://criteria-set-protocol-schema.openframe.org/criteria-tree/task-item.json",
   "type": "object",
   "properties": {
     "id": {
