@@ -10,7 +10,7 @@ export type Metadata = {
 export type CriteriaTree = Criterion[];
 
 export type Criterion = {
-  id: string;
+  id?: string;
   quality: string;
   title: string;
   label?: string;
@@ -20,6 +20,7 @@ export type Criterion = {
 };
 
 export type TaskGroup = {
+  id?: string;
   title: string;
   label?: string;
   tags?: string[];
@@ -28,7 +29,7 @@ export type TaskGroup = {
 };
 
 export type Task = {
-  id: string;
+  id?: string;
   title: string;
   label?: string;
   description?: string;
