@@ -40,7 +40,6 @@ export type Task = {
 
 export type TaskItem = {
   id: string;
-  text?: string;
   description?: string;
   label?: string;
   tags?: string[];
