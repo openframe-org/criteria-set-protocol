@@ -300,3 +300,6 @@ only property returned.
 ### Tree validation
 If there is an error in the task values, the `errors` property **must** be present, though the rest of the
 task tree must be returned as well.
+
+### Schema
+This schema can be found at [https://criteria-set-protocol-schema.openframe.org](https://criteria-set-protocol-schema.openframe.org).
