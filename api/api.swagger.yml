@@ -281,17 +281,17 @@ paths:
 components:
   schemas:
     MetadataResponse:
-      $ref: 'https://openframe.org/schemas/definitions/metadata'
+      $ref: 'https://criteria-set-protocol.openframe.org/definitions/metadata'
     CriteriaSetsAndVersionsResponse:
       type: object
       additionalProperties:
         type: array
         items:
-          $ref: 'https://openframe.org/schemas/definitions/metadata'
+          $ref: 'https://criteria-set-protocol.openframe.org/definitions/metadata'
     VersionsResponse:
       type: array
       items:
-        $ref: 'https://openframe.org/schemas/definitions/metadata'
+        $ref: 'https://criteria-set-protocol.openframe.org/definitions/metadata'
     CriteriaTreeOrMatrixRequest:
       type: object
       properties:
@@ -305,4 +305,4 @@ components:
           description: A key-value map of task item IDs and their values.
           type: object
     CriteriaTreeResponse:
-      $ref: 'https://openframe.org/schemas/definitions/criteria-tree'
+      $ref: 'https://criteria-set-protocol.openframe.org/definitions/criteria-tree'
