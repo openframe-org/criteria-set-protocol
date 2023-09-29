@@ -71,7 +71,12 @@
         },
         "value": {
           "$comment": "This value does not need to be unique, uniqueness is provided by the ID",
-          "type": "number"
+          "oneOf": [
+            { "type": "string" },
+            { "type": "number" },
+            { "type": "boolean" },
+            { "type": "null" }
+          ]
         },
         "annotation": {
           "$comment": "Optional per-item annotations/observations",

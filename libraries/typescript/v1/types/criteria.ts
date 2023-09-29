@@ -10,6 +10,7 @@ export type Metadata = {
 export type CriteriaTree = Criterion[];
 
 export type Criterion = {
+  id?: string;
   quality: string;
   title: string;
   label?: string;
@@ -19,6 +20,7 @@ export type Criterion = {
 };
 
 export type TaskGroup = {
+  id?: string;
   title: string;
   label?: string;
   tags?: string[];
@@ -27,8 +29,10 @@ export type TaskGroup = {
 };
 
 export type Task = {
+  id?: string;
   title: string;
   label?: string;
+  description?: string;
   tags?: string[];
   items: TaskItem[];
   documentation?: Record<string, string[]>;
@@ -70,7 +74,7 @@ export type BooleanType = {
 export type PointOption = {
   id?: string;
   label: string;
-  value: number;
+  value: string | number | boolean | null;
   annotation?: string;
 };
 
