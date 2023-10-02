@@ -3,19 +3,69 @@
   "$id": "https://criteria-set-protocol-schema.openframe.org/documentation.json",
   "type": "array",
   "items": {
-    "type": "object",
-    "properties": {
-      "type": {
-        "type": "string"
+    "$ref": "#/$defs/documentation-item"
+  },
+  "$defs": {
+    "pdf-documentation-item": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "pdf"
+        }
       },
       "label": {
         "type": "string"
       },
       "url": {
         "type": "string"
-      }
+      },
+      "required": ["type", "label", "url"],
+      "additionalProperties": false
     },
-    "required": ["type", "label", "url"],
-    "additionalProperties": false
+    "link-documentation-item": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "link"
+        },
+        "label": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "required": ["type", "label", "url"],
+      "additionalProperties": false
+    },
+    "inline-documentation-item": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "text"
+        },
+        "label": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": ["type", "text"],
+      "additionalProperties": false
+    },
+    "documentation-item": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/pdf-documentation-item"
+        },
+        {
+          "$ref": "#/$defs/link-documentation-item"
+        },
+        {
+          "$ref": "#/$defs/inline-documentation-item"
+        }
+      ]
+    }
   }
 }

@@ -3,5 +3,5 @@
 # Criteria Set Protocol
 
 ## Examples
-- [EU Taxonomy regulation 2020/852: Guide 7.1, v2](taxonomy/README.md)
+- [EU Taxonomy regulation 2020/852: Guide 7.7, v2](taxonomy/README.md)
 - [DGNB 2023](dgnb2023/README.md)

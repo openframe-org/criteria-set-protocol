@@ -6,6 +6,9 @@
     "id": {
       "$ref": "../string.json#/uuid"
     },
+    "type": {
+      "const": "task-item"
+    },
     "text": {
       "type": "string"
     },
@@ -35,6 +38,6 @@
     "providedData": {},
     "calculatedData": {}
   },
-  "required": ["id", "definition"],
+  "required": ["type", "id", "definition"],
   "additionalProperties": false
 }

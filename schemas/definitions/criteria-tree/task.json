@@ -6,6 +6,9 @@
     "id": {
       "$ref": "../string.json#uuid"
     },
+    "type": {
+      "const": "task"
+    },
     "title": {
       "type": "string"
     },
@@ -32,6 +35,6 @@
     },
     "calculatedData": {}
   },
-  "required": ["title", "items"],
+  "required": ["type", "title", "items"],
   "additionalProperties": false
 }

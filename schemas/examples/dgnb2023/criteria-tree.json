@@ -4,6 +4,7 @@
   },
   "criteria": [
     {
+      "type": "criterion",
       "id": "e2aad9f1-c454-4b4a-9faa-6516894a6e1f",
       "label": "PRO1.1",
       "text": "Kvalitet i forberedelsen af projektet",
@@ -13,16 +14,19 @@
       },
       "children": [
         {
+          "type": "task-group",
           "id": "31b2676b-2ded-4839-bded-ce734c827a47",
           "label": "PRO1.1.1",
           "text": "Indledende planlægning",
           "children": [
             {
+              "type": "task",
               "id": "823716b0-373c-44a0-9a51-fc49004fa7c0",
               "label": "PRO1.1.1.1",
               "text": "Omfang af indledende planlægning",
               "items": [
                 {
+                  "type": "task-item",
                   "id": "6319f7e3-7fb9-458b-a75b-a65ad72505cd",
                   "label": "PRO1.1.1.1.1",
                   "providedData": {
@@ -50,16 +54,19 @@
           ]
         },
         {
+          "type": "task-group",
           "id": "cfeb84ca-5a81-4460-a8d7-3f27c7ef5fcb",
           "label": "PRO1.1.2",
           "text": "Bæredygtighedsmål",
           "children": [
             {
+              "type": "task",
               "id": "3cae9414-0efc-4b83-ad70-7695db0fe572",
               "label": "PRO1.1.2.1",
               "text": "Bæredygtighedsmål for projektet",
               "children": [
                 {
+                  "type": "task-item",
                   "id": "d535c0ff-83b4-4008-922d-2d29b6f709e6",
                   "label": "PRO1.1.2.1.1",
                   "providedData": {
@@ -84,16 +91,19 @@
           ]
         },
         {
+          "type": "task-group",
           "id": "aa926a28-f065-4311-b010-f0316727e1d3",
           "label": "PRO1.1.3",
           "text": "Brugerdeltagelse",
           "children": [
             {
+              "type": "task",
               "id": "a1069c6a-5998-40a0-902e-569b94a6ab0a",
               "label": "PRO1.1.3.1",
               "text": "Omfang af brugerdeltagelse",
               "children": [
                 {
+                  "type": "task-item",
                   "id": "4aab7b7b-9a0e-4ec2-95f2-525f4e1aa4bf",
                   "label": "PRO1.1.3.1.1",
                   "definition": {
@@ -115,16 +125,19 @@
           ]
         },
         {
+          "type": "task-group",
           "id": "4f7c380e-62d3-440e-9158-baefbe33adeb",
           "label": "PRO1.1.4",
           "text": "Information til offentligheden",
           "children": [
             {
+              "type": "task",
               "id": "bcbb75fc-9eb2-42fe-8ca1-7a1abc45ea22",
               "label": "PRO1.1.4.1",
               "text": "Omfang af information til offentligheden",
               "children": [
                 {
+                  "type": "task-item",
                   "id": "907ebf7d-d13b-4036-9c3a-1cbea03d4694",
                   "label": "PRO1.1.4.1.1",
                   "providedData": {

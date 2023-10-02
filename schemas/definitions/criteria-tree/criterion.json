@@ -6,6 +6,9 @@
     "id": {
       "$ref": "../string.json#uuid"
     },
+    "type": {
+      "const": "criterion"
+    },
     "quality": {
       "type": "string"
     },
@@ -35,6 +38,6 @@
     },
     "calculatedData": {}
   },
-  "required": ["quality", "title", "items"],
+  "required": ["type", "quality", "title", "items"],
   "additionalProperties": false
 }

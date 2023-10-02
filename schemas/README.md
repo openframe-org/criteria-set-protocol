@@ -67,8 +67,8 @@ The tree metadata:
 ```json5
 // Example tree metadata
 {
-  "id": "61a01c88-0102-4332-96c6-6f60ba7a8763", // The UUID of this Template
-  "version": "1.0.0", // The current SemVer-formatted version of this Template
+  "id": "7.1", // The id of this Template
+  "version": "2.0.0", // The current SemVer-formatted version of this Template
   "date": "2023-07-19T14:49:01.737Z", // The date this version was published
   "name": "Taksonomiforordning 2020/852", // The name of the Template
   "description": "7.1 Opførelse af nye bygninger", // The description of this Template
@@ -209,6 +209,7 @@ such as DGNB heart scores:
   // Example from DGNB 2023 1.0.0
   "criteria": [
     {
+      "type": "criterion",
       "id": "d531a082-0757-46ca-b940-cdd788455462",
       "quality": "ECO",
       "label": "ECO2.1",
@@ -232,6 +233,7 @@ They can also lend serve a purely cosmetic purpose, such as the DGNB "planet" sc
   // Example from DGNB 2023 1.0.0
   "criteria": [
     {
+      "type": "criterion",
       "id": "238aea1e-2ba5-4846-82dc-98f46863ecd1",
       "quality": "ENV",
       "label": "ENV2.4",
