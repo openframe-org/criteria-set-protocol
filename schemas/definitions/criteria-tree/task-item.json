@@ -38,6 +38,6 @@
     "providedData": {},
     "calculatedData": {}
   },
-  "required": ["type", "id", "definition"],
+  "required": ["id", "type", "definition"],
   "additionalProperties": false
 }

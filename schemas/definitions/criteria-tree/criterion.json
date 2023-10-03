@@ -38,6 +38,6 @@
     },
     "calculatedData": {}
   },
-  "required": ["type", "quality", "title", "items"],
+  "required": ["id", "type", "quality", "title", "items"],
   "additionalProperties": false
 }

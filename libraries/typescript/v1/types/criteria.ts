@@ -11,11 +11,12 @@ export type PdfDocumentationItem = {
   type: 'pdf';
   label: string,
   url: string;
+  text: string;
 };
 
 export type InlineDocumentationItem = {
   type: 'text';
-  label?: string,
+  label: string;
   text: string;
 };
 
@@ -23,52 +24,39 @@ export type LinkDocumentationItem = {
   type: 'link';
   label: string,
   url: string;
+  text: string;
 };
 
 export type DocumentationItem = PdfDocumentationItem | InlineDocumentationItem | LinkDocumentationItem;
 
 export type CriteriaTree = Criterion[];
 
-export type Criterion = {
-  type: 'criterion';
-  id?: string;
-  quality: string;
-  title: string;
-  label?: string;
-  tags?: string[];
-  items: (Task | TaskGroup)[];
-  documentation?: DocumentationItem[];
-};
-
-export type TaskGroup = {
-  type: 'task-group';
-  id?: string;
-  title: string;
-  label?: string;
-  tags?: string[];
-  items: (Task | TaskGroup)[];
-  documentation?: DocumentationItem[];
-};
-
-export type Task = {
-  type: 'task';
-  id?: string;
-  title: string;
-  label?: string;
-  description?: string;
-  tags?: string[];
-  items: TaskItem[];
-  documentation?: DocumentationItem[];
-};
-
-export type TaskItem = {
-  type: 'task-item';
+type BaseElement<Type extends CriteriaTreeElementType> = {
+  type: Type;
   id: string;
-  description?: string;
+  title: string;
   label?: string;
   tags?: string[];
-  definition: SelectSingleType | SelectMultipleType | NumberType | BooleanType;
   documentation?: DocumentationItem[];
+};
+
+export type Criterion = BaseElement<'criterion'> & {
+  quality: string;
+  items: (Task | TaskGroup)[];
+};
+
+export type TaskGroup = BaseElement<'task-group'> & {
+  items: (Task | TaskGroup)[];
+};
+
+export type Task = BaseElement<'task'> & {
+  description?: string;
+  items: TaskItem[];
+};
+
+export type TaskItem = Omit<BaseElement<'task-item'>, 'title'> & {
+  description?: string;
+  definition: SelectSingleType | SelectMultipleType | NumberType | BooleanType;
   providedData?: Record<string, TaskItemValue>;
   calculatedData?: Record<string, any>;
 };

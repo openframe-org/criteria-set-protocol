@@ -35,6 +35,6 @@
     },
     "calculatedData": {}
   },
-  "required": ["type", "title", "items"],
+  "required": ["id", "type", "title", "items"],
   "additionalProperties": false
 }

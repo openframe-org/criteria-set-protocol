@@ -13,13 +13,16 @@
           "const": "pdf"
         }
       },
+      "text": {
+        "type": "string"
+      },
       "label": {
         "type": "string"
       },
       "url": {
         "type": "string"
       },
-      "required": ["type", "label", "url"],
+      "required": ["type", "label", "text", "url"],
       "additionalProperties": false
     },
     "link-documentation-item": {
@@ -31,11 +34,14 @@
         "label": {
           "type": "string"
         },
+        "text": {
+          "type": "string"
+        },
         "url": {
           "type": "string"
         }
       },
-      "required": ["type", "label", "url"],
+      "required": ["type", "label", "text", "url"],
       "additionalProperties": false
     },
     "inline-documentation-item": {
@@ -51,7 +57,7 @@
           "type": "string"
         }
       },
-      "required": ["type", "text"],
+      "required": ["type", "label", "text"],
       "additionalProperties": false
     },
     "documentation-item": {

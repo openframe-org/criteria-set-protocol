@@ -32,6 +32,7 @@
             "documentation": [
               {
                 "type": "text",
+                "label": "Dokumentation",
                 "text": "1.1 Due Diligence politik\n  1.2 Risikoanalyse\n  1.3 Håndtering af risici\n  1.4 Effektivitet af Due Diligence processer\n  1.5 Kommunikation af Due Diligence processer\n  1.6 Klagemekanisme"
               }
             ]
@@ -73,6 +74,7 @@
             "documentation": [
               {
                 "type": "text",
+                "label": "Dokumentation",
                 "text": "Angiv venligst hvilket år, der for bygningen er ansøgt om byggetilladelse i feltet D18"
               }
             ]
@@ -105,6 +107,7 @@
             "documentation": [
               {
                 "type": "text",
+                "label": "Dokumentation",
                 "text": "- Måleresultater. Målinger udført iht. DS/EN 13187 og EN13829 eller SBi 214 samt ISO 9001\n- Publikation af resultater for kunder og investorer eller er-klæring om oplysning af resul-tater for kunder og investorer efter anmodning"
               }
             ]
@@ -137,6 +140,7 @@
             "documentation": [
               {
                 "type": "text",
+                "label": "Dokumentation",
                 "text": "EU Kommissionen henviser til nationale metoder og Level(s). Det er hermed tilstrækkeligt at benytte LCA-beregningen iht. Bygningsreglementets klimakrav.\n\n- LCA-beregning og resultater, herunder resultatet for samlet kg CO2-ækv./m2/år samt resultater for hver livscyklusfase i LCA-beregningen\n- Oplysning af resultater for kunder og investorer eller erklæring om oplysning af resultater for kunder og investorer efter anmodning"
               }
             ]
@@ -178,6 +182,7 @@
             "documentation": [
               {
                 "type": "text",
+                "label": "Dokumentation",
                 "text": "- Klassificering af risici iht. Tillæg A\n- Sandsynlighedsvurdering af identificererde risici\n- Vurdering af kompenserende tiltag"
               }
             ]
@@ -210,6 +215,7 @@
             "documentation": [
               {
                 "type": "text",
+                "label": "Dokumentation",
                 "text": "- Redegørelse for at klimatilpasningsløsninger i M2.3 ikke påvirker omgivelser negativt \n- Redegørelse for, hvorvidt klimatilpasningsløsninger inddrager naturbaserede løsninger. Eksempler på naturbaserede løsninger er grønne tage/facader, regnvandsbassin, mv. \n- Udsnit/udpensling af evt. krav, løsninger og retningslinjer, som indgår i klimatilpasningsstrategi for området (eller anden myndighedsrapport) samt redegørelse for, hvorledes klimatilpasningsløsninger i M2.3 opfylder disse krav og retningslinjer \n\nOpfyldelse af dette kriterie, M2.2, understøttes yderligere af dokumentation i M2.3."
               }
             ]
@@ -242,6 +248,7 @@
             "documentation": [
               {
                 "type": "text",
+                "label": "Dokumentation",
                 "text": "Forslag til dokumentation:\n- Beskrivelse/tegningsmateriale dokumenterende sikkerhedsforanstaltninger/kompenserede tiltag og/eller\n- Udsnit/udpensling af evt. krav og løsninger, som indgår i lokalplan, byggetilladelse eller anden myndighedsrapport\n- 5-års strategi til reducering af de mest væsentlige risici\n\nEksempler på kompenserende tiltag i form af fysiske løsninger er stormflods-sikring og stormsikring. Beredskabs-plan eller anden form for varsling/oplysning ift. akutte risici er eksempler på ikke-fysiske løsninger."
               }
             ]
