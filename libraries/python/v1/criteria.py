@@ -1,6 +1,11 @@
 import datetime
+import json
 import typing
 from typing import Optional
+
+
+def _to_dict_list(obj: list[any]) -> list[dict]:
+    return [o.to_dict() for o in obj]
 
 
 class Metadata:
@@ -19,6 +24,12 @@ class DocumentationItem:
         self.label = label
         self.url = url
         self.text = text
+
+    def to_dict(self) -> dict:
+        return dict(type=self.type, label=self.label, url=self.url, text=self.text)
+
+    def to_json(self) -> str:
+        return json.dumps(self.to_dict())
 
 
 class PdfDocumentationItem(DocumentationItem):
@@ -49,10 +60,22 @@ class PointOption:
         self.value = value
         self.annotation = annotation
 
+    def to_dict(self) -> dict:
+        return dict(id=self.id, label=self.label, value=self.value, annotation=self.annotation)
+
+    def to_json(self) -> str:
+        return json.dumps(self.to_dict())
+
 
 class BaseTaskItemDefinition:
     def __init__(self, type: DefinitionType):
         self.type = type
+
+    def to_dict(self) -> dict:
+        return dict(type=self.type)
+
+    def to_json(self) -> str:
+        return json.dumps(self.to_dict())
 
 
 class SelectSingleType(BaseTaskItemDefinition):
@@ -60,11 +83,17 @@ class SelectSingleType(BaseTaskItemDefinition):
         super().__init__('select-single')
         self.options = options
 
+    def to_dict(self) -> dict:
+        return {**super().to_dict(), **dict(options=self.options)}
+
 
 class SelectMultipleType(BaseTaskItemDefinition):
     def __init__(self, options: list[PointOption]):
         super().__init__('select-multiple')
         self.options = options
+
+    def to_dict(self) -> dict:
+        return {**super().to_dict(), **dict(options=self.options)}
 
 
 class NumberType(BaseTaskItemDefinition):
@@ -73,6 +102,9 @@ class NumberType(BaseTaskItemDefinition):
         self.minimum = minimum
         self.maximum = maximum
         self.step = step
+
+    def to_dict(self) -> dict:
+        return {**super().to_dict(), **dict(minimum=self.minimum, maximum=self.maximum, step=self.step)}
 
 
 class BooleanType(BaseTaskItemDefinition):
@@ -85,53 +117,78 @@ CriteriaTreeElementType = typing.Literal['criterion', 'task-group', 'task', 'tas
 
 
 class BaseElement:
-    def __init__(self, type: CriteriaTreeElementType, id: str, label: Optional[str], tags: Optional[list],
-                 documentation: Optional[list[DocumentationItem]]):
+    def __init__(self, type: CriteriaTreeElementType, id: str, label: Optional[str] = None, tags: Optional[list] = None,
+                 documentation: Optional[list[DocumentationItem]] = None):
         self.type = type
         self.id = id
         self.label = label
         self.tags = tags
         self.documentation = documentation
 
+    def to_dict(self) -> dict:
+        return dict(type=self.type, id=self.id, label=self.label, tags=self.tags, documentation=_to_dict_list(self.documentation))
+
+    def to_json(self) -> str:
+        return json.dumps(self.to_dict())
+
 
 class TaskItem(BaseElement):
-    def __init__(self, id: str, label: Optional[str], tags: Optional[list],
-                 documentation: Optional[list[DocumentationItem]], description: Optional[str],
-                 definition: TaskItemDefinition, provided_data: Optional[dict[str, TaskItemValue]],
-                 calculated_data: Optional[dict[str, any]]):
-        super().__init__('task-item', id, label, tags, documentation)
+    def __init__(self, id: str, definition: TaskItemDefinition, label: Optional[str] = None, tags: Optional[list] = None,
+                 documentation: Optional[list[DocumentationItem]] = None, description: Optional[str] = None,
+                 provided_data: Optional[dict[str, TaskItemValue]] = None,
+                 calculated_data: Optional[dict[str, any]] = None):
+        super().__init__('task-item', id=id, label=label, tags=tags, documentation=documentation)
         self.description = description
         self.definition = definition
         self.provided_data = provided_data
         self.calculated_data = calculated_data
 
+    def to_dict(self) -> dict:
+        return {**super().to_dict(), **dict(description=self.description, definition=self.definition.to_dict(), providedData=self.provided_data, calculatedData=self.calculated_data)}
+
 
 class Task(BaseElement):
-    def __init__(self, id: str, label: Optional[str], tags: Optional[list],
-                 documentation: Optional[list[DocumentationItem]], description: Optional[str], items: list[TaskItem]):
-        super().__init__('task', id, label, tags, documentation)
+    def __init__(self, id: str, title: str, label: Optional[str] = None, tags: Optional[list] = None,
+                 documentation: Optional[list[DocumentationItem]] = None, description: Optional[str] = None, items: list[TaskItem] = None):
+        super().__init__('task', id=id, label=label, tags=tags, documentation=documentation)
+        self.title = title
         self.description = description
-        self.items = items
+        self.items = items or []
+
+    def to_dict(self) -> dict:
+        return {**super().to_dict(), **dict(title=self.title, description=self.description, items=_to_dict_list(self.items))}
 
 
 class TaskGroup(BaseElement):
-    def __init__(self, id: str, label: Optional[str], tags: Optional[list],
-                 documentation: Optional[list[DocumentationItem]], items: list[Task]):
-        super().__init__('task-group', id, label, tags, documentation)
-        self.items = items
+    def __init__(self, id: str, title: str, label: Optional[str] = None, tags: Optional[list] = None,
+                 documentation: Optional[list[DocumentationItem]] = None, items: list[Task] = None):
+        super().__init__('task-group', id=id, label=label, tags=tags, documentation=documentation)
+        self.title = title
+        self.items = items or []
+
+    def to_dict(self) -> dict:
+        return {**super().to_dict(), **dict(title=self.title, items=_to_dict_list(self.items))}
 
 
 class Criterion(BaseElement):
-    def __init__(self, id: str, label: Optional[str], tags: Optional[list],
-                 documentation: Optional[list[DocumentationItem]], quality: str, items: list[TaskGroup]):
-        super().__init__('criterion', id, label, tags, documentation)
+    def __init__(self, id: str, title: str, quality: str, label: Optional[str] = None, tags: Optional[list] = None,
+                 documentation: Optional[list[DocumentationItem]] = None,
+                 items: list[TaskGroup] = None):
+        super().__init__('criterion', id=id, label=label, tags=tags, documentation=documentation)
+        self.title = title
         self.quality = quality
-        self.items = items
+        self.items = items or []
+
+    def to_dict(self) -> dict:
+        return {**super().to_dict(), **dict(title=self.title, quality=self.quality, items=_to_dict_list(self.items))}
 
 
 class CriteriaTree(list[Criterion]):
     def __init__(self, criteria: list):
         list.__init__(self, criteria)
+
+    def to_json(self) -> str:
+        return json.dumps(_to_dict_list(self))
 
 
 CriteriaTreeElement = typing.Union[Criterion, TaskGroup, Task, TaskItem]
