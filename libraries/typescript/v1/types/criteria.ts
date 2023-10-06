@@ -42,11 +42,11 @@ type BaseElement<Type extends CriteriaTreeElementType> = {
 
 export type Criterion = BaseElement<'criterion'> & {
   quality: string;
-  items: (Task | TaskGroup)[];
+  items: TaskGroup[];
 };
 
 export type TaskGroup = BaseElement<'task-group'> & {
-  items: (Task | TaskGroup)[];
+  items: Task[];
 };
 
 export type Task = BaseElement<'task'> & {

@@ -172,9 +172,9 @@ and may also affect the final structure of the tree.
 ### criteria
 The actual criteria which comprise the tree. The criteria list is a tree structured as follows:
 
-- **criteria**: Criteria are the top-level items in the tree. A criterion can hold task groups and tasks and be grouped in a quality. It can have read-only data.
-- **task group**: A task group can hold tasks and more task groups within it. It can have read-only data.
-- **task**: A task group can hold task items within it. It can have read-only data.
+- **criteria**: Criteria are the top-level items in the tree. A criterion can hold task groups and be grouped in a quality. It can have read-only data.
+- **task group**: A task group can hold tasks within it. It can have read-only data.
+- **task**: A task can hold task items within it. It can have read-only data.
 - **task item**: A task item is the leaf, it has no children. It can have editable data as well as read-only data.
 
 ```
@@ -189,7 +189,7 @@ Criteria
              +-- ...
     +-- Task group
              +-- ...
-    +-- Task
+    +-- Task group
          +-- ...
 Criteria
     +-- ...

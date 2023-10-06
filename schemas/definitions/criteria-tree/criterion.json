@@ -27,10 +27,7 @@
     "items": {
       "type": "array",
       "items": {
-        "oneOf": [
-          { "$ref": "task.json" },
-          { "$ref": "task-group.json" }
-        ]
+        "$ref": "task-group.json"
       }
     },
     "documentation": {
