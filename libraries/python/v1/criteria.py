@@ -47,14 +47,14 @@ class LinkDocumentationItem(DocumentationItem):
         super().__init__('link', label, url, text)
 
 
-TaskItemValuePrimitive = typing.Union[str, float, bool, None]
-TaskItemValue = typing.Union[TaskItemValuePrimitive, list[TaskItemValuePrimitive]]
+TaskItemScalarValue = typing.Union[str, float, bool, None]
+TaskItemValue = typing.Union[TaskItemScalarValue, list[TaskItemScalarValue]]
 
 DefinitionType = typing.Literal['select-single', 'select-multiple', 'number', 'boolean']
 
 
 class PointOption:
-    def __init__(self, id: Optional[str], label: str, value: TaskItemValuePrimitive, annotation: Optional[str]):
+    def __init__(self, id: Optional[str], label: str, value: TaskItemScalarValue, annotation: Optional[str]):
         self.id = id
         self.label = label
         self.value = value

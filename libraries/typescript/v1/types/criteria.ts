@@ -89,7 +89,8 @@ export type PointOption = {
   annotation?: string;
 };
 
-export type TaskItemValue = string | number | boolean | null | Array<string | number | boolean | null>;
+export type TaskItemScalarValue = string | number | boolean | null;
+export type TaskItemValue = TaskItemScalarValue | Array<TaskItemScalarValue>;
 
 export type CriteriaTreeElement = Criterion | TaskGroup | Task | TaskItem;
 export type CriteriaTreeElementType = 'criterion' | 'task-group' | 'task' | 'task-item';
