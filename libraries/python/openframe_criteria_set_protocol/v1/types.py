@@ -86,7 +86,7 @@ class SelectSingleType(BaseTaskItemDefinition):
         self.options = options
 
     def to_dict(self) -> dict:
-        return {**super().to_dict(), **dict(options=self.options)}
+        return {**super().to_dict(), **dict(options=_to_dict_list(self.options))}
 
 
 class SelectMultipleType(BaseTaskItemDefinition):
@@ -95,7 +95,7 @@ class SelectMultipleType(BaseTaskItemDefinition):
         self.options = options
 
     def to_dict(self) -> dict:
-        return {**super().to_dict(), **dict(options=self.options)}
+        return {**super().to_dict(), **dict(options=_to_dict_list(self.options))}
 
 
 class NumberType(BaseTaskItemDefinition):
