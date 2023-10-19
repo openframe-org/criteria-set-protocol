@@ -5,6 +5,8 @@ from typing import Optional
 
 
 def _to_dict_list(obj: list[any]) -> list[dict]:
+    if (obj is None):
+        return []
     return [o.to_dict() for o in obj if o is not None]
 
 
