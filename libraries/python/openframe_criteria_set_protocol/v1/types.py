@@ -5,7 +5,7 @@ from typing import Optional
 
 
 def _to_dict_list(obj: list[any]) -> list[dict]:
-    return [o.to_dict() for o in obj]
+    return [o.to_dict() for o in obj if o is not None]
 
 
 class Metadata:
