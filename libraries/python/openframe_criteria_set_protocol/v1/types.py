@@ -54,7 +54,7 @@ DefinitionType = typing.Literal['select-single', 'select-multiple', 'number', 'b
 
 
 class PointOption:
-    def __init__(self, id: Optional[str], label: str, value: TaskItemScalarValue, annotation: Optional[str]):
+    def __init__(self, label: str, value: TaskItemScalarValue, id: Optional[str] = None, annotation: Optional[str] = None):
         self.id = id
         self.label = label
         self.value = value
