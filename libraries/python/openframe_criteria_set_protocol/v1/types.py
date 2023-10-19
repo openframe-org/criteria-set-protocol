@@ -184,8 +184,8 @@ class Criterion(BaseElement):
 
 
 class CriteriaTree(list[Criterion]):
-    def __init__(self, criteria: list):
-        list.__init__(self, criteria)
+    def __init__(self, criteria: Optional[list] = None):
+        list.__init__(self, criteria or [])
 
     def to_json(self) -> str:
         return json.dumps(_to_dict_list(self))
