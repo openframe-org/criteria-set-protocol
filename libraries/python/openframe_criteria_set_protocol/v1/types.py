@@ -1,11 +1,12 @@
 import datetime
 import json
 import typing
+from asyncio import StreamReader
 from typing import Optional
 
 
 def _to_dict_list(obj: list[any]) -> list[dict]:
-    if (obj is None):
+    if obj is None:
         return []
     return [o.to_dict() for o in obj if o is not None]
 
@@ -53,6 +54,10 @@ TaskItemScalarValue = typing.Union[str, float, bool, None]
 TaskItemValue = typing.Union[TaskItemScalarValue, list[TaskItemScalarValue]]
 
 DefinitionType = typing.Literal['select-single', 'select-multiple', 'number', 'boolean']
+
+
+class TaskItemValueMap(dict[str, TaskItemValue]):
+    pass
 
 
 class PointOption:
@@ -191,3 +196,10 @@ class CriteriaTree(list[Criterion]):
 
 
 CriteriaTreeElement = typing.Union[Criterion, TaskGroup, Task, TaskItem]
+
+
+class StreamMatrixResponse():
+    def __init__(self, filename: str, content_type: str, stream: StreamReader):
+        self.filename = filename
+        self.content_type = content_type
+        self.stream = stream
