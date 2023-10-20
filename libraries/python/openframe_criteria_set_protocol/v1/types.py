@@ -142,7 +142,8 @@ class Criterion:
 
 @dataclass
 class CriteriaTree(list[Criterion]):
-    pass
+    def __init__(self, criteria: typing.Union[list[Criterion], filter] = None):
+        super().__init__(criteria or [])
 
 
 CriteriaTreeElement = typing.Union[Criterion, TaskGroup, Task, TaskItem]
