@@ -149,8 +149,15 @@ class CriteriaTree(list[Criterion]):
 CriteriaTreeElement = typing.Union[Criterion, TaskGroup, Task, TaskItem]
 
 
+@dataclass
+class MetadataResponse:
+    protocol: int = field(init=False, default=1)
+    metadata: Metadata
+    parameters: dict[str, typing.Any]
+
+
+@dataclass
 class StreamMatrixResponse:
-    def __init__(self, filename: str, content_type: str, stream: StreamReader):
-        self.filename = filename
-        self.content_type = content_type
-        self.stream = stream
+    filename: str
+    content_type: str
+    stream: StreamReader
