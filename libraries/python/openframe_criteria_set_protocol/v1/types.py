@@ -1,53 +1,42 @@
 import datetime
-import json
 import typing
+from abc import ABC
 from asyncio import StreamReader
+from dataclasses import dataclass, field
 from typing import Optional
 
 
-def _to_dict_list(obj: list[any]) -> list[dict]:
-    if obj is None:
-        return []
-    return [o.to_dict() for o in obj if o is not None]
-
-
+@dataclass
 class Metadata:
-    def __init__(self, id: str, version: str, date: datetime.datetime, name: str, description: str, documentation: str):
-        self.id = id
-        self.version = version
-        self.date = date
-        self.name = name
-        self.description = description
-        self.documentation = documentation
+    id: str
+    version: str
+    date: datetime.datetime
+    name: str
+    description: str
+    documentation: str
 
 
-class DocumentationItem:
-    def __init__(self, type: str, label: str, url: Optional[str], text: str):
-        self.type = type
-        self.label = label
-        self.url = url
-        self.text = text
-
-    def to_dict(self) -> dict:
-        return dict(type=self.type, label=self.label, url=self.url, text=self.text)
-
-    def to_json(self) -> str:
-        return json.dumps(self.to_dict())
+@dataclass
+class DocumentationItem(ABC):
+    type: str
+    label: str
+    text: str
+    url: Optional[str] = None
 
 
+@dataclass
 class PdfDocumentationItem(DocumentationItem):
-    def __init__(self, label: str, url: str, text: str):
-        super().__init__('pdf', label, url, text)
+    type: str = field(init=False, default='pdf')
 
 
+@dataclass
 class InlineDocumentationItem(DocumentationItem):
-    def __init__(self, label: str, text: str):
-        super().__init__('text', label, None, text)
+    type: str = field(init=False, default='text')
 
 
+@dataclass
 class LinkDocumentationItem(DocumentationItem):
-    def __init__(self, label: str, url: str, text: str):
-        super().__init__('link', label, url, text)
+    type: str = field(init=False, default='link')
 
 
 TaskItemScalarValue = typing.Union[str, float, bool, None]
@@ -56,149 +45,110 @@ TaskItemValue = typing.Union[TaskItemScalarValue, list[TaskItemScalarValue]]
 DefinitionType = typing.Literal['select-single', 'select-multiple', 'number', 'boolean']
 
 
+@dataclass
 class TaskItemValueMap(dict[str, TaskItemValue]):
     pass
 
 
+@dataclass
 class PointOption:
-    def __init__(self, label: str, value: TaskItemScalarValue, id: Optional[str] = None, annotation: Optional[str] = None):
-        self.id = id
-        self.label = label
-        self.value = value
-        self.annotation = annotation
-
-    def to_dict(self) -> dict:
-        return dict(id=self.id, label=self.label, value=self.value, annotation=self.annotation)
-
-    def to_json(self) -> str:
-        return json.dumps(self.to_dict())
+    label: str
+    value: TaskItemScalarValue
+    id: Optional[str] = None
+    annotation: Optional[str] = None
 
 
-class BaseTaskItemDefinition:
-    def __init__(self, type: DefinitionType):
-        self.type = type
-
-    def to_dict(self) -> dict:
-        return dict(type=self.type)
-
-    def to_json(self) -> str:
-        return json.dumps(self.to_dict())
+@dataclass
+class BaseTaskItemDefinition(ABC):
+    type: DefinitionType
 
 
+@dataclass
 class SelectSingleType(BaseTaskItemDefinition):
-    def __init__(self, options: list[PointOption]):
-        super().__init__('select-single')
-        self.options = options
-
-    def to_dict(self) -> dict:
-        return {**super().to_dict(), **dict(options=_to_dict_list(self.options))}
+    type: DefinitionType = field(init=False, default='select-single')
+    options: list[PointOption]
 
 
+@dataclass
 class SelectMultipleType(BaseTaskItemDefinition):
-    def __init__(self, options: list[PointOption]):
-        super().__init__('select-multiple')
-        self.options = options
-
-    def to_dict(self) -> dict:
-        return {**super().to_dict(), **dict(options=_to_dict_list(self.options))}
+    type: DefinitionType = field(init=False, default='select-multiple')
+    options: list[PointOption]
 
 
+@dataclass
 class NumberType(BaseTaskItemDefinition):
-    def __init__(self, minimum: Optional[float], maximum: Optional[float], step: Optional[float]):
-        super().__init__('number')
-        self.minimum = minimum
-        self.maximum = maximum
-        self.step = step
-
-    def to_dict(self) -> dict:
-        return {**super().to_dict(), **dict(minimum=self.minimum, maximum=self.maximum, step=self.step)}
+    type: DefinitionType = field(init=False, default='number')
+    minimum: Optional[float] = None
+    maximum: Optional[float] = None
+    step: Optional[float] = None
 
 
+@dataclass
 class BooleanType(BaseTaskItemDefinition):
-    def __init__(self):
-        super().__init__('boolean')
+    type: DefinitionType = field(init=False, default='boolean')
 
 
 TaskItemDefinition = typing.Union[SelectSingleType, SelectMultipleType, NumberType, BooleanType]
 CriteriaTreeElementType = typing.Literal['criterion', 'task-group', 'task', 'task-item']
 
 
-class BaseElement:
-    def __init__(self, type: CriteriaTreeElementType, id: str, label: Optional[str] = None, tags: Optional[list] = None,
-                 documentation: Optional[list[DocumentationItem]] = None):
-        self.type = type
-        self.id = id
-        self.label = label
-        self.tags = tags
-        self.documentation = documentation
-
-    def to_dict(self) -> dict:
-        return dict(type=self.type, id=self.id, label=self.label, tags=self.tags, documentation=_to_dict_list(self.documentation))
-
-    def to_json(self) -> str:
-        return json.dumps(self.to_dict())
+@dataclass
+class TaskItem:
+    type: CriteriaTreeElementType = field(init=False, default='task-item')
+    id: str
+    definition: TaskItemDefinition
+    label: Optional[str] = None
+    tags: Optional[list] = None
+    documentation: Optional[list[DocumentationItem]] = None
+    description: Optional[str] = None
+    provided_data: Optional[dict[str, TaskItemValue]] = None
+    calculated_data: Optional[dict[str, any]] = None
 
 
-class TaskItem(BaseElement):
-    def __init__(self, id: str, definition: TaskItemDefinition, label: Optional[str] = None, tags: Optional[list] = None,
-                 documentation: Optional[list[DocumentationItem]] = None, description: Optional[str] = None,
-                 provided_data: Optional[dict[str, TaskItemValue]] = None,
-                 calculated_data: Optional[dict[str, any]] = None):
-        super().__init__('task-item', id=id, label=label, tags=tags, documentation=documentation)
-        self.description = description
-        self.definition = definition
-        self.provided_data = provided_data
-        self.calculated_data = calculated_data
-
-    def to_dict(self) -> dict:
-        return {**super().to_dict(), **dict(description=self.description, definition=self.definition.to_dict(), providedData=self.provided_data, calculatedData=self.calculated_data)}
+@dataclass
+class Task:
+    type: CriteriaTreeElementType = field(init=False, default='task')
+    id: str
+    title: str
+    label: Optional[str] = None
+    tags: Optional[list] = None
+    documentation: Optional[list[DocumentationItem]] = None
+    description: Optional[str] = None
+    items: list[TaskItem] = field(default_factory=list)
 
 
-class Task(BaseElement):
-    def __init__(self, id: str, title: str, label: Optional[str] = None, tags: Optional[list] = None,
-                 documentation: Optional[list[DocumentationItem]] = None, description: Optional[str] = None, items: list[TaskItem] = None):
-        super().__init__('task', id=id, label=label, tags=tags, documentation=documentation)
-        self.title = title
-        self.description = description
-        self.items = items or []
-
-    def to_dict(self) -> dict:
-        return {**super().to_dict(), **dict(title=self.title, description=self.description, items=_to_dict_list(self.items))}
-
-
-class TaskGroup(BaseElement):
-    def __init__(self, id: str, title: str, label: Optional[str] = None, tags: Optional[list] = None,
-                 documentation: Optional[list[DocumentationItem]] = None, items: list[Task] = None):
-        super().__init__('task-group', id=id, label=label, tags=tags, documentation=documentation)
-        self.title = title
-        self.items = items or []
-
-    def to_dict(self) -> dict:
-        return {**super().to_dict(), **dict(title=self.title, items=_to_dict_list(self.items))}
+@dataclass
+class TaskGroup:
+    type: CriteriaTreeElementType = field(init=False, default='task-group')
+    id: str
+    title: str
+    label: Optional[str] = None
+    tags: Optional[list] = None
+    documentation: Optional[list[DocumentationItem]] = None
+    items: list[Task] = field(default_factory=list)
 
 
-class Criterion(BaseElement):
-    def __init__(self, id: str, title: str, quality: str, label: Optional[str] = None, tags: Optional[list] = None,
-                 documentation: Optional[list[DocumentationItem]] = None,
-                 items: list[TaskGroup] = None):
-        super().__init__('criterion', id=id, label=label, tags=tags, documentation=documentation)
-        self.title = title
-        self.quality = quality
-        self.items = items or []
+@dataclass
+class Criterion:
+    type: CriteriaTreeElementType = field(init=False, default='criterion')
+    id: str
+    title: str
+    quality: str
+    label: Optional[str] = None
+    tags: Optional[list] = None
+    documentation: Optional[list[DocumentationItem]] = None
+    items: list[TaskGroup] = field(default_factory=list)
 
-    def to_dict(self) -> dict:
-        return {**super().to_dict(), **dict(title=self.title, quality=self.quality, items=_to_dict_list(self.items))}
 
-
+@dataclass
 class CriteriaTree(list[Criterion]):
-    def to_json(self) -> str:
-        return json.dumps(_to_dict_list(self))
+    pass
 
 
 CriteriaTreeElement = typing.Union[Criterion, TaskGroup, Task, TaskItem]
 
 
-class StreamMatrixResponse():
+class StreamMatrixResponse:
     def __init__(self, filename: str, content_type: str, stream: StreamReader):
         self.filename = filename
         self.content_type = content_type
