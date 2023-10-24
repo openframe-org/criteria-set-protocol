@@ -24,6 +24,7 @@ and working with criteria sets.
 ### Libraries
 Included in this repository are libraries for working with criteria sets.
 - [TypeScript](libraries/typescript/README.md)
+- [Python](libraries/python/README.md)
 
 ### Schema
 The JSON schema for the criteria set format can be found at [https://criteria-set-protocol-schema.openframe.org](https://criteria-set-protocol-schema.openframe.org).
