@@ -16,24 +16,38 @@ pip install openframe-criteria-set-protocol
 The library contains the types defined in the protocol v1 specification.
 
 ##### Types
-| Type                     | Remarks                                             |
-|--------------------------|-----------------------------------------------------|
-| **Metadata types**       |                                                     |
-| `Metadata`               |                                                     |
-| **Task tree types**      |                                                     |
-| `CriteriaTree`           |                                                     |
-| `Criterion`              |                                                     |
-| `TaskGroup`              |                                                     |
-| `Task`                   |                                                     |
-| `TaskItem`               |                                                     |
-| **TaskItem value types** |                                                     |
-| `SelectSingleType`       |                                                     |
-| `SelectMultipleType`     |                                                     |
-| `NumberType`             |                                                     |
-| `BooleanType`            |                                                     |
-| `PointOption`            | Used by `SelectSingleType` and `SelectMultipleType` |
-| `TaskItemValue`          | The raw value of a TaskItem, which can be an array  |
-| `TaskItemScalarValue`    | The raw value of a TaskItem                         |
+| Type                          | Remarks                                             |
+|-------------------------------|-----------------------------------------------------|
+| **Metadata types**            |                                                     |
+| `Metadata`                    |                                                     |
+| **Task tree types**           |                                                     |
+| `CriteriaTree`                |                                                     |
+| `Criterion`                   |                                                     |
+| `TaskGroup`                   |                                                     |
+| `Task`                        |                                                     |
+| `TaskItem`                    |                                                     |
+| **TaskItem value types**      |                                                     |
+| `SelectSingleType`            |                                                     |
+| `SelectMultipleType`          |                                                     |
+| `NumberType`                  |                                                     |
+| `BooleanType`                 |                                                     |
+| `PointOption`                 | Used by `SelectSingleType` and `SelectMultipleType` |
+| `TaskItemValue`               | The raw value of a TaskItem, which can be an array  |
+| `TaskItemScalarValue`         | The raw value of a TaskItem                         |
+| **REST types**                |                                                     |
+| `MetadataResponse`            | Metadata endpoint response body                     |
+| `StreamCriteriaSetMatrixBody` | Request body for the matrix streaming endpoints     |
+| `StreamMatrixResponse`        | Matrix streaming endpoints response body            |
+
+##### Schemas
+Validation schemas are provided for validating the endpoints of the protocol v1 specification.
+
+| Schema                    | Remarks                                                                         |
+|---------------------------|---------------------------------------------------------------------------------|
+| `criteria_set_id`         | Regular expression for the criteria_set_id parameter for endpoints which use it |
+| `version`                 | Regular expression for the version parameter for endpoints which use it         |
+| **marshmallow schemas**   |                                                                                 |
+| `TreeAndMatrixBodySchema` | Schema for validating the request body for tree and matrix endpoints            |
 
 ### Deployment
 Deploy using the following commands:

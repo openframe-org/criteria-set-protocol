@@ -2,7 +2,7 @@ import unittest
 from openframe_criteria_set_protocol.v1 import types as v1
 
 
-class TestCriteriaTreeParser(unittest.TestCase):
+class TestTypes(unittest.TestCase):
     def test_pdf_documentation_item_has_pdf_type(self):
         documentation_item = v1.PdfDocumentationItem(
             label="PDF",

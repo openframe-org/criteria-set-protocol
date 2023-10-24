@@ -46,9 +46,9 @@ Validation schemas are provided for validating the endpoints of the protocol v1 
 
 | Schema                     | Remarks                                                          |
 |----------------------------|------------------------------------------------------------------|
+| `TreeAndMatrixBodySchema`  | Validates the request body for the tree and matrix endpoints     |
 | `criteriaSetIdParamSchema` | Validates the criteriaSetId parameter for endpoints which use it |
 | `versionParamSchema`       | Validates the version parameter for endpoints which use it       |
-| `downloadMatrixBody`       | Validates the request body for the download matrix endpoints     |
 
 ##### Services
 The `IProtocolV1Service` interface defines a service which implements the v1 protocol. 
