@@ -124,7 +124,7 @@ class TaskItem:
     tags: Optional[list] = None
     documentation: Optional[list[DocumentationItem]] = None
     description: Optional[str] = None
-    provided_data: Optional[dict[str, TaskItemValue]] = None
+    providedData: Optional[dict[str, TaskItemValue]] = None
     data: Optional[dict[str, any]] = None
 
 
