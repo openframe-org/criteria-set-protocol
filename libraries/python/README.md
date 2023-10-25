@@ -20,6 +20,10 @@ The library contains the types defined in the protocol v1 specification.
 |-------------------------------|-----------------------------------------------------|
 | **Metadata types**            |                                                     |
 | `Metadata`                    |                                                     |
+| `Quality`                     |                                                     |
+| `QualityStyle`                |                                                     |
+| `Color`                       |                                                     |
+| `RgbColor`                    |                                                     |
 | **Task tree types**           |                                                     |
 | `CriteriaTree`                |                                                     |
 | `Criterion`                   |                                                     |
