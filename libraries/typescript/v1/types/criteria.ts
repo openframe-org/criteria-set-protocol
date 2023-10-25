@@ -1,3 +1,19 @@
+export type Color = string | {
+  red: number;
+  green: number;
+  blue: number;
+};
+
+export type QualityStyle = {
+  primaryColor: Color;
+  secondaryColor: Color;
+};
+
+export type Quality = {
+  code: string;
+  style?: QualityStyle;
+}
+
 export type Metadata = {
   id: string;
   version: string;
@@ -5,6 +21,7 @@ export type Metadata = {
   name: string;
   description: string;
   documentation?: string;
+  qualities?: Quality[];
 };
 
 export type PdfDocumentationItem = {
@@ -38,6 +55,7 @@ type BaseElement<Type extends CriteriaTreeElementType> = {
   label?: string;
   tags?: string[];
   documentation?: DocumentationItem[];
+  data: Record<string, any>;
 };
 
 export type Criterion = BaseElement<'criterion'> & {

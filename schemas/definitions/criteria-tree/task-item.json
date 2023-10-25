@@ -36,7 +36,11 @@
       "$ref": "../documentation.json"
     },
     "providedData": {},
-    "calculatedData": {}
+    "data": {
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
   },
   "required": ["id", "type", "definition"],
   "additionalProperties": false

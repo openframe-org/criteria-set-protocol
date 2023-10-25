@@ -7,6 +7,28 @@ from typing import Optional
 
 
 @dataclass
+class RgbColor:
+    red: int
+    green: int
+    blue: int
+
+
+Color = typing.Union[RgbColor, str]
+
+
+@dataclass
+class QualityStyle:
+    primaryColor: Color
+    secondaryColor: Color
+
+
+@dataclass
+class Quality:
+    code: str
+    style: Optional[QualityStyle] = None
+
+
+@dataclass
 class Metadata:
     id: str
     version: str
@@ -14,6 +36,7 @@ class Metadata:
     name: str
     description: str
     documentation: str
+    qualities: Optional[list[Quality]] = None
 
 
 @dataclass
@@ -102,7 +125,7 @@ class TaskItem:
     documentation: Optional[list[DocumentationItem]] = None
     description: Optional[str] = None
     provided_data: Optional[dict[str, TaskItemValue]] = None
-    calculated_data: Optional[dict[str, any]] = None
+    data: Optional[dict[str, any]] = None
 
 
 @dataclass
@@ -115,6 +138,7 @@ class Task:
     documentation: Optional[list[DocumentationItem]] = None
     description: Optional[str] = None
     items: list[TaskItem] = field(default_factory=list)
+    data: Optional[dict[str, any]] = None
 
 
 @dataclass
@@ -126,6 +150,7 @@ class TaskGroup:
     tags: Optional[list] = None
     documentation: Optional[list[DocumentationItem]] = None
     items: list[Task] = field(default_factory=list)
+    data: Optional[dict[str, any]] = None
 
 
 @dataclass
@@ -138,6 +163,7 @@ class Criterion:
     tags: Optional[list] = None
     documentation: Optional[list[DocumentationItem]] = None
     items: list[TaskGroup] = field(default_factory=list)
+    data: Optional[dict[str, any]] = None
 
 
 @dataclass

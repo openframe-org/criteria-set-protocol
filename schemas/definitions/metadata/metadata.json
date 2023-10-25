@@ -34,6 +34,12 @@
       "required": ["email"],
       "additionalProperties": false
     },
+    "qualities": {
+      "type": "array",
+      "items": {
+        "type": "./quality.json"
+      }
+    },
     "required": ["id", "version", "date", "name", "description"],
     "additionalProperties": false
   }

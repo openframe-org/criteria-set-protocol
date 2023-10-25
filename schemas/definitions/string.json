@@ -20,5 +20,9 @@
     "type": "string",
     "format": "email",
     "pattern": "^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
+  },
+  "hexColor": {
+    "type": "string",
+    "pattern": "^#([A-Fa-f0-9]{6})$"
   }
 }

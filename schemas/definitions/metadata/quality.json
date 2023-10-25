@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://criteria-set-protocol-schema.openframe.org/criteria-tree/criterion.json",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string"
+    },
+    "style": {
+      "type": "object",
+      "properties": {
+        "primaryColor": {
+          "$ref": "../color.json"
+        },
+        "secondaryColor": {
+          "$ref": "../color.json"
+        }
+      },
+      "required": ["primaryColor", "secondaryColor"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["code"],
+  "additionalProperties": false
+}

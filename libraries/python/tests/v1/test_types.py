@@ -1,4 +1,6 @@
 import unittest
+from datetime import datetime
+
 from openframe_criteria_set_protocol.v1 import types as v1
 
 
@@ -260,3 +262,58 @@ class TestTypes(unittest.TestCase):
         self.assertIsInstance(criterion.items, list)
         self.assertEqual(len(criterion.items), 0)
         self.assertEqual(criterion.quality, 'ECO')
+
+    def test_color(self):
+        color = v1.RgbColor(red=255, green=0, blue=0)
+
+        self.assertIsInstance(color, v1.Color)
+        self.assertEqual(color.red, 255)
+        self.assertEqual(color.green, 0)
+        self.assertEqual(color.blue, 0)
+
+        color = '#ff0000'
+        self.assertIsInstance(color, v1.Color)
+        self.assertEqual(color, '#ff0000')
+
+    def test_metadata(self):
+        metadata = v1.Metadata(
+            id='criteria_set_id_1',
+            name='Criteria set name',
+            date=datetime.now(),
+            version='1.0.0',
+            description='Criteria set description',
+            documentation='http://documentation.doc',
+            qualities=[
+                v1.Quality(
+                    code="ECO",
+                    style=v1.QualityStyle(
+                        primaryColor=v1.RgbColor(red=255, green=0, blue=0),
+                        secondaryColor=v1.RgbColor(red=0, green=255, blue=0)
+                    )
+                ),
+                v1.Quality(
+                    code="SOC",
+                    style=v1.QualityStyle(
+                        primaryColor='#00ff00',
+                        secondaryColor='#0000ff'
+                    )
+                )
+            ]
+        )
+
+        self.assertEqual(metadata.id, 'criteria_set_id_1')
+        self.assertEqual(metadata.name, 'Criteria set name')
+        self.assertIsInstance(metadata.date, datetime)
+        self.assertEqual(metadata.version, '1.0.0')
+        self.assertEqual(metadata.description, 'Criteria set description')
+        self.assertEqual(metadata.documentation, 'http://documentation.doc')
+        self.assertEqual(len(metadata.qualities), 2)
+        self.assertIsInstance(metadata.qualities[0], v1.Quality)
+        self.assertEqual(metadata.qualities[0].code, 'ECO')
+        self.assertIsInstance(metadata.qualities[0].style, v1.QualityStyle)
+        self.assertIsInstance(metadata.qualities[0].style.primaryColor, v1.Color)
+        self.assertEqual(metadata.qualities[1].code, 'SOC')
+        self.assertIsInstance(metadata.qualities[1].style, v1.QualityStyle)
+        self.assertIsInstance(metadata.qualities[1].style.primaryColor, v1.Color)
+
+

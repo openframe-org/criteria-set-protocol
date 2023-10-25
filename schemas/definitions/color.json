@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://criteria-set-protocol-schema.openframe.org/color.json",
+  "oneOf": [
+    { "$ref": "#/$defs/hex" },
+    { "$ref": "#/$defs/rgb" }
+  ],
+  "$defs": {
+    "hex": {
+      "$ref": "./string.json#hexColor"
+    },
+    "rgb": {
+      "type": "object",
+      "properties": {
+        "red": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "green": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "blue": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 255
+        }
+      }
+    }
+  }
+}
