@@ -74,6 +74,7 @@ export type Task = BaseElement<'task'> & {
 
 export type TaskItem<DefinitionType extends TaskItemDefinition = TaskItemDefinition> = Omit<BaseElement<'task-item'>, 'title'> & {
   description?: string;
+  annotation?: string;
   definition: DefinitionType;
   providedData?: Record<string, TaskItemValue>;
   calculatedData?: Record<string, any>;
