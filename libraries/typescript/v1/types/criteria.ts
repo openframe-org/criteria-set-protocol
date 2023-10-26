@@ -72,9 +72,9 @@ export type Task = BaseElement<'task'> & {
   items: TaskItem[];
 };
 
-export type TaskItem = Omit<BaseElement<'task-item'>, 'title'> & {
+export type TaskItem<DefinitionType extends TaskItemDefinition = TaskItemDefinition> = Omit<BaseElement<'task-item'>, 'title'> & {
   description?: string;
-  definition: TaskItemDefinition;
+  definition: DefinitionType;
   providedData?: Record<string, TaskItemValue>;
   calculatedData?: Record<string, any>;
 };
