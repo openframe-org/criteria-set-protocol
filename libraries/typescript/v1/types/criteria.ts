@@ -74,7 +74,7 @@ export type Task = BaseElement<'task'> & {
 
 export type TaskItem = Omit<BaseElement<'task-item'>, 'title'> & {
   description?: string;
-  definition: SelectSingleType | SelectMultipleType | NumberType | BooleanType;
+  definition: TaskItemDefinition;
   providedData?: Record<string, TaskItemValue>;
   calculatedData?: Record<string, any>;
 };
@@ -109,6 +109,7 @@ export type PointOption = {
 
 export type TaskItemScalarValue = string | number | boolean | null;
 export type TaskItemValue = TaskItemScalarValue | Array<TaskItemScalarValue>;
+export type TaskItemDefinition = SelectSingleType | SelectMultipleType | NumberType | BooleanType;
 
 export type CriteriaTreeElement = Criterion | TaskGroup | Task | TaskItem;
 export type CriteriaTreeElementType = 'criterion' | 'task-group' | 'task' | 'task-item';
