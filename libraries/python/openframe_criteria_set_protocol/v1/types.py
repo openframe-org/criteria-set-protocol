@@ -169,7 +169,7 @@ class Criterion:
 
 @dataclass
 class CriteriaTree:
-    criteria: list[Criterion]
+    criteria: list[Criterion] = field(init=False, default_factory=list)
     result: Optional[dict[str, any]] = None
 
 
