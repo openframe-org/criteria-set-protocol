@@ -1,5 +1,5 @@
 import { Stream } from 'stream';
-import { Metadata, TaskItemValue } from './criteria';
+import { CriteriaTree, Metadata, TaskItemValue } from './criteria';
 
 // Express schemas
 export type MetadataResponse<Parameters extends ParameterCombination = ParameterCombination> = {
@@ -7,6 +7,8 @@ export type MetadataResponse<Parameters extends ParameterCombination = Parameter
   metadata: Metadata;
   parameters: Parameters;
 };
+
+export type CriteriaTreeResponse = CriteriaTree;
 
 export type StringParam<ParamName extends string> = Record<ParamName, string>;
 

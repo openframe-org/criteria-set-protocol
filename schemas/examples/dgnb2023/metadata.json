@@ -8,6 +8,9 @@
     "description": "Deutsche Gesellschaft für Nachhaltiges Bauen 2023",
     "documentation": "https://www.dgnb.de/de/zertifizierung/gebaeude/neubau/version-2023"
   },
+  "qualities": {
+    "PRO": "Proces"
+  },
   "result": {
     "miljø": {
       "type": "number"

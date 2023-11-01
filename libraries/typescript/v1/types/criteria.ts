@@ -46,7 +46,10 @@ export type LinkDocumentationItem = {
 
 export type DocumentationItem = PdfDocumentationItem | InlineDocumentationItem | LinkDocumentationItem;
 
-export type CriteriaTree = Criterion[];
+export type CriteriaTree = {
+  criteria: Criterion[];
+  result?: any;
+};
 
 type BaseElement<Type extends CriteriaTreeElementType> = {
   type: Type;

@@ -168,9 +168,9 @@ class Criterion:
 
 
 @dataclass
-class CriteriaTree(list[Criterion]):
-    def __init__(self, criteria: typing.Union[list[Criterion], filter] = None):
-        super().__init__(criteria or [])
+class CriteriaTree:
+    criteria: list[Criterion]
+    result: Optional[dict[str, any]] = None
 
 
 CriteriaTreeElement = typing.Union[Criterion, TaskGroup, Task, TaskItem]
@@ -181,6 +181,11 @@ class MetadataResponse:
     protocol: int = field(init=False, default=1)
     metadata: Metadata
     parameters: dict[str, typing.Any]
+
+
+@dataclass
+class CriteriaTreeResponse(CriteriaTree):
+    pass
 
 
 @dataclass
