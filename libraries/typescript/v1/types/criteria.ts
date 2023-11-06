@@ -41,7 +41,7 @@ export type LinkDocumentationItem = {
 export type DocumentationItem = PdfDocumentationItem | InlineDocumentationItem | LinkDocumentationItem;
 
 export type CriteriaTree = {
-  criteria: Criterion[];
+  qualities: Quality[];
   result?: any;
 };
 
