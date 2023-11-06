@@ -58,6 +58,7 @@ type BaseElement<Type extends CriteriaTreeElementType> = {
 export type Quality = Pick<BaseElement<'quality'>, 'type' | 'tags' | 'documentation' | 'data'> & {
   title?: string;
   style?: QualityStyle;
+  items: Criterion[];
 }
 
 export type Criterion = BaseElement<'criterion'> & {
