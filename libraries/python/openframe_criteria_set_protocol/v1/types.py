@@ -23,12 +23,6 @@ class QualityStyle:
 
 
 @dataclass
-class Quality:
-    code: str
-    style: Optional[QualityStyle] = None
-
-
-@dataclass
 class Metadata:
     id: str
     version: str
@@ -36,7 +30,6 @@ class Metadata:
     name: str
     description: str
     documentation: str
-    qualities: Optional[list[Quality]] = None
 
 
 @dataclass
@@ -112,7 +105,7 @@ class BooleanType(BaseTaskItemDefinition):
 
 
 TaskItemDefinition = typing.Union[SelectSingleType, SelectMultipleType, NumberType, BooleanType]
-CriteriaTreeElementType = typing.Literal['criterion', 'task-group', 'task', 'task-item']
+CriteriaTreeElementType = typing.Literal['quality', 'criterion', 'task-group', 'task', 'task-item']
 
 
 @dataclass
@@ -159,7 +152,17 @@ class Criterion:
     type: CriteriaTreeElementType = field(init=False, default='criterion')
     id: str
     title: str
-    quality: str
+    label: Optional[str] = None
+    tags: Optional[list] = None
+    documentation: Optional[list[DocumentationItem]] = None
+    items: list[TaskGroup] = field(default_factory=list)
+    data: Optional[dict[str, any]] = None
+
+@dataclass
+class Criterion:
+    type: CriteriaTreeElementType = field(init=False, default='criterion')
+    id: str
+    title: str
     label: Optional[str] = None
     tags: Optional[list] = None
     documentation: Optional[list[DocumentationItem]] = None
@@ -168,12 +171,24 @@ class Criterion:
 
 
 @dataclass
+class Quality:
+    type: CriteriaTreeElementType = field(init=False, default='quality')
+    code: str
+    title: Optional[str] = None
+    tags: Optional[list] = None
+    documentation: Optional[list[DocumentationItem]] = None
+    items: list[Criterion] = field(default_factory=list)
+    data: Optional[dict[str, any]] = None
+    style: Optional[QualityStyle] = None
+
+
+@dataclass
 class CriteriaTree:
-    criteria: list[Criterion] = field(init=False, default_factory=list)
-    result: Optional[dict[str, any]] = None
+    qualities: list[Quality] = field(init=False, default_factory=list)
+    result: any = None
 
 
-CriteriaTreeElement = typing.Union[Criterion, TaskGroup, Task, TaskItem]
+CriteriaTreeElement = typing.Union[Quality, Criterion, TaskGroup, Task, TaskItem]
 
 
 @dataclass

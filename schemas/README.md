@@ -158,7 +158,7 @@ and may also affect the final structure of the tree.
 ```json5
 // Criteria tree schema
 {
-  "criteria": [
+  "qualities": [
     // criteria tree
   ],
   "errors": [
@@ -172,55 +172,67 @@ and may also affect the final structure of the tree.
 ### criteria
 The actual criteria which comprise the tree. The criteria list is a tree structured as follows:
 
-- **criteria**: Criteria are the top-level items in the tree. A criterion can hold task groups and be grouped in a quality. It can have read-only data.
+- **qualities**: Qualities are the top-level items in the tree. A quality holds criteria and can have style information. It can have read-only data.
+- **criteria**: Criteria hold task groups. They can have read-only data.
 - **task group**: A task group can hold tasks within it. It can have read-only data.
 - **task**: A task can hold task items within it. It can have read-only data.
 - **task item**: A task item is the leaf, it has no children. It can have editable data as well as read-only data.
 
 ```
-Criteria
-    +-- Task group
-             +-- Task
-                  +-- Task item
-                  +-- Task item
-                  +-- ...
-             +-- Task
-                  +-- ...
+Quality
+    +-- Criteria
+        +-- Task group
+                 +-- Task
+                      +-- Task item
+                      +-- Task item
+                      +-- ...
+                 +-- Task
+                      +-- ...
+                 +-- ...
+        +-- Task group
+                 +-- ...
+        +-- Task group
              +-- ...
-    +-- Task group
-             +-- ...
-    +-- Task group
-         +-- ...
-Criteria
-    +-- ...
+    +-- Criteria
+        +-- ...
+Quality
+    +-- Criteria
+        +-- ...
 ...
 ```
 
+- **quality.code**: The quality code is its ID, but it differs from the other IDs in that it is not intended to be unique across
+versions, it is rather the code used such as `ECO`, `SOC`, etc.
 - **criteria.id**, **taskGroup.id**, **task.id**, **taskItem.id**: The ID properties are UUID strings which uniquely identify
 the different elements. These are used to track elements across versions. Only taskItems require IDs as they have user-provided
 data that must be tracked across versions, the other elements should have IDs if they must be uniquely followed.
 
-- **criteria.tags**, **taskGroup.tags**, **task.tags**, **taskItem.tags**: The tags properties are string arrays which are used
+- **quality.tags**, **criteria.tags**, **taskGroup.tags**, **task.tags**, **taskItem.tags**: The tags properties are string arrays which are used
 during rendering. They can be coupled with the `calculatedData` or `providedData` properties to provide additional information,
 such as DGNB heart scores:
 
 ```json5
 {
   // Example from DGNB 2023 1.0.0
-  "criteria": [
+  "qualities": [
     {
-      "type": "criterion",
-      "id": "d531a082-0757-46ca-b940-cdd788455462",
-      "quality": "ECO",
-      "label": "ECO2.1",
-      "title": "Fleksibilitet og tilpasningsevne",
-      "tags": [
-        "♥"
-      ],
-      "calculatedData": {
-        "score": 10,
-        "heartScore": 2
-      }
+      "type": "quality",
+      "code": "ECO",
+      "items": [
+        {
+          "type": "criterion",
+          "id": "d531a082-0757-46ca-b940-cdd788455462",
+          "label": "ECO2.1",
+          "title": "Fleksibilitet og tilpasningsevne",
+          "tags": [
+            "♥"
+          ],
+          "calculatedData": {
+            "score": 10,
+            "heartScore": 2
+          }
+        }
+      ]
     }
   ]
 }
@@ -230,17 +242,21 @@ They can also lend serve a purely cosmetic purpose, such as the DGNB "planet" sc
 
 ```json5
 {
-  // Example from DGNB 2023 1.0.0
-  "criteria": [
+  "qualities": [
     {
-      "type": "criterion",
-      "id": "238aea1e-2ba5-4846-82dc-98f46863ecd1",
-      "quality": "ENV",
-      "label": "ENV2.4",
-      "title": "Biodiversitet",
-      "tags": [
-        "🌍"
-      ]
+      "type": "quality",
+      "code": "ECO",
+      "items": [
+        {
+          "type": "criterion",
+          "id": "238aea1e-2ba5-4846-82dc-98f46863ecd1",
+          "label": "ENV2.4",
+          "title": "Biodiversitet",
+          "tags": [
+            "🌍"
+          ]
+        }
+      ],
     }
   ]
 }

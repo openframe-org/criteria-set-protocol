@@ -9,11 +9,6 @@ export type QualityStyle = {
   secondaryColor: Color;
 };
 
-export type Quality = {
-  code: string;
-  style?: QualityStyle;
-}
-
 export type Metadata = {
   id: string;
   version: string;
@@ -21,7 +16,6 @@ export type Metadata = {
   name: string;
   description: string;
   documentation?: string;
-  qualities?: Quality[];
 };
 
 export type PdfDocumentationItem = {
@@ -61,8 +55,13 @@ type BaseElement<Type extends CriteriaTreeElementType> = {
   data: Record<string, any>;
 };
 
+export type Quality = Pick<BaseElement<'quality'>, 'type' | 'tags' | 'documentation' | 'data'> & {
+  title?: string;
+  style?: QualityStyle;
+}
+
 export type Criterion = BaseElement<'criterion'> & {
-  quality: string;
+  quality: Quality;
   items: TaskGroup[];
 };
 
@@ -116,4 +115,4 @@ export type TaskItemValue = TaskItemScalarValue | Array<TaskItemScalarValue>;
 export type TaskItemDefinition = SelectSingleType | SelectMultipleType | NumberType | BooleanType;
 
 export type CriteriaTreeElement = Criterion | TaskGroup | Task | TaskItem;
-export type CriteriaTreeElementType = 'criterion' | 'task-group' | 'task' | 'task-item';
+export type CriteriaTreeElementType = 'quality' | 'criterion' | 'task-group' | 'task' | 'task-item';

@@ -13,7 +13,7 @@ and working with criteria sets.
   - [result (optional)](schemas/README.md#result-optional)
   - [definitions (optional)](schemas/README.md#definitions-optional)
 - [Criteria tree schema](schemas/README.md#criteria-tree-schema)
-  - [criteria](schemas/README.md#criteria)
+  - [qualities](schemas/README.md#qualities)
   - [errors](schemas/README.md#errors)
   - [result](schemas/README.md#result)
 - [Validation](schemas/README.md#validation)

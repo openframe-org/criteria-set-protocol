@@ -3,14 +3,17 @@
   "$id": "https://criteria-set-protocol-schema.openframe.org/criteria-tree.json",
   "type": "object",
   "properties": {
-    "criteria": {
-      "$ref": "criteria-tree/criteria.json"
+    "qualities": {
+      "type": "array",
+      "items": {
+        "$ref": "criteria-tree/quality.json"
+      }
     },
     "errors": {
       "$ref": "criteria-tree/errors.json"
     },
     "result": {}
   },
-  "required": ["criteria"],
+  "required": ["qualities"],
   "additionalProperties": false
 }

@@ -240,8 +240,7 @@ class TestTypes(unittest.TestCase):
                 )
             ],
             tags=["tag1", "tag2"],
-            items=[],
-            quality="ECO"
+            items=[]
         )
 
         self.assertEqual(criterion.type, "criterion")
@@ -252,16 +251,44 @@ class TestTypes(unittest.TestCase):
         self.assertIsInstance(criterion.documentation[0], v1.PdfDocumentationItem)
         self.assertEqual(criterion.tags, ["tag1", "tag2"])
         self.assertEqual(len(criterion.items), 0)
-        self.assertEqual(criterion.quality, "ECO")
 
     def test_criterion_optional_values(self):
-        criterion = v1.Criterion(id='criterion_id', title='Criterion title', quality='ECO')
+        criterion = v1.Criterion(id='criterion_id', title='Criterion title')
         self.assertIsNone(criterion.label)
         self.assertIsNone(criterion.documentation)
         self.assertIsNone(criterion.tags)
         self.assertIsInstance(criterion.items, list)
         self.assertEqual(len(criterion.items), 0)
-        self.assertEqual(criterion.quality, 'ECO')
+
+    def test_quality(self):
+        quality = v1.Quality(
+            code="ECO",
+            title="Økologi",
+            documentation=[
+                v1.PdfDocumentationItem(
+                    label="PDF",
+                    text="PDF description",
+                    url="https://pdf.com"
+                )
+            ],
+            tags=["tag1", "tag2"],
+            items=[]
+        )
+
+        self.assertEqual(quality.type, "quality")
+        self.assertEqual(quality.code, "ECO")
+        self.assertEqual(quality.title, "Økologi")
+        self.assertEqual(len(quality.documentation), 1)
+        self.assertIsInstance(quality.documentation[0], v1.PdfDocumentationItem)
+        self.assertEqual(quality.tags, ["tag1", "tag2"])
+        self.assertEqual(len(quality.items), 0)
+
+    def test_quality_optional_values(self):
+        quality = v1.Quality(code='ECO', title='Økologi')
+        self.assertIsNone(quality.documentation)
+        self.assertIsNone(quality.tags)
+        self.assertIsInstance(quality.items, list)
+        self.assertEqual(len(quality.items), 0)
 
     def test_color(self):
         color = v1.RgbColor(red=255, green=0, blue=0)
@@ -282,23 +309,7 @@ class TestTypes(unittest.TestCase):
             date=datetime.now(),
             version='1.0.0',
             description='Criteria set description',
-            documentation='http://documentation.doc',
-            qualities=[
-                v1.Quality(
-                    code="ECO",
-                    style=v1.QualityStyle(
-                        primaryColor=v1.RgbColor(red=255, green=0, blue=0),
-                        secondaryColor=v1.RgbColor(red=0, green=255, blue=0)
-                    )
-                ),
-                v1.Quality(
-                    code="SOC",
-                    style=v1.QualityStyle(
-                        primaryColor='#00ff00',
-                        secondaryColor='#0000ff'
-                    )
-                )
-            ]
+            documentation='http://documentation.doc'
         )
 
         self.assertEqual(metadata.id, 'criteria_set_id_1')
@@ -307,13 +318,5 @@ class TestTypes(unittest.TestCase):
         self.assertEqual(metadata.version, '1.0.0')
         self.assertEqual(metadata.description, 'Criteria set description')
         self.assertEqual(metadata.documentation, 'http://documentation.doc')
-        self.assertEqual(len(metadata.qualities), 2)
-        self.assertIsInstance(metadata.qualities[0], v1.Quality)
-        self.assertEqual(metadata.qualities[0].code, 'ECO')
-        self.assertIsInstance(metadata.qualities[0].style, v1.QualityStyle)
-        self.assertIsInstance(metadata.qualities[0].style.primaryColor, v1.Color)
-        self.assertEqual(metadata.qualities[1].code, 'SOC')
-        self.assertIsInstance(metadata.qualities[1].style, v1.QualityStyle)
-        self.assertIsInstance(metadata.qualities[1].style.primaryColor, v1.Color)
 
 
