@@ -158,17 +158,6 @@ class Criterion:
     items: list[TaskGroup] = field(default_factory=list)
     data: Optional[dict[str, any]] = None
 
-@dataclass
-class Criterion:
-    type: CriteriaTreeElementType = field(init=False, default='criterion')
-    id: str
-    title: str
-    label: Optional[str] = None
-    tags: Optional[list] = None
-    documentation: Optional[list[DocumentationItem]] = None
-    items: list[TaskGroup] = field(default_factory=list)
-    data: Optional[dict[str, any]] = None
-
 
 @dataclass
 class Quality:
