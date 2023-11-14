@@ -52,7 +52,7 @@ type BaseElement<Type extends CriteriaTreeElementType> = {
   label?: string;
   tags?: string[];
   documentation?: DocumentationItem[];
-  data: Record<string, any>;
+  data?: Record<string, any>;
 };
 
 export type Quality = Pick<BaseElement<'quality'>, 'type' | 'tags' | 'documentation' | 'data'> & {
