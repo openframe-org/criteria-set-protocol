@@ -1,5 +1,5 @@
 import { Stream } from 'stream';
-import { CriteriaTree, CriteriaSetMetadata, TaskItemValue, Metadata } from './criteria';
+import { CriteriaTree, Metadata, TaskItemValue } from './criteria';
 
 // Express schemas
 export type MetadataResponse = Metadata;
@@ -22,6 +22,6 @@ export type StreamMatrixResponse = {
   stream: Stream;
 };
 
-export type CriteriaSetsAndVersionsMap = Record<string, CriteriaSetMetadata[]>;
+export type CriteriaSetsAndVersionsMap = Record<string, Metadata[]>;
 
 export type ParameterCombination = Record<string, any>;
