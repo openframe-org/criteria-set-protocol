@@ -28,19 +28,4 @@ export interface IProtocolV1Service {
    * Get the metadata of all criteria sets supported by this service
    */
   getCriteriaSetMetadataList(): Metadata[];
-
-  /**
-   * Get the JSON schema for the given criteria set ID
-   */
-  getParametersJsonSchema(criteriaSetId: string): Record<string, unknown>;
-
-  /**
-   * Get the JSON schema for the given criteria set ID
-   */
-  getResultsJsonSchema(criteriaSetId: string): Record<string, unknown>;
-
-  /**
-   * Get the JSON schema for the given criteria set ID
-   */
-  getAdditionalDefinitionsJsonSchema(criteriaSetId: string): Record<string, unknown>;
 }

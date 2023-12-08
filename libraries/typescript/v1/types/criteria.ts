@@ -14,9 +14,9 @@ export type Metadata = {
   metadata: CriteriaSetMetadata;
   locales?: string[];
   defaultLocale?: string;
-  parameters: Record<string, any>;
-  result: Record<string, any>;
-  definitions: Record<string, any>;
+  parameters?: Record<string, any>;
+  result?: Record<string, any>;
+  definitions?: Record<string, any>;
 }
 
 export type CriteriaSetMetadata = {
