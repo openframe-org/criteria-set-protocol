@@ -10,7 +10,7 @@ export type QualityStyle = {
 };
 
 export type Metadata = {
-  protocol: string;
+  protocol: number;
   metadata: CriteriaSetMetadata;
   locales?: string[];
   defaultLocale?: string;

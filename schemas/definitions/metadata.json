@@ -4,7 +4,9 @@
   "type": "object",
   "properties": {
     "protocol": {
-      "$ref": "metadata/protocol.json"
+      "type": "integer",
+      "multipleOf": 1,
+      "exclusiveMinimum": 1
     },
     "metadata": {
       "$ref": "metadata/metadata.json"
