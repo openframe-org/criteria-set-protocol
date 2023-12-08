@@ -2,9 +2,7 @@ import { Stream } from 'stream';
 import { CriteriaTree, CriteriaSetMetadata, TaskItemValue, Metadata } from './criteria';
 
 // Express schemas
-export type MetadataResponse<Parameters extends ParameterCombination = ParameterCombination> = Omit<Metadata, 'parameters'> & {
-  parameters: Parameters;
-};
+export type MetadataResponse = Metadata;
 
 export type CriteriaTreeResponse = CriteriaTree;
 
