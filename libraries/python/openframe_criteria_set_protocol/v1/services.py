@@ -44,7 +44,14 @@ class IProtocolV1Service(ABC):
     def get_criteria_set_metadata_list(self) -> list[Metadata]:
         pass
 
-    # Get the JSON schema for the given criteria set ID
     @abstractmethod
     def get_parameters_json_schema(self, criteria_set_id: str) -> dict[str, Any]:
+        pass
+
+    @abstractmethod
+    def get_results_json_schema(self, criteria_set_id: str) -> dict[str, Any]:
+        pass
+
+    @abstractmethod
+    def get_additional_definitions_json_schema(self, criteria_set_id: str) -> dict[str, Any]:
         pass

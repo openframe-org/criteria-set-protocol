@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "openframe-criteria-set-protocol"
-version = "0.0.29"
+version = "0.0.31"
 authors = [
     { name="Andrés Angulo", email="aa@openframe.org" },
 ]

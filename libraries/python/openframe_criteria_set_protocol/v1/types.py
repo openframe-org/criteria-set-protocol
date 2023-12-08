@@ -23,7 +23,7 @@ class QualityStyle:
 
 
 @dataclass
-class Metadata:
+class CriteriaSetMetadata:
     id: str
     version: str
     date: datetime.datetime
@@ -181,10 +181,17 @@ CriteriaTreeElement = typing.Union[Quality, Criterion, TaskGroup, Task, TaskItem
 
 
 @dataclass
-class MetadataResponse:
+class Metadata:
     protocol: int = field(init=False, default=1)
-    metadata: Metadata
-    parameters: dict[str, typing.Any]
+    metadata: CriteriaSetMetadata
+    locales: Optional[list[str]] = None
+    defaultLocale: Optional[str] = None
+    parameters: Optional[dict[str, typing.Any]] = None
+    result: Optional[dict[str, typing.Any]] = None
+    definition: Optional[dict[str, typing.Any]] = None
+
+
+MetadataResponse = Metadata
 
 
 @dataclass

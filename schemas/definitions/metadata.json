@@ -15,7 +15,9 @@
         "type": "string"
       }
     },
-    "defaultLocale": "",
+    "defaultLocale": {
+      "type": "string"
+    },
     "parameters": {},
     "result": {},
     "definitions": {}

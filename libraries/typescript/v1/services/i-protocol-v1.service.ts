@@ -1,4 +1,4 @@
-import { CriteriaTree, Metadata, StreamMatrixResponse, TaskItemValueMap } from '../types';
+import { CriteriaTree, StreamMatrixResponse, TaskItemValueMap, Metadata } from '../types';
 
 /**
  * Interface for services which implement the v1 protocol
@@ -33,4 +33,14 @@ export interface IProtocolV1Service {
    * Get the JSON schema for the given criteria set ID
    */
   getParametersJsonSchema(criteriaSetId: string): Record<string, unknown>;
+
+  /**
+   * Get the JSON schema for the given criteria set ID
+   */
+  getResultsJsonSchema(criteriaSetId: string): Record<string, unknown>;
+
+  /**
+   * Get the JSON schema for the given criteria set ID
+   */
+  getAdditionalDefinitionsJsonSchema(criteriaSetId: string): Record<string, unknown>;
 }
