@@ -24,7 +24,7 @@
     "items": {
       "type": "array",
       "items": {
-        "$ref": "task.json" }
+        "$ref": "task.json"
       }
     },
     "documentation": {
@@ -34,6 +34,9 @@
       "additionalProperties": {
         "type": "string"
       }
+    },
+    "sortOrder": {
+      "type": "number"
     }
   },
   "required": ["id", "type", "title", "items"],

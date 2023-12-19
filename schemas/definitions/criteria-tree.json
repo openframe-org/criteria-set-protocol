@@ -3,6 +3,9 @@
   "$id": "https://criteria-set-protocol-schema.openframe.org/criteria-tree.json",
   "type": "object",
   "properties": {
+    "version": {
+      "$ref": "../string.json#/semver"
+    },
     "qualities": {
       "type": "array",
       "items": {

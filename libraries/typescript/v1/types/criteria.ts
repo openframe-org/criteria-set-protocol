@@ -51,6 +51,7 @@ export type LinkDocumentationItem = {
 export type DocumentationItem = PdfDocumentationItem | InlineDocumentationItem | LinkDocumentationItem;
 
 export type CriteriaTree = {
+  version: string;
   qualities: Quality[];
   result?: any;
 };
@@ -63,9 +64,10 @@ type BaseElement<Type extends CriteriaTreeElementType> = {
   tags?: string[];
   documentation?: DocumentationItem[];
   data?: Record<string, any>;
+  sortOrder?: number;
 };
 
-export type Quality = Pick<BaseElement<'quality'>, 'type' | 'tags' | 'documentation' | 'data'> & {
+export type Quality = Pick<BaseElement<'quality'>, 'type' | 'tags' | 'documentation' | 'data' | 'sortOrder'> & {
   code: string;
   title?: string;
   style?: QualityStyle;

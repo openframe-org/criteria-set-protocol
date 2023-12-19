@@ -120,6 +120,7 @@ class TaskItem:
     annotation: Optional[str] = None
     providedData: Optional[dict[str, TaskItemValue]] = None
     data: Optional[dict[str, any]] = None
+    sortOrder: Optional[int] = None
 
 
 @dataclass
@@ -133,6 +134,7 @@ class Task:
     description: Optional[str] = None
     items: list[TaskItem] = field(default_factory=list)
     data: Optional[dict[str, any]] = None
+    sortOrder: Optional[int] = None
 
 
 @dataclass
@@ -145,6 +147,7 @@ class TaskGroup:
     documentation: Optional[list[DocumentationItem]] = None
     items: list[Task] = field(default_factory=list)
     data: Optional[dict[str, any]] = None
+    sortOrder: Optional[int] = None
 
 
 @dataclass
@@ -157,6 +160,7 @@ class Criterion:
     documentation: Optional[list[DocumentationItem]] = None
     items: list[TaskGroup] = field(default_factory=list)
     data: Optional[dict[str, any]] = None
+    sortOrder: Optional[int] = None
 
 
 @dataclass
@@ -169,10 +173,12 @@ class Quality:
     items: list[Criterion] = field(default_factory=list)
     data: Optional[dict[str, any]] = None
     style: Optional[QualityStyle] = None
+    sortOrder: Optional[int] = None
 
 
 @dataclass
 class CriteriaTree:
+    version: str
     qualities: list[Quality] = field(init=False, default_factory=list)
     result: any = None
 

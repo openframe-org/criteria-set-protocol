@@ -43,6 +43,9 @@
       "additionalProperties": {
         "type": "string"
       }
+    },
+    "sortOrder": {
+      "type": "number"
     }
   },
   "required": ["id", "type", "definition"],
