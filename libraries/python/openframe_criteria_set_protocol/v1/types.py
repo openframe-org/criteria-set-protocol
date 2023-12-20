@@ -128,6 +128,7 @@ class Task:
     type: CriteriaTreeElementType = field(init=False, default='task')
     id: str
     title: str
+    category: Optional[str] = None
     label: Optional[str] = None
     tags: Optional[list] = None
     documentation: Optional[list[DocumentationItem]] = None
