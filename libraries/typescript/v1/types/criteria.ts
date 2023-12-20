@@ -75,7 +75,6 @@ export type Quality = Pick<BaseElement<'quality'>, 'type' | 'tags' | 'documentat
 }
 
 export type Criterion = BaseElement<'criterion'> & {
-  quality: Quality;
   items: TaskGroup[];
 };
 
