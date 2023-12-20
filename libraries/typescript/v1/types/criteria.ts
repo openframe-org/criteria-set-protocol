@@ -79,7 +79,7 @@ export type Criterion = BaseElement<'criterion'> & {
 };
 
 export type TaskGroup = BaseElement<'task-group'> & {
-  category: string;
+  category?: string;
   items: Task[];
 };
 
