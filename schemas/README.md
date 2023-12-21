@@ -208,7 +208,7 @@ the different elements. These are used to track elements across versions. Only t
 data that must be tracked across versions, the other elements should have IDs if they must be uniquely followed.
 
 - **quality.tags**, **criteria.tags**, **taskGroup.tags**, **task.tags**, **taskItem.tags**: The tags properties are string arrays which are used
-during rendering. They can be coupled with the `calculatedData` or `providedData` properties to provide additional information,
+during rendering. They can be coupled with the `data` or `providedData` properties to provide additional information,
 such as DGNB heart scores:
 
 ```json5
@@ -227,7 +227,7 @@ such as DGNB heart scores:
           "tags": [
             "♥"
           ],
-          "calculatedData": {
+          "data": {
             "score": 10,
             "heartScore": 2
           }

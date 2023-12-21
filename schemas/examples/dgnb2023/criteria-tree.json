@@ -6,7 +6,7 @@
       "label": "PRO1.1",
       "text": "Kvalitet i forberedelsen af projektet",
       "quality": "PRO",
-      "calculatedData": {
+      "data": {
         "value": 40
       },
       "children": [

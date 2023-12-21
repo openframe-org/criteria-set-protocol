@@ -93,7 +93,6 @@ export type TaskItem<DefinitionType extends TaskItemDefinition = TaskItemDefinit
   annotation?: string;
   definition: DefinitionType;
   providedData?: Record<string, TaskItemValue>;
-  calculatedData?: Record<string, any>;
 };
 
 export type SelectSingleType = {
