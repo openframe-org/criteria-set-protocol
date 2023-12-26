@@ -7,7 +7,7 @@ ValidationErrorType = typing.Literal['data', 'parameter']
 
 
 @dataclass(frozen=True)
-class ValidationError(Exception):
+class _ValidationError(Exception):
     errorType: ValidationErrorType
     code: str
     path: Optional[str]
@@ -15,13 +15,10 @@ class ValidationError(Exception):
 
 
 @dataclass(frozen=True)
-class DataValidationError(ValidationError):
+class DataValidationError(_ValidationError):
     errorType: ValidationErrorType = field(init=False, default='data')
 
 
 @dataclass(frozen=True)
-class ParameterValidationError(ValidationError):
+class ParameterValidationError(_ValidationError):
     errorType: ValidationErrorType = field(init=False, default='parameter')
-
-
-__all__ = [ValidationErrorType, DataValidationError, ParameterValidationError]
