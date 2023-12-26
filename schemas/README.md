@@ -291,12 +291,13 @@ If there is no result schema in the metadata, the `result` property **must not**
 The result property is a property which is formatted according to the metadata schema definition.
 
 ## Validation
-There are two types of validation that can be performed on a task tree: **parameter validation** and **task validation**.
+There are two types of validation that can be performed on a task tree: **parameter validation** and **data validation**.
 Either of these result in the **errors** property being present in the response. The following is an example of an error:
 
 ```json5
 {
-  "id": "f8ad4dfe-4319-4823-862e-67ed58df3689", // The id of the element that has the error
+  "errorType": "data",
+  "path": "f8ad4dfe-4319-4823-862e-67ed58df3689", // The path of the element that has the error
   "code": "value-is-too-high", // A string error code which can be used to localize the error message
   "arguments": { // An optional object with arguments to be used when localizing the error message
     "value": 100,

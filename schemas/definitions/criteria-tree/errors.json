@@ -9,6 +9,10 @@
     "error": {
       "type": "object",
       "properties": {
+        "errorType": {
+          "type": "string",
+          "enum": ["data", "parameter"]
+        },
         "path": {
           "type": "string"
         },
@@ -18,7 +22,7 @@
         "arguments": {
           "type": "object"
         },
-        "required": ["path", "code"],
+        "required": ["errorType", "code"],
         "additionalProperties": false
       }
     }
