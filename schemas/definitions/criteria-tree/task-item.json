@@ -32,7 +32,19 @@
         { "$ref": "../data.json#/select-single" },
         { "$ref": "../data.json#/select-multiple" },
         { "$ref": "../data.json#/number" },
-        { "$ref": "../data.json#/boolean" }
+        { "$ref": "../data.json#/boolean" },
+        {
+          "type": "array",
+          "items": {
+              "oneOf": [
+              { "$ref": "../data.json#/select-single" },
+              { "$ref": "../data.json#/select-multiple" },
+              { "$ref": "../data.json#/number" },
+              { "$ref": "../data.json#/boolean" }
+              ]
+          },
+          "minItems": 1
+        }
       ]
     },
     "documentation": {

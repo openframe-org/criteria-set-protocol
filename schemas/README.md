@@ -211,8 +211,8 @@ data that must be tracked across versions, the other elements should have IDs if
 during rendering. They can be coupled with the `data` or `providedData` properties to provide additional information,
 such as DGNB heart scores:
 
-- **tasks.itemGroups**: If a task has items which are mutually exclusive, the ids of the task items must be placed in an itemGroups array in
-the task, that way the frontend may know how to render them appropriately.
+- **taskItems.definition**: A task item definition may be an array, in which case the task item definition can be one of a list of
+alternatives
 
 ```json5
 {

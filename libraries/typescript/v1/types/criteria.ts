@@ -86,36 +86,34 @@ export type TaskGroup = BaseElement<'task-group'> & {
 export type Task = BaseElement<'task'> & {
   description?: string;
   items: TaskItem[];
-  itemGroups?: string[];
 };
 
 export type TaskItem<DefinitionType extends TaskItemDefinition = TaskItemDefinition> = Omit<BaseElement<'task-item'>, 'title'> & {
-  description?: string;
   annotation?: string;
   definition: DefinitionType;
   providedData?: Record<string, TaskItemValue>;
 };
 
-export type SelectSingleType = {
-  type: 'select-single';
+export type AbstractDefinition<Type extends 'select-single' | 'select-multiple' | 'number' | 'boolean'> = {
+  type: Type;
+  description?: string;
+}
+
+export type SelectSingleType = AbstractDefinition<'select-single'> & {
   options: PointOption[];
 };
 
-export type SelectMultipleType = {
-  type: 'select-multiple';
+export type SelectMultipleType = AbstractDefinition<'select-multiple'> & {
   options: PointOption[];
 };
 
-export type NumberType = {
-  type: 'number';
+export type NumberType = AbstractDefinition<'number'> & {
   minimum?: number;
   maximum?: number;
   step?: number;
 };
 
-export type BooleanType = {
-  type: 'boolean';
-};
+export type BooleanType = AbstractDefinition<'boolean'>;
 
 export type PointOption = {
   id?: string;

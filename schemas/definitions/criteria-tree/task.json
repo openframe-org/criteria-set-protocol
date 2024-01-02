@@ -30,15 +30,6 @@
         "$ref": "task-item.json"
       }
     },
-    "itemGroups": {
-      "type": "array",
-      "items": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
-      }
-    },
     "documentation": {
       "$ref": "../documentation.json"
     },
