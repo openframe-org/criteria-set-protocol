@@ -123,5 +123,5 @@ export type TaskItemScalarValue = string | number | boolean | null;
 export type TaskItemValue = TaskItemScalarValue | Array<TaskItemScalarValue>;
 export type TaskItemDefinition = SelectSingleType | SelectMultipleType | NumberType | BooleanType;
 
-export type CriteriaTreeElement = Criterion | TaskGroup | Task | TaskItem;
+export type CriteriaTreeElement = Quality | Criterion | TaskGroup | Task | TaskItem;
 export type CriteriaTreeElementType = 'quality' | 'criterion' | 'task-group' | 'task' | 'task-item';
