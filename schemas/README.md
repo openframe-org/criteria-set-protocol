@@ -203,8 +203,6 @@ data that must be tracked across versions, the other elements should have IDs if
 during rendering. They can be coupled with the `data` or `providedData` properties to provide additional information,
 such as DGNB heart scores:
 
-- **task.itemGroups**: Task items can be split into alternative groups if this variable is present.
-
 ```json5
 {
   // Example from DGNB 2023 1.0.0

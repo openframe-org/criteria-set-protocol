@@ -85,7 +85,6 @@ export type TaskGroup = BaseElement<'task-group'> & {
 export type Task = BaseElement<'task'> & {
   description?: string;
   items: TaskItem[];
-  itemGroups?: string[][];
 };
 
 export type TaskItem = Omit<BaseElement<'task-item'>, 'title'> & {

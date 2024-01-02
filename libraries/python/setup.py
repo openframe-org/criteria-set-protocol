@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 setup(
     name='openframe_criteria_set_protocol',
     packages=find_packages(),
-    version='1.0.46',
+    version='1.0.47',
     description='A protocol and tools for defining and working with criteria sets',
     author='Andrés Angulo <aa@openframe.org>',
     install_requires=['marshmallow'],
