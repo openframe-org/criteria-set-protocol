@@ -169,8 +169,8 @@ and may also affect the final structure of the tree.
   }
 }
 ```
-### criteria
-The actual criteria which comprise the tree. The criteria list is a tree structured as follows:
+### qualities
+The top-level item which holds the criteria that comprise the tree. The criteria list is a tree structured as follows:
 
 - **qualities**: Qualities are the top-level items in the tree. A quality holds criteria and can have style information. It can have read-only data.
 - **criteria**: Criteria hold task groups. They can have read-only data.
@@ -210,6 +210,9 @@ data that must be tracked across versions, the other elements should have IDs if
 - **quality.tags**, **criteria.tags**, **taskGroup.tags**, **task.tags**, **taskItem.tags**: The tags properties are string arrays which are used
 during rendering. They can be coupled with the `data` or `providedData` properties to provide additional information,
 such as DGNB heart scores:
+
+- **tasks.itemGroups**: If a task has items which are mutually exclusive, the ids of the task items must be placed in an itemGroups array in
+the task, that way the frontend may know how to render them appropriately
 
 ```json5
 {

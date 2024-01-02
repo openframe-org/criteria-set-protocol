@@ -57,13 +57,8 @@ class LinkDocumentationItem(DocumentationItem):
 
 TaskItemScalarValue = typing.Union[str, float, bool, None]
 TaskItemValue = typing.Union[TaskItemScalarValue, list[TaskItemScalarValue]]
-
 DefinitionType = typing.Literal['select-single', 'select-multiple', 'number', 'boolean']
-
-
-@dataclass
-class TaskItemValueMap(dict[str, TaskItemValue]):
-    pass
+TaskItemValueMap = dict[str, TaskItemValue]
 
 
 @dataclass
@@ -134,6 +129,7 @@ class Task:
     documentation: Optional[list[DocumentationItem]] = None
     description: Optional[str] = None
     items: list[TaskItem] = field(default_factory=list)
+    itemGroups: Optional[list[str]] = None
     data: Optional[dict[str, any]] = None
     sortOrder: Optional[int] = None
 
