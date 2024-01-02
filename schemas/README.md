@@ -19,7 +19,6 @@ and the [criteria tree schema](#criteria-tree-schema). These schemas are describ
     - [locales (optional)](#locales-optional)
     - [parameters (optional)](#parameters-optional)
     - [result (optional)](#result-optional)
-    - [definitions (optional)](#definitions-optional)
   - [Criteria tree schema](#criteria-tree-schema)
     - [criteria](#criteria)
     - [errors](#errors)
@@ -51,9 +50,6 @@ It is an object with the following properties:
   },
   "result": {
     // optional result schema
-  },
-  "definitions": {
-    // optional additional definitions
   }
 }
 ```
@@ -143,10 +139,6 @@ would be:
 }
 ```
 
-### definitions (optional)
-A space to add additional JSON Schema definitions ([$defs](https://json-schema.org/understanding-json-schema/structuring.html#defs)) to be used
-in the parameters and result in order to reduce duplication and complexity.
-
 ## Criteria tree schema
 The criteria tree schema is specified in the [criteria-tree.json](definitions/criteria-tree.json) file. The service that requests the
 criteria tree must have prior information about the parameters available and required - if parameters are required, the tree is assembled based
@@ -211,8 +203,7 @@ data that must be tracked across versions, the other elements should have IDs if
 during rendering. They can be coupled with the `data` or `providedData` properties to provide additional information,
 such as DGNB heart scores:
 
-- **taskItems.definition**: A task item definition may be an array, in which case the task item definition can be one of a list of
-alternatives
+- **taskItems.definitions**: Task item definitions are arrays, as a task item definition can be one of a list of alternatives.
 
 ```json5
 {

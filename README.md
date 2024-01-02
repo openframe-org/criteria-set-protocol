@@ -11,7 +11,6 @@ and working with criteria sets.
   - [locales (optional)](schemas/README.md#locales-optional)
   - [parameters (optional)](schemas/README.md#parameters-optional)
   - [result (optional)](schemas/README.md#result-optional)
-  - [definitions (optional)](schemas/README.md#definitions-optional)
 - [Criteria tree schema](schemas/README.md#criteria-tree-schema)
   - [qualities](schemas/README.md#qualities)
   - [errors](schemas/README.md#errors)

@@ -7,6 +7,9 @@
       "type": {
         "const": "select-single"
       },
+      "description": {
+        "type": "string"
+      },
       "options": {
         "type": "array",
         "items": {
@@ -22,6 +25,9 @@
       "type": {
         "const": "select-multiple"
       },
+      "description": {
+        "type": "string"
+      },
       "options": {
         "type": "array",
         "items": {
@@ -36,6 +42,9 @@
     "properties": {
       "type": {
         "const": "number"
+      },
+      "description": {
+        "type": "string"
       },
       "minimum": {
         "type": "number"
@@ -55,6 +64,9 @@
     "properties": {
       "type": {
         "const": "boolean"
+      },
+      "description": {
+        "type": "string"
       }
     }
   },
@@ -78,10 +90,6 @@
             { "type": "boolean" },
             { "type": "null" }
           ]
-        },
-        "annotation": {
-          "$comment": "Optional per-item annotations/observations",
-          "type": "string"
         }
       },
       "additionalProperties": false,

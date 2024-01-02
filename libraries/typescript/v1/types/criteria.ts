@@ -16,7 +16,6 @@ export type Metadata = {
   defaultLocale?: string;
   parameters?: Record<string, any>;
   result?: Record<string, any>;
-  definitions?: Record<string, any>;
 }
 
 export type CriteriaSetMetadata = {
@@ -88,9 +87,8 @@ export type Task = BaseElement<'task'> & {
   items: TaskItem[];
 };
 
-export type TaskItem<DefinitionType extends TaskItemDefinition | TaskItemDefinition[] = TaskItemDefinition | TaskItemDefinition[]> = Omit<BaseElement<'task-item'>, 'title'> & {
-  annotation?: string;
-  definition: DefinitionType;
+export type TaskItem = Omit<BaseElement<'task-item'>, 'title'> & {
+  definitions: TaskItemDefinition[];
   providedData?: Record<string, TaskItemValue>;
 };
 
@@ -119,7 +117,6 @@ export type PointOption = {
   id?: string;
   label: string;
   value: string | number | boolean | null;
-  annotation?: string;
 };
 
 export type TaskItemScalarValue = string | number | boolean | null;

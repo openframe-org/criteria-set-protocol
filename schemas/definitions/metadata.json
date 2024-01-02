@@ -21,8 +21,7 @@
       "type": "string"
     },
     "parameters": {},
-    "result": {},
-    "definitions": {}
+    "result": {}
   },
   "required": ["protocol", "metadata"],
   "dependentRequired": {

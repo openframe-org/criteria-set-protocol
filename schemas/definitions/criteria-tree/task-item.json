@@ -12,12 +12,6 @@
     "text": {
       "type": "string"
     },
-    "description": {
-      "type": "string"
-    },
-    "annotation": {
-      "type": "string"
-    },
     "label": {
       "type": "string"
     },
@@ -28,24 +22,16 @@
       }
     },
     "definition": {
-      "oneOf": [
-        { "$ref": "../data.json#/select-single" },
-        { "$ref": "../data.json#/select-multiple" },
-        { "$ref": "../data.json#/number" },
-        { "$ref": "../data.json#/boolean" },
-        {
-          "type": "array",
-          "items": {
-              "oneOf": [
-              { "$ref": "../data.json#/select-single" },
-              { "$ref": "../data.json#/select-multiple" },
-              { "$ref": "../data.json#/number" },
-              { "$ref": "../data.json#/boolean" }
-              ]
-          },
-          "minItems": 1
-        }
-      ]
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "$ref": "../data.json#/select-single" },
+          { "$ref": "../data.json#/select-multiple" },
+          { "$ref": "../data.json#/number" },
+          { "$ref": "../data.json#/boolean" }
+        ]
+      },
+      "minItems": 1
     },
     "documentation": {
       "$ref": "../documentation.json"
