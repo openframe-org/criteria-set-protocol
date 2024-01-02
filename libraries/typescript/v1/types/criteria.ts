@@ -85,16 +85,17 @@ export type TaskGroup = BaseElement<'task-group'> & {
 export type Task = BaseElement<'task'> & {
   description?: string;
   items: TaskItem[];
+  itemGroups?: string[][];
 };
 
 export type TaskItem = Omit<BaseElement<'task-item'>, 'title'> & {
-  definitions: TaskItemDefinition[];
+  definition: TaskItemDefinition;
+  description?: string;
   providedData?: Record<string, TaskItemValue>;
 };
 
 export type AbstractDefinition<Type extends 'select-single' | 'select-multiple' | 'number' | 'boolean'> = {
   type: Type;
-  description?: string;
 }
 
 export type SelectSingleType = AbstractDefinition<'select-single'> & {

@@ -22,16 +22,12 @@
       }
     },
     "definition": {
-      "type": "array",
-      "items": {
-        "oneOf": [
-          { "$ref": "../data.json#/select-single" },
-          { "$ref": "../data.json#/select-multiple" },
-          { "$ref": "../data.json#/number" },
-          { "$ref": "../data.json#/boolean" }
-        ]
-      },
-      "minItems": 1
+      "oneOf": [
+        { "$ref": "../data.json#/select-single" },
+        { "$ref": "../data.json#/select-multiple" },
+        { "$ref": "../data.json#/number" },
+        { "$ref": "../data.json#/boolean" }
+      ]
     },
     "documentation": {
       "$ref": "../documentation.json"

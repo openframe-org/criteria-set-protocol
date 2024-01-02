@@ -137,8 +137,8 @@ class TestTypes(unittest.TestCase):
     def test_task_item(self):
         task_item = v1.TaskItem(
             id="task_item_id",
-            definitions=[v1.SelectSingleType(
-                description="Task item description",
+            description="Task item description",
+            definition=v1.SelectSingleType(
                 options=[
                     v1.PointOption(
                         label="Point",
@@ -151,7 +151,7 @@ class TestTypes(unittest.TestCase):
                         id="point_id_2"
                     )
                 ]
-            )],
+            ),
             label="Task item label",
             tags=["tag1", "tag2"],
             documentation=[
@@ -165,20 +165,18 @@ class TestTypes(unittest.TestCase):
 
         self.assertEqual(task_item.type, "task-item")
         self.assertEqual(task_item.id, "task_item_id")
-        self.assertIsInstance(task_item.definitions, list)
-        self.assertIsInstance(task_item.definitions[0], v1.SelectSingleType)
-        self.assertEqual(task_item.definitions[0].type, "select-single")
-        self.assertEqual(len(task_item.definitions[0].options), 2)
-        self.assertIsInstance(task_item.definitions[0].options[0], v1.PointOption)
-        self.assertIsInstance(task_item.definitions[0].options[0], v1.PointOption)
-        self.assertEqual(task_item.definitions[0].description, "Task item description")
+        self.assertIsInstance(task_item.definition, v1.SelectSingleType)
+        self.assertEqual(task_item.definition.type, "select-single")
+        self.assertEqual(len(task_item.definition.options), 2)
+        self.assertIsInstance(task_item.definition.options[0], v1.PointOption)
+        self.assertEqual(task_item.description, "Task item description")
         self.assertEqual(task_item.label, "Task item label")
         self.assertEqual(task_item.tags, ["tag1", "tag2"])
         self.assertEqual(len(task_item.documentation), 1)
         self.assertIsInstance(task_item.documentation[0], v1.PdfDocumentationItem)
 
     def test_task_item_optional_fields(self):
-        task_item = v1.TaskItem(id='task_item_id', definitions=[v1.BooleanType()])
+        task_item = v1.TaskItem(id='task_item_id', definition=v1.BooleanType())
         self.assertIsNone(task_item.label)
         self.assertIsNone(task_item.tags)
         self.assertIsNone(task_item.documentation)

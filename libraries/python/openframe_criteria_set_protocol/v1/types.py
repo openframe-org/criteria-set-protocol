@@ -77,14 +77,12 @@ class BaseTaskItemDefinition(ABC):
 class SelectSingleType(BaseTaskItemDefinition):
     type: DefinitionType = field(init=False, default='select-single')
     options: list[PointOption]
-    description: Optional[str] = None
 
 
 @dataclass
 class SelectMultipleType(BaseTaskItemDefinition):
     type: DefinitionType = field(init=False, default='select-multiple')
     options: list[PointOption]
-    description: Optional[str] = None
 
 
 @dataclass
@@ -93,13 +91,11 @@ class NumberType(BaseTaskItemDefinition):
     minimum: Optional[float] = None
     maximum: Optional[float] = None
     step: Optional[float] = None
-    description: Optional[str] = None
 
 
 @dataclass
 class BooleanType(BaseTaskItemDefinition):
     type: DefinitionType = field(init=False, default='boolean')
-    description: Optional[str] = None
 
 
 TaskItemDefinition = typing.Union[SelectSingleType, SelectMultipleType, NumberType, BooleanType]
@@ -110,11 +106,12 @@ CriteriaTreeElementType = typing.Literal['quality', 'criterion', 'task-group', '
 class TaskItem:
     type: CriteriaTreeElementType = field(init=False, default='task-item')
     id: str
-    definitions: list[TaskItemDefinition]
+    definition: TaskItemDefinition
     label: Optional[str] = None
     tags: Optional[list] = None
     documentation: Optional[list[DocumentationItem]] = None
     providedData: Optional[dict[str, TaskItemValue]] = None
+    description: Optional[str] = None
     data: Optional[dict[str, any]] = None
     sortOrder: Optional[int] = None
 
@@ -130,6 +127,7 @@ class Task:
     documentation: Optional[list[DocumentationItem]] = None
     description: Optional[str] = None
     items: list[TaskItem] = field(default_factory=list)
+    itemGroups: Optional[list[list[str]]] = None
     data: Optional[dict[str, any]] = None
     sortOrder: Optional[int] = None
 

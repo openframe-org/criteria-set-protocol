@@ -203,7 +203,7 @@ data that must be tracked across versions, the other elements should have IDs if
 during rendering. They can be coupled with the `data` or `providedData` properties to provide additional information,
 such as DGNB heart scores:
 
-- **taskItems.definitions**: Task item definitions are arrays, as a task item definition can be one of a list of alternatives.
+- **task.itemGroups**: Task items can be split into alternative groups if this variable is present.
 
 ```json5
 {
