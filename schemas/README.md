@@ -212,7 +212,7 @@ during rendering. They can be coupled with the `data` or `providedData` properti
 such as DGNB heart scores:
 
 - **tasks.itemGroups**: If a task has items which are mutually exclusive, the ids of the task items must be placed in an itemGroups array in
-the task, that way the frontend may know how to render them appropriately
+the task, that way the frontend may know how to render them appropriately.
 
 ```json5
 {

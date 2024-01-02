@@ -129,7 +129,7 @@ class Task:
     documentation: Optional[list[DocumentationItem]] = None
     description: Optional[str] = None
     items: list[TaskItem] = field(default_factory=list)
-    itemGroups: Optional[list[str]] = None
+    itemGroups: Optional[list[list[str]]] = None
     data: Optional[dict[str, any]] = None
     sortOrder: Optional[int] = None
 
