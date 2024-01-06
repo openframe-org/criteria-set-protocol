@@ -3,13 +3,36 @@
   "$id": "https://criteria-set-protocol-schema.openframe.org/metadata.json",
   "type": "object",
   "properties": {
-    "protocol": {
-      "type": "integer",
-      "multipleOf": 1,
-      "exclusiveMinimum": 1
+    "id": {
+      "$ref": "./string.json#/uuid"
     },
-    "metadata": {
-      "$ref": "metadata/metadata.json"
+    "version": {
+      "$ref": "./string.json#/semver"
+    },
+    "date": {
+      "$ref": "./string.json#/date-time"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "documentation": {
+      "type": "string"
+    },
+    "author": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "$ref": "./string.json#email"
+        }
+      },
+      "required": ["email"],
+      "additionalProperties": false
     },
     "locales": {
       "type": "array",
@@ -20,10 +43,15 @@
     "defaultLocale": {
       "type": "string"
     },
-    "parameters": {},
-    "result": {}
+    "schemas": {
+      "type": "object",
+      "properties": {
+        "parameters": {},
+        "result": {}
+      }
+    }
   },
-  "required": ["protocol", "metadata"],
+  "required": ["id", "version", "date", "name", "description"],
   "dependentRequired": {
     "locales": ["defaultLocale"]
   },

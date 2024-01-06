@@ -23,16 +23,6 @@ class QualityStyle:
 
 
 @dataclass
-class CriteriaSetMetadata:
-    id: str
-    version: str
-    date: datetime.datetime
-    name: str
-    description: str
-    documentation: str
-
-
-@dataclass
 class DocumentationItem(ABC):
     type: str
     label: str
@@ -180,15 +170,26 @@ class CriteriaTree:
 CriteriaTreeElement = typing.Union[Quality, Criterion, TaskGroup, Task, TaskItem]
 
 
+SchemaDefinition = dict[str, typing.Any]
+
+
+@dataclass
+class SchemaDefinitions:
+    parameters: Optional[SchemaDefinition] = None
+    result: Optional[SchemaDefinition] = None
+
+
 @dataclass
 class Metadata:
-    protocol: int = field(init=False, default=1)
-    metadata: CriteriaSetMetadata
+    id: str
+    version: str
+    date: datetime.datetime
+    name: str
+    description: str
+    documentation: str
     locales: Optional[list[str]] = None
     defaultLocale: Optional[str] = None
-    parameters: Optional[dict[str, typing.Any]] = None
-    result: Optional[dict[str, typing.Any]] = None
-    definition: Optional[dict[str, typing.Any]] = None
+    schemas: Optional[SchemaDefinitions] = None
 
 
 MetadataResponse = Metadata

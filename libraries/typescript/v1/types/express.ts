@@ -12,7 +12,7 @@ export type TaskItemValueMap = Record<string, TaskItemValue>;
 
 export type TreeAndMatrixRequestBody = {
   locale?: string;
-  parameters: ParameterCombination;
+  parameters?: ParameterCombination;
   values?: TaskItemValueMap;
 };
 
@@ -21,7 +21,5 @@ export type StreamMatrixResponse = {
   contentType: string;
   stream: Stream;
 };
-
-export type CriteriaSetsAndVersionsMap = Record<string, Metadata[]>;
 
 export type ParameterCombination = Record<string, any>;

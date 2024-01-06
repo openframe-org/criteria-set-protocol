@@ -10,22 +10,17 @@ export type QualityStyle = {
 };
 
 export type Metadata = {
-  protocol: number;
-  metadata: CriteriaSetMetadata;
-  locales?: string[];
-  defaultLocale?: string;
-  parameters?: Record<string, any>;
-  result?: Record<string, any>;
-}
-
-export type CriteriaSetMetadata = {
   id: string;
   version: string;
   date: Date;
   name: string;
   description: string;
   documentation?: string;
-};
+  locales?: string[];
+  defaultLocale?: string;
+  parameters?: Record<string, any>;
+  result?: Record<string, any>;
+}
 
 export type PdfDocumentationItem = {
   type: 'pdf';

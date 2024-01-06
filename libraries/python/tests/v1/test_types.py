@@ -293,7 +293,7 @@ class TestTypes(unittest.TestCase):
         self.assertEqual(color, '#ff0000')
 
     def test_metadata(self):
-        metadata = v1.CriteriaSetMetadata(
+        metadata = v1.Metadata(
             id='criteria_set_id_1',
             name='Criteria set name',
             date=datetime.now(),

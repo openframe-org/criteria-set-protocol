@@ -14,13 +14,10 @@ and the [criteria tree schema](#criteria-tree-schema). These schemas are describ
 ## Table of Contents
 - Definitions
   - [Metadata schema](#metadata-schema)
-    - [protocol](#protocol)
-    - [metadata](#metadata)
     - [locales (optional)](#locales-optional)
-    - [parameters (optional)](#parameters-optional)
-    - [result (optional)](#result-optional)
+    - [schemas (optional)](#schemas-optional)
   - [Criteria tree schema](#criteria-tree-schema)
-    - [criteria](#criteria)
+    - [qualities](#qualities)
     - [errors](#errors)
     - [result](#result)
   - [Validation](#validation)
@@ -37,44 +34,30 @@ It is an object with the following properties:
 ```json5
 // Metadata schema
 {
-  "protocol": 1, // protocol version
-  "metadata": {
-    // tree metadata
-  },
+  "id": "7.1", // The id of this criteria set
+  "version": "2.0.0", // The current SemVer-formatted version of this criteria set
+  "date": "2023-07-19T14:49:01.737Z", // The date this version was published
+  "name": "Taksonomiforordning 2020/852", // The name of the criteria set
+  "description": "7.1 Opførelse af nye bygninger", // The description of this criteria set
+  "documentation": "https://taksonomiportalen.dk/vejledning/opf%C3%B8relse-af-nye-bygninger-2020" // An optional URL with documentation
   "locales": [
     // available locales
   ],
   "defaultLocale": "en", // default locale must be in locales list
-  "parameters": {
-    // optional parameters
-  },
-  "result": {
-    // optional result schema
+  "schemas": { // optional schemas
+    "parameters": {
+      // optional parameters schema
+    },
+    "result": {
+      // optional result schema
+    }
   }
 }
 ```
 
-### protocol
-An integer representation of the version of the protocol this template was designed for.
+- **id**: The ID of the tree is a string which uniquely identifies the tree independently of the tree or protocol version.
 
-### metadata
-The tree metadata:
-
-```json5
-// Example tree metadata
-{
-  "id": "7.1", // The id of this Template
-  "version": "2.0.0", // The current SemVer-formatted version of this Template
-  "date": "2023-07-19T14:49:01.737Z", // The date this version was published
-  "name": "Taksonomiforordning 2020/852", // The name of the Template
-  "description": "7.1 Opførelse af nye bygninger", // The description of this Template
-  "documentation": "https://taksonomiportalen.dk/vejledning/opf%C3%B8relse-af-nye-bygninger-2020" // An optional URL with documentation
-}
-```
-
-- **metadata.id**: The ID of the tree is a string which uniquely identifies the tree independently of the tree or protocol version.
-
-- **metadata.version**: The individual version elements are meant to have a bearing on the tree definition:
+- **version**: The individual version elements are meant to have a bearing on the tree definition:
   * **Patch version**: Intended to track strictly cosmetic changes to the tree, such as tweaks to label strings, names or descriptions (not
   data values, as this is not strictly cosmetic).
   * **Minor version**: Intended to track changes to the tree which are backwards-compatible. Changes to the tree structure which for
@@ -82,17 +65,22 @@ The tree metadata:
   * **Major version**: Intended to track changes to the tree which are not backwards-compatible. Changes to the major version imply that
   older data will no longer validate against the new tree structure.
 
-- **metadata.date**: The date this template was published at, formatted as a [simplified ISO-8601 date string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString).
+- **date**: The date this criteria set was published at, formatted as a [simplified ISO-8601 date string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString).
 
-- **metadata.name, metadata.description**: The name and description of the tree, respectively.
+- **name, description**: The name and description of the tree, respectively.
 
-- **metadata.documentation** (optional): A link to the documentation for this tree.
+- **documentation** (optional): A link to the documentation for this tree.
 
 ### locales (optional)
 An array of strings, where each string represents an available locale to receive the data in. If the locales property is present,
 a `defaultLocale` **must** be provided.
 
-### parameters (optional)
+### schemas (optional)
+A criteria set may have schemas to represent the parameters it can receive, the result it can return, or both. These schemas are
+defined in the optional `schemas` object:
+
+
+#### schemas.parameters (optional)
 An object where each property is an individual JSON Schema definition for a specific available parameter.
 
 ```json5
@@ -125,9 +113,9 @@ An object where each property is an individual JSON Schema definition for a spec
 }
 ```
 
-### result (optional)
+#### schemas.result (optional)
 The result definition is an optional JSON Schema definition for any result that may be returned by the tree when validated data is provided.
-An example of this is the DGNB 2023 template - a final score is calculated based on the value of all the task items. In this case, the result definition
+An example of this is the DGNB 2023 criteria set - a final score is calculated based on the value of all the task items. In this case, the result definition
 would be:
 
 ```json5
@@ -157,7 +145,7 @@ and may also affect the final structure of the tree.
     // optional errors
   ],
   "result": {
-    // optional result formatted according to the metadata result definition
+    // optional result formatted according to the metadata result schema definition
   }
 }
 ```

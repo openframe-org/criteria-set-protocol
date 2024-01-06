@@ -1,1 +1,2 @@
-export * from './i-protocol-v1.service';
+export * from './i-criteria-set.service';
+export * from './manager.service';

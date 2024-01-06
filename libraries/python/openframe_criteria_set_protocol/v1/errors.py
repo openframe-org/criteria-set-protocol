@@ -22,3 +22,12 @@ class DataValidationError(ValidationError):
 @dataclass(frozen=True)
 class ParameterValidationError(ValidationError):
     errorType: ValidationErrorType = field(init=False, default='parameter')
+
+
+# Helper errors
+class CriteriaSetIdNotFoundError(Exception):
+    pass
+
+
+class CriteriaSetVersionNotFoundError(Exception):
+    pass

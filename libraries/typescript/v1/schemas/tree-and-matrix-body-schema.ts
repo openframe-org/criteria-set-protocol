@@ -5,8 +5,8 @@ import * as yup from 'yup';
  */
 export const treeAndMatrixBodySchema = yup.object({
   body: yup.object({
-    locale: yup.string(),
-    parameters: yup.object(),
-    values: yup.object()
-  })
+    locale: yup.string().optional(),
+    parameters: yup.object().optional(),
+    values: yup.object().optional()
+  }).optional()
 });

@@ -27,6 +27,7 @@ The library contains the types defined in the protocol v1 specification, and a s
 | `Color`                       |                                                     |
 | **Task tree types**           |                                                     |
 | `CriteriaTree`                |                                                     |
+| `Quality`                           |                                                     |
 | `Criterion`                   |                                                     |
 | `TaskGroup`                   |                                                     |
 | `Task`                        |                                                     |
@@ -41,7 +42,7 @@ The library contains the types defined in the protocol v1 specification, and a s
 | `TaskItemScalarValue`         | The raw value of a TaskItem                         |
 | **Express types**             |                                                     |
 | `MetadataResponse`            | Metadata endpoint response body                     |
-| `StreamCriteriaSetMatrixBody` | Request body for the matrix streaming endpoints     |
+| `TreeAndMatrixRequestBody` | Request body for the matrix streaming endpoints     |
 | `StreamMatrixResponse`        | Matrix streaming endpoints response body            |
 
 ##### Schemas
