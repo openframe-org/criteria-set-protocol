@@ -9,6 +9,13 @@ export type QualityStyle = {
   secondaryColor: Color;
 };
 
+export type SchemaDefinition = Record<string, any>;
+
+export type SchemaDefinitions = {
+  parameters?: SchemaDefinition;
+  result?: SchemaDefinition;
+};
+
 export type Metadata = {
   id: string;
   version: string;
@@ -18,8 +25,7 @@ export type Metadata = {
   documentation?: string;
   locales?: string[];
   defaultLocale?: string;
-  parameters?: Record<string, any>;
-  result?: Record<string, any>;
+  schemas?: SchemaDefinitions;
 }
 
 export type PdfDocumentationItem = {
