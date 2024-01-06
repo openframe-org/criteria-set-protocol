@@ -204,4 +204,4 @@ class CriteriaTreeResponse(CriteriaTree):
 class StreamMatrixResponse:
     filename: str
     content_type: str
-    stream: StreamReader
+    path: str

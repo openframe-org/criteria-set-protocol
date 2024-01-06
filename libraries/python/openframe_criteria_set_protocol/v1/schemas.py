@@ -8,4 +8,3 @@ class TreeAndMatrixBodySchema(Schema):
     locale = fields.Str(required=False)
     values = fields.Dict(required=False, default=dict())
     parameters = fields.Dict(required=False, default=dict())
-
