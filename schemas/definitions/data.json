@@ -74,7 +74,6 @@
     "point-option": {
       "type": "object",
       "properties": {
-        "$comment": "The ID is required, as point options can have the same label but different values or vice versa",
         "id": {
           "$comment": "This ID is for the internal use of the service and is meant to represent uniqueness for different options with the same value, if not provided, the value will be used as the ID",
           "type": "string"
@@ -90,6 +89,12 @@
             { "type": "boolean" },
             { "type": "null" }
           ]
+        },
+        "annotations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
       "additionalProperties": false,

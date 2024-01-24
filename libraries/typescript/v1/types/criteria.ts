@@ -118,6 +118,7 @@ export type PointOption = {
   id?: string;
   label: string;
   value: string | number | boolean | null;
+  annotations?: string[];
 };
 
 export type TaskItemScalarValue = string | number | boolean | null;
