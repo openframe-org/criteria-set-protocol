@@ -8,9 +8,7 @@ from .errors import CriteriaSetIdNotFoundError, CriteriaSetVersionNotFoundError
 ParametersType = TypeVar("ParametersType", bound=dict)
 
 
-"""
-A class representing a specific version of a specific criteria set
-"""
+# A class representing a specific version of a specific criteria set
 class ICriteriaSetService(ABC, Generic[ParametersType]):
     # ID of the criteria set
     id: str
@@ -77,4 +75,3 @@ class ManagerService:
             if service.version == version:
                 return service
         raise CriteriaSetVersionNotFoundError()
-

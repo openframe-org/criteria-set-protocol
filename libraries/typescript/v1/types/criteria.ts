@@ -116,7 +116,8 @@ export type BooleanType = AbstractDefinition<'boolean'>;
 
 export type PointOption = {
   id?: string;
-  label: string;
+  label?: string;
+  text: string;
   value: string | number | boolean | null;
   annotations?: string[];
 };

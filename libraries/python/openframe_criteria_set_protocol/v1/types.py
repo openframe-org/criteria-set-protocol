@@ -53,8 +53,9 @@ TaskItemValueMap = dict[str, TaskItemValue]
 
 @dataclass
 class PointOption:
-    label: str
     value: TaskItemScalarValue
+    text: str
+    label: str
     id: Optional[str] = None
     annotations: Optional[list[str]] = None
 

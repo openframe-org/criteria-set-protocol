@@ -79,10 +79,14 @@
           "type": "string"
         },
         "label": {
+          "$comment": "The label is the unhashed ID",
+          "type": "string"
+        },
+        "text": {
           "type": "string"
         },
         "value": {
-          "$comment": "This value does not need to be unique, uniqueness is provided by the ID",
+          "$comment": "This value does not need to be unique, uniqueness is provided by the ID and/or label",
           "oneOf": [
             { "type": "string" },
             { "type": "number" },
@@ -98,7 +102,7 @@
         }
       },
       "additionalProperties": false,
-      "required": ["label", "value"]
+      "required": ["text", "label", "value"]
     }
   }
 }
