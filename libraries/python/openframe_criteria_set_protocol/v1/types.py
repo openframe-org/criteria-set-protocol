@@ -193,8 +193,14 @@ class Metadata:
     schemas: Optional[SchemaDefinitions] = None
 
 
+@dataclass
+class DataMap:
+    elements: dict[str, any]
+    result: any = None
+
+
 MetadataResponse = Metadata
-DataResponse = dict[str, dict[str, any]]
+DataMapResponse = DataMap
 
 
 @dataclass

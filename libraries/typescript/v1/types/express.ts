@@ -1,12 +1,12 @@
 import { Stream } from 'stream';
-import { CriteriaTree, Metadata, TaskItemValue } from './criteria';
+import { CriteriaTree, DataMap, Metadata, TaskItemValue } from './criteria';
 
 // Express schemas
 export type MetadataResponse = Metadata;
 
 export type CriteriaTreeResponse = CriteriaTree;
 
-export type DataResponse = Record<string, Record<string, any>>;
+export type DataMapResponse = DataMap;
 
 export type StringParam<ParamName extends string> = Record<ParamName, string>;
 

@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from typing import Optional, Generic
 from typing import TypeVar
 
-from .types import CriteriaTree, Metadata, TaskItemValueMap, StreamMatrixResponse
+from .types import CriteriaTree, Metadata, TaskItemValueMap, StreamMatrixResponse, DataMap
 from .errors import CriteriaSetIdNotFoundError, CriteriaSetVersionNotFoundError
 
 ParametersType = TypeVar("ParametersType", bound=dict)
@@ -29,12 +29,12 @@ class ICriteriaSetService(ABC, Generic[ParametersType]):
 
     # Get the metadata for this criteria set version
     @abstractmethod
-    def get_data(
+    def get_data_map(
             self,
             parameters: Optional[ParametersType] = None,
             values: Optional[TaskItemValueMap] = None,
             locale: Optional[str] = None
-    ) -> dict[str, dict[str, typing.Any]]:
+    ) -> DataMap:
         pass
 
     # Get the criteria tree for the given parameters

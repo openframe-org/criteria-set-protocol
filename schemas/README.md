@@ -272,8 +272,9 @@ The result property is a property which is formatted according to the metadata s
 
 ## Data
 Requests can be made for the data exclusively, as when the metadata and tree structure is already known, there is no need
-to retrieve the metadata and tree structure again. The data schema is a simple object where the keys are the IDs of the
-elements in the tree, and the values are the data for the elements.
+to retrieve the metadata and tree structure again. The data schema is a simple object containing one required and one optional property:
+- *elements* is a map of element IDs to their data
+- *result?* is the global result, as defined by the [result schema](#schemasresult-optional)
 
 ## Validation
 There are two types of validation that can be performed on a task tree: **parameter validation** and **data validation**.

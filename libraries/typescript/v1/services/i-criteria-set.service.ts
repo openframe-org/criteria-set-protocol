@@ -1,4 +1,4 @@
-import { CriteriaTree, Metadata, StreamMatrixResponse, TaskItemValueMap } from '../types';
+import { CriteriaTree, Metadata, DataMap, StreamMatrixResponse, TaskItemValueMap } from '../types';
 
 export interface ICriteriaSetService<ParametersType extends Record<string, any> = Record<string, any>> {
   id: string;
@@ -8,11 +8,11 @@ export interface ICriteriaSetService<ParametersType extends Record<string, any> 
 
   getMetadata(): Metadata;
 
-  getData(
+  getDataMap(
     parameters?: ParametersType,
     values?: TaskItemValueMap | null,
     locale?: string | null
-  ): Record<string, Record<string, any>>;
+  ): DataMap;
 
   getCriteriaTree(
     parameters?: ParametersType,

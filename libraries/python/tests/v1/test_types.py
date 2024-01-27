@@ -48,12 +48,12 @@ class TestTypes(unittest.TestCase):
 
     def test_point_option(self):
         point_option = v1.PointOption(
-            label="Point",
+            text="Point",
             value=1.0,
             id="point_id"
         )
 
-        self.assertEqual(point_option.label, "Point")
+        self.assertEqual(point_option.text, "Point")
         self.assertEqual(point_option.value, 1.0)
         self.assertEqual(point_option.id, "point_id")
 
@@ -61,12 +61,12 @@ class TestTypes(unittest.TestCase):
         select_single_type = v1.SelectSingleType(
             options=[
                 v1.PointOption(
-                    label="Point",
+                    text="Point",
                     value=1.0,
                     id="point_id"
                 ),
                 v1.PointOption(
-                    label="Point 2",
+                    text="Point 2",
                     value=2.0,
                     id="point_id_2"
                 )
@@ -76,11 +76,11 @@ class TestTypes(unittest.TestCase):
         self.assertEqual(select_single_type.type, "select-single")
         self.assertEqual(len(select_single_type.options), 2)
         self.assertIsInstance(select_single_type.options[0], v1.PointOption)
-        self.assertEqual(select_single_type.options[0].label, "Point")
+        self.assertEqual(select_single_type.options[0].text, "Point")
         self.assertEqual(select_single_type.options[0].value, 1.0)
         self.assertEqual(select_single_type.options[0].id, "point_id")
         self.assertIsInstance(select_single_type.options[1], v1.PointOption)
-        self.assertEqual(select_single_type.options[1].label, "Point 2")
+        self.assertEqual(select_single_type.options[1].text, "Point 2")
         self.assertEqual(select_single_type.options[1].value, 2.0)
         self.assertEqual(select_single_type.options[1].id, "point_id_2")
 
@@ -88,12 +88,12 @@ class TestTypes(unittest.TestCase):
         select_multiple_type = v1.SelectMultipleType(
             options=[
                 v1.PointOption(
-                    label="Point",
+                    text="Point",
                     value=1.0,
                     id="point_id"
                 ),
                 v1.PointOption(
-                    label="Point 2",
+                    text="Point 2",
                     value=2.0,
                     id="point_id_2"
                 )
@@ -103,11 +103,11 @@ class TestTypes(unittest.TestCase):
         self.assertEqual(select_multiple_type.type, "select-multiple")
         self.assertEqual(len(select_multiple_type.options), 2)
         self.assertIsInstance(select_multiple_type.options[0], v1.PointOption)
-        self.assertEqual(select_multiple_type.options[0].label, "Point")
+        self.assertEqual(select_multiple_type.options[0].text, "Point")
         self.assertEqual(select_multiple_type.options[0].value, 1.0)
         self.assertEqual(select_multiple_type.options[0].id, "point_id")
         self.assertIsInstance(select_multiple_type.options[1], v1.PointOption)
-        self.assertEqual(select_multiple_type.options[1].label, "Point 2")
+        self.assertEqual(select_multiple_type.options[1].text, "Point 2")
         self.assertEqual(select_multiple_type.options[1].value, 2.0)
         self.assertEqual(select_multiple_type.options[1].id, "point_id_2")
 
@@ -141,12 +141,12 @@ class TestTypes(unittest.TestCase):
             definition=v1.SelectSingleType(
                 options=[
                     v1.PointOption(
-                        label="Point",
+                        text="Point",
                         value=1.0,
                         id="point_id"
                     ),
                     v1.PointOption(
-                        label="Point 2",
+                        text="Point 2",
                         value=2.0,
                         id="point_id_2"
                     )
@@ -308,5 +308,3 @@ class TestTypes(unittest.TestCase):
         self.assertEqual(metadata.version, '1.0.0')
         self.assertEqual(metadata.description, 'Criteria set description')
         self.assertEqual(metadata.documentation, 'http://documentation.doc')
-
-

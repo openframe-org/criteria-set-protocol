@@ -127,3 +127,8 @@ export type TaskItemDefinition = SelectSingleType | SelectMultipleType | NumberT
 
 export type CriteriaTreeElement = Quality | Criterion | TaskGroup | Task | TaskItem;
 export type CriteriaTreeElementType = 'quality' | 'criterion' | 'task-group' | 'task' | 'task-item';
+
+export type DataMap = {
+  elements: Record<string, any>;
+  result: any;
+}

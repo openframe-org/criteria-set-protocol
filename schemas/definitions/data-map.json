@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://criteria-set-protocol-schema.openframe.org/data-map.json",
+  "type": "object",
+  "properties": {
+    "elements": {
+      "type": "object",
+      "additionalProperties": {}
+    },
+    "errors": {
+      "$ref": "criteria-tree/errors.json"
+    },
+    "result": {}
+  },
+  "required": ["elements"],
+  "additionalProperties": false
+}

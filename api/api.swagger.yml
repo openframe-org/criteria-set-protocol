@@ -221,9 +221,9 @@ paths:
           type: string
           pattern: '^[a-zA-Z0-9.-_]+$'
     post:
-      summary: Get a map of element IDs to their data for the latest version
-      description: Get a map of element IDs to their data for the latest version of the criteria set with the given ID
-      operationId: getElementDataForLatestVersion
+      summary: Get global results and a map of element IDs to their data for the latest version
+      description: Get global results and a map of element IDs to their data for the latest version of the criteria set with the given ID
+      operationId: getDataMapForLatestVersion
       requestBody:
         description: Parameters and task values
         content:
@@ -237,7 +237,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DataResponse'
+                $ref: '#/components/schemas/DataMapResponse'
         '404':
           description: Criteria set not found, or the latest version of the set does not satisfy the protocol version
         '422':
@@ -265,9 +265,9 @@ paths:
         schema:
           type: string
     post:
-      summary: Get a map of element IDs to their data for the requested version
-      description: Get a map of element IDs to their data for the requested version of the criteria set with the given ID
-      operationId: getCriteriaTreeForVersion
+      summary: Get global results and a map of element IDs to their data for the requested version
+      description: Get global results and a map of element IDs to their data for the requested version of the criteria set with the given ID
+      operationId: getDataMapForVersion
       requestBody:
         description: Parameters and task values
         content:
@@ -281,7 +281,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DataResponse'
+                $ref: '#/components/schemas/DataMapResponse'
         '404':
           description: Criteria set not found, or the latest version of the set does not satisfy the protocol version
         '422':
@@ -388,9 +388,5 @@ components:
           type: object
     CriteriaTreeResponse:
       $ref: 'https://criteria-set-protocol-schema.openframe.org/criteria-tree.json#/'
-    DataResponse:
-      type: object
-      additionalProperties:
-        type: object
-        additionalProperties:
-          type: string
+    DataMapResponse:
+      $ref: 'https://criteria-set-protocol-schema.openframe.org/data-map.json#/'
