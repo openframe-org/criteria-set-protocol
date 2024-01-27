@@ -78,10 +78,6 @@
           "$comment": "This ID is for the internal use of the service and is meant to represent uniqueness for different options with the same value, if not provided, the value will be used as the ID",
           "type": "string"
         },
-        "label": {
-          "$comment": "The label is the unhashed ID",
-          "type": "string"
-        },
         "text": {
           "type": "string"
         },
@@ -102,7 +98,7 @@
         }
       },
       "additionalProperties": false,
-      "required": ["text", "label", "value"]
+      "required": ["text", "value"]
     }
   }
 }
