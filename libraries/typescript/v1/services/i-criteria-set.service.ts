@@ -8,6 +8,12 @@ export interface ICriteriaSetService<ParametersType extends Record<string, any> 
 
   getMetadata(): Metadata;
 
+  getData(
+    parameters?: ParametersType,
+    values?: TaskItemValueMap | null,
+    locale?: string | null
+  ): Record<string, Record<string, any>>;
+
   getCriteriaTree(
     parameters?: ParametersType,
     values?: TaskItemValueMap | null,

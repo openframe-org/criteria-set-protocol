@@ -270,6 +270,11 @@ If there is no result schema in the metadata, the `result` property **must not**
 
 The result property is a property which is formatted according to the metadata schema definition.
 
+## Data
+Requests can be made for the data exclusively, as when the metadata and tree structure is already known, there is no need
+to retrieve the metadata and tree structure again. The data schema is a simple object where the keys are the IDs of the
+elements in the tree, and the values are the data for the elements.
+
 ## Validation
 There are two types of validation that can be performed on a task tree: **parameter validation** and **data validation**.
 Either of these result in the **errors** property being present in the response. The following is an example of an error:

@@ -15,6 +15,7 @@ and working with criteria sets.
   - [qualities](schemas/README.md#qualities)
   - [errors](schemas/README.md#errors)
   - [result](schemas/README.md#result)
+- [Data schema](schemas/README.md#data-schema)
 - [Validation](schemas/README.md#validation)
   - [parameter validation](schemas/README.md#parameter-validation)
   - [criteria validation](schemas/README.md#criteria-validation)

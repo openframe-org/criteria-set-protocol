@@ -31,15 +31,17 @@ Each of these properties may be excluded if they are empty or not needed. If no 
 
 Here is a list of the available endpoints:
 
-| Method | Endpoint                                        | Description                                                                                                             |
-|--------|-------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| `GET`  | `/{protocol}/versions`                          | Returns a map of available criteria set IDs where the values are arrays of metadata representing the available versions |
-| `GET`  | `/{protocol}/{criteriaSetId}/versions`          | Returns a list of metadata representing the available versions for the criteria set with the given ID                   |
-| `GET`  | `/{protocol}/{criteriaSetId}`                   | Returns the latest version of the metadata for the criteria set with the given ID                                       |
-| `GET`  | `/{protocol}/{criteriaSetId}/{version}`         | Returns a specific version of the metadata for the criteria set with the given ID                                       |
-| `POST` | `/{protocol}/{criteriaSetId}/tree`              | Returns the latest version of the criteria tree for the criteria set with the given ID                                  |
-| `POST` | `/{protocol}/{criteriaSetId}/tree/{version}`    | Returns the specific version of the criteria tree for the criteria set with the given ID                                |
-| `POST` | `/{protocol}/{criteriaSetId}/matrix`            | Streams the latest version of the criteria tree matrix for the criteria set with the given ID                           |
-| `POST` | `/{protocol}/{criteriaSetId}/matrix/{version}`  | Streams the specific version of the criteria tree matrix for the criteria set with the given ID                         |
+| Method | Endpoint                                       | Description                                                                                                             |
+|--------|------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| `GET`  | `/{protocol}/versions`                         | Returns a map of available criteria set IDs where the values are arrays of metadata representing the available versions |
+| `GET`  | `/{protocol}/{criteriaSetId}/versions`         | Returns a list of metadata representing the available versions for the criteria set with the given ID                   |
+| `GET`  | `/{protocol}/{criteriaSetId}`                  | Returns the latest version of the metadata for the criteria set with the given ID                                       |
+| `GET`  | `/{protocol}/{criteriaSetId}/{version}`        | Returns a specific version of the metadata for the criteria set with the given ID                                       |
+| `POST` | `/{protocol}/{criteriaSetId}/tree`             | Returns the latest version of the criteria tree for the criteria set with the given ID                                  |
+| `POST` | `/{protocol}/{criteriaSetId}/tree/{version}`   | Returns the specific version of the criteria tree for the criteria set with the given ID                                |
+| `POST` | `/{protocol}/{criteriaSetId}/data`             | Returns per-element data for the criteria set with the given ID                                                         |
+| `POST` | `/{protocol}/{criteriaSetId}/data/{version}`   | Returns per-element data for the specific version of the criteria tree with the given ID                                |
+| `POST` | `/{protocol}/{criteriaSetId}/matrix`           | Streams the latest version of the criteria tree matrix for the criteria set with the given ID                           |
+| `POST` | `/{protocol}/{criteriaSetId}/matrix/{version}` | Streams the specific version of the criteria tree matrix for the criteria set with the given ID                         |
 
 The `{protocol}` parameter is the version of the protocol to use. The `{criteriaSetId}` parameter is the ID of the criteria set to retrieve.

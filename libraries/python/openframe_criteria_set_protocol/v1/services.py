@@ -1,3 +1,4 @@
+import typing
 from abc import ABC, abstractmethod
 from typing import Optional, Generic
 from typing import TypeVar
@@ -24,6 +25,16 @@ class ICriteriaSetService(ABC, Generic[ParametersType]):
     # Get the metadata for this criteria set version
     @abstractmethod
     def get_metadata(self) -> Metadata:
+        pass
+
+    # Get the metadata for this criteria set version
+    @abstractmethod
+    def get_data(
+            self,
+            parameters: Optional[ParametersType] = None,
+            values: Optional[TaskItemValueMap] = None,
+            locale: Optional[str] = None
+    ) -> dict[str, dict[str, typing.Any]]:
         pass
 
     # Get the criteria tree for the given parameters

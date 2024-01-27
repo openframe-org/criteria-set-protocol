@@ -204,6 +204,88 @@ paths:
           description: Criteria set not found, or the latest version of the set does not satisfy the protocol version
         '422':
           description: Parameter validation errors
+  /{protocol}/{criteriaSetId}/data:
+    parameters:
+      - name: protocol
+        in: path
+        description: The version of the Criteria Set Protocol to use
+        required: true
+        schema:
+          type: integer
+          format: int
+      - name: criteriaSetId
+        in: path
+        description: The ID of the criteria set to retrieve
+        required: true
+        schema:
+          type: string
+          pattern: '^[a-zA-Z0-9.-_]+$'
+    post:
+      summary: Get a map of element IDs to their data for the latest version
+      description: Get a map of element IDs to their data for the latest version of the criteria set with the given ID
+      operationId: getElementDataForLatestVersion
+      requestBody:
+        description: Parameters and task values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CriteriaTreeOrMatrixRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponse'
+        '404':
+          description: Criteria set not found, or the latest version of the set does not satisfy the protocol version
+        '422':
+          description: Parameter validation errors
+  /{protocol}/{criteriaSetId}/data/{version}:
+    parameters:
+      - name: protocol
+        in: path
+        description: The version of the Criteria Set Protocol to use
+        required: true
+        schema:
+          type: integer
+          format: int
+      - name: criteriaSetId
+        in: path
+        description: The ID of the criteria set to retrieve
+        required: true
+        schema:
+          type: string
+          pattern: '^[a-zA-Z0-9.-_]+$'
+      - name: version
+        in: path
+        description: The SemVer-formatted version of the criteria tree to retrieve
+        required: true
+        schema:
+          type: string
+    post:
+      summary: Get a map of element IDs to their data for the requested version
+      description: Get a map of element IDs to their data for the requested version of the criteria set with the given ID
+      operationId: getCriteriaTreeForVersion
+      requestBody:
+        description: Parameters and task values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CriteriaTreeOrMatrixRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponse'
+        '404':
+          description: Criteria set not found, or the latest version of the set does not satisfy the protocol version
+        '422':
+          description: Parameter validation errors
   /{protocol}/{criteriaSetId}/matrix:
     parameters:
       - name: protocol
@@ -306,3 +388,9 @@ components:
           type: object
     CriteriaTreeResponse:
       $ref: 'https://criteria-set-protocol-schema.openframe.org/criteria-tree.json#/'
+    DataResponse:
+      type: object
+      additionalProperties:
+        type: object
+        additionalProperties:
+          type: string
