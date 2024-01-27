@@ -194,6 +194,7 @@ class Metadata:
 
 
 MetadataResponse = Metadata
+DataResponse = dict[str, dict[str, any]]
 
 
 @dataclass

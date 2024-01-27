@@ -6,6 +6,8 @@ export type MetadataResponse = Metadata;
 
 export type CriteriaTreeResponse = CriteriaTree;
 
+export type DataResponse = Record<string, Record<string, any>>;
+
 export type StringParam<ParamName extends string> = Record<ParamName, string>;
 
 export type TaskItemValueMap = Record<string, TaskItemValue>;
