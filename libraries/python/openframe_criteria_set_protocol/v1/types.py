@@ -195,6 +195,7 @@ class Metadata:
 
 @dataclass
 class DataMap:
+    version: str
     elements: dict[str, any]
     result: any = None
 

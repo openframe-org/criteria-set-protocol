@@ -129,6 +129,7 @@ export type CriteriaTreeElement = Quality | Criterion | TaskGroup | Task | TaskI
 export type CriteriaTreeElementType = 'quality' | 'criterion' | 'task-group' | 'task' | 'task-item';
 
 export type DataMap = {
+  version: string;
   elements: Record<string, any>;
   result: any;
 }

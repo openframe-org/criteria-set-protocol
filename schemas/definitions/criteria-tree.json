@@ -4,7 +4,7 @@
   "type": "object",
   "properties": {
     "version": {
-      "$ref": "../string.json#/semver"
+      "$ref": "./string.json#/semver"
     },
     "qualities": {
       "type": "array",
