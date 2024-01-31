@@ -3,13 +3,13 @@
     "type": "criterion",
     "quality": "SOC",
     "title": "Sociale minimumsgarantier",
-    "label": "SOC",
+    "code": "SOC",
     "id": "b41f972a-fbf9-5fe4-f6c1-3d5558cf6b83",
     "items": [
       {
         "type": "task",
         "title": "Due Diligence proces",
-        "label": "DDP",
+        "code": "DDP",
         "id": "5e7743cf-250b-ef2e-ff1d-0eb66f493062",
         "items": [
           {
@@ -192,7 +192,7 @@
       {
         "type": "task",
         "title": "Betingelser for klimatilpasningsløsninger",
-        "label": "M2.2",
+        "code": "M2.2",
         "id": "fa7b3581-a87e-f905-ff1f-7eecee00cacf",
         "items": [
           {

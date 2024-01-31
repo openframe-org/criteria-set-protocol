@@ -12,7 +12,7 @@
     "text": {
       "type": "string"
     },
-    "label": {
+    "code": {
       "type": "string"
     },
     "tags": {
