@@ -147,7 +147,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CriteriaTreeOrMatrixRequest'
+              $ref: '#/components/schemas/CriteriaTreeRequest'
         required: true
       responses:
         '200':
@@ -191,7 +191,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CriteriaTreeOrMatrixRequest'
+              $ref: '#/components/schemas/CriteriaTreeRequest'
         required: true
       responses:
         '200':
@@ -229,7 +229,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CriteriaTreeOrMatrixRequest'
+              $ref: '#/components/schemas/CriteriaTreeRequest'
         required: true
       responses:
         '200':
@@ -273,7 +273,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CriteriaTreeOrMatrixRequest'
+              $ref: '#/components/schemas/CriteriaTreeRequest'
         required: true
       responses:
         '200':
@@ -311,7 +311,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CriteriaTreeOrMatrixRequest'
+              $ref: '#/components/schemas/MatrixRequest'
         required: true
       responses:
         '200':
@@ -351,7 +351,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CriteriaTreeOrMatrixRequest'
+              $ref: '#/components/schemas/MatrixRequest'
         required: true
       responses:
         '200':
@@ -374,7 +374,7 @@ components:
       type: array
       items:
         $ref: 'https://criteria-set-protocol-schema.openframe.org/metadata.json#/'
-    CriteriaTreeOrMatrixRequest:
+    CriteriaTreeRequest:
       type: object
       properties:
         locale:
@@ -386,6 +386,20 @@ components:
         values:
           description: A key-value map of task item IDs and their values.
           type: object
+    MatrixRequest:
+      type: object
+      properties:
+        locale:
+          description: The desired localization. Only available if the metadata has a list of available locales.
+          type: string
+        parameters:
+          description: A key-value map of parameters and their values. Required if the metadata has required parameters.
+          type: object
+        values:
+          description: A key-value map of task item IDs and their values.
+          type: object
+        additional:
+          description: Any additional information to pass to the criteria set which does not affect scores.
     CriteriaTreeResponse:
       $ref: 'https://criteria-set-protocol-schema.openframe.org/criteria-tree.json#/'
     DataMapResponse:

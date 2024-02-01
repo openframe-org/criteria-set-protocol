@@ -53,7 +53,8 @@ class ICriteriaSetService(ABC, Generic[ParametersType]):
             self,
             parameters: Optional[ParametersType] = None,
             values: Optional[TaskItemValueMap] = None,
-            locale: Optional[str] = None
+            locale: Optional[str] = None,
+            additional: Optional[any] = None
     ) -> StreamMatrixResponse:
         pass
 

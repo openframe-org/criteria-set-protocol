@@ -19,6 +19,9 @@ as to retrieve filled-out criteria set documents. For both of these operations, 
   },
   "values": {
     // optional task item value map
+  },
+  "additional": {
+    // optional additional information
   }
 }
 ```
@@ -26,6 +29,7 @@ as to retrieve filled-out criteria set documents. For both of these operations, 
 - The `locale` property is a string with the specific localization required of the criteria set. It is only valid if the criteria set has a `locales` property.
 - The `parameters` property is a map of the parameter names to the parameter values. It is required if the criteria set has a `parameters` property.
 - The `values` property is a map of task item IDs to their values.
+- The `additional` property is any additional information which is passed to the criteria set. This can be anything that does not affect the overall scores.
 
 Each of these properties may be excluded if they are empty or not needed. If no properties are present, the request body may be excluded altogether.
 

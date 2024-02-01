@@ -16,6 +16,7 @@ export type TreeAndMatrixRequestBody = {
   locale?: string;
   parameters?: ParameterCombination;
   values?: TaskItemValueMap;
+  additional?: any;
 };
 
 export type StreamMatrixResponse = {

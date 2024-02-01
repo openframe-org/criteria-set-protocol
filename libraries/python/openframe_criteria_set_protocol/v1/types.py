@@ -1,7 +1,6 @@
 import datetime
 import typing
 from abc import ABC
-from asyncio import StreamReader
 from dataclasses import dataclass, field
 from typing import Optional
 

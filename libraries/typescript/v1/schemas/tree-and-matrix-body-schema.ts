@@ -7,6 +7,7 @@ export const treeAndMatrixBodySchema = yup.object({
   body: yup.object({
     locale: yup.string().optional(),
     parameters: yup.object().optional(),
-    values: yup.object().optional()
+    values: yup.object().optional(),
+    additional: yup.mixed().optional()
   }).optional()
 });
