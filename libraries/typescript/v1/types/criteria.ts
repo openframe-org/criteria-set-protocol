@@ -58,9 +58,8 @@ export type CriteriaTree = {
 
 type BaseElement<Type extends CriteriaTreeElementType> = {
   type: Type;
-  id: string;
   title: string;
-  code?: string;
+  code: string;
   tags?: string[];
   documentation?: DocumentationItem[];
   data?: Record<string, any>;

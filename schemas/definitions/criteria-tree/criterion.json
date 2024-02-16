@@ -3,9 +3,6 @@
   "$id": "https://criteria-set-protocol-schema.openframe.org/criteria-tree/criterion.json",
   "type": "object",
   "properties": {
-    "id": {
-      "$ref": "../string.json#uuid"
-    },
     "type": {
       "const": "criterion"
     },
@@ -39,6 +36,6 @@
       "type": "number"
     }
   },
-  "required": ["id", "type", "title", "items"],
+  "required": ["code", "type", "title", "items"],
   "additionalProperties": false
 }

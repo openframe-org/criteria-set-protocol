@@ -3,9 +3,6 @@
   "$id": "https://criteria-set-protocol-schema.openframe.org/criteria-tree/task-group.json",
   "type": "object",
   "properties": {
-    "id": {
-      "$ref": "../string.json#uuid"
-    },
     "type": {
       "const": "task-group"
     },
@@ -42,6 +39,6 @@
       "type": "number"
     }
   },
-  "required": ["id", "type", "title", "items"],
+  "required": ["code", "type", "title", "items"],
   "additionalProperties": false
 }

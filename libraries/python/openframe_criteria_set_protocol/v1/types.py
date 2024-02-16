@@ -95,7 +95,6 @@ CriteriaTreeElementType = typing.Literal['quality', 'criterion', 'task-group', '
 @dataclass
 class TaskItem:
     type: CriteriaTreeElementType = field(init=False, default='task-item')
-    id: str
     code: str
     definition: TaskItemDefinition
     tags: Optional[list] = None
@@ -109,7 +108,6 @@ class TaskItem:
 @dataclass
 class Task:
     type: CriteriaTreeElementType = field(init=False, default='task')
-    id: str
     code: str
     title: str
     category: Optional[str] = None
@@ -124,7 +122,6 @@ class Task:
 @dataclass
 class TaskGroup:
     type: CriteriaTreeElementType = field(init=False, default='task-group')
-    id: str
     code: str
     title: str
     tags: Optional[list] = None
@@ -137,7 +134,6 @@ class TaskGroup:
 @dataclass
 class Criterion:
     type: CriteriaTreeElementType = field(init=False, default='criterion')
-    id: str
     code: str
     title: str
     tags: Optional[list] = None
