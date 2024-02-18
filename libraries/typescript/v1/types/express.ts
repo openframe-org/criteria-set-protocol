@@ -12,10 +12,13 @@ export type StringParam<ParamName extends string> = Record<ParamName, string>;
 
 export type TaskItemValueMap = Record<string, TaskItemValue>;
 
-export type TreeAndMatrixRequestBody = {
+export type TreeAndDataRequestBody = {
   locale?: string;
   parameters?: ParameterCombination;
   values?: TaskItemValueMap;
+};
+
+export type MatrixRequestBody = TreeAndDataRequestBody & {
   additional?: any;
 };
 
