@@ -67,6 +67,17 @@
       },
       "description": {
         "type": "string"
+      },
+      "labels": {
+        "type": "object",
+        "properties": {
+          "true": {
+            "type": "string"
+          },
+          "false": {
+            "type": "string"
+          }
+        }
       }
     }
   },

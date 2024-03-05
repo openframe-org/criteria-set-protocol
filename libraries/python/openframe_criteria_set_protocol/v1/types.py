@@ -86,6 +86,7 @@ class NumberType(BaseTaskItemDefinition):
 @dataclass
 class BooleanType(BaseTaskItemDefinition):
     type: DefinitionType = field(init=False, default='boolean')
+    labels: Optional[dict[str, str]] = None
 
 
 TaskItemDefinition = typing.Union[SelectSingleType, SelectMultipleType, NumberType, BooleanType]

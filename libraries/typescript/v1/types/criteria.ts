@@ -111,7 +111,12 @@ export type NumberType = AbstractDefinition<'number'> & {
   step?: number;
 };
 
-export type BooleanType = AbstractDefinition<'boolean'>;
+export type BooleanType = AbstractDefinition<'boolean'> & {
+  labels?: {
+    true?: string;
+    false?: string;
+  }
+};
 
 export type PointOption = {
   id?: string;
