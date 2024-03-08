@@ -32,3 +32,15 @@ def get_qualified_name(element: Quality | Criterion | TaskGroup | Task | dict) -
     if element.title == code:
         return element.title
     return f"{code} {element.title}"
+
+
+def resolve_code(element: Quality | Criterion | TaskGroup | Task | str | dict) -> str:
+    if isinstance(element, str):
+        resolved_code = element
+    elif isinstance(element, dict):
+        resolved_code = element.get('code', None)
+        if resolved_code is None:
+            raise ValueError("Element must have a 'code' key")
+    else:
+        resolved_code = element.code
+    return resolved_code[1:] if resolved_code.startswith('_') else resolved_code
