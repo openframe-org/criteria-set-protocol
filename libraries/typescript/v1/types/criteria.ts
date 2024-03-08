@@ -66,9 +66,7 @@ type BaseElement<Type extends CriteriaTreeElementType> = {
   sortOrder?: number;
 };
 
-export type Quality = Pick<BaseElement<'quality'>, 'type' | 'tags' | 'documentation' | 'data' | 'sortOrder'> & {
-  code: string;
-  title?: string;
+export type Quality = BaseElement<'quality'> & {
   style?: QualityStyle;
   items: Criterion[];
 }

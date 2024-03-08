@@ -36,6 +36,6 @@
       "type": "number"
     }
   },
-  "required": ["code", "type", "items"],
+  "required": ["title", "code", "type", "items"],
   "additionalProperties": false
 }

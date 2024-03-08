@@ -13,3 +13,16 @@ export const toColorHexString = (color: Color) => {
 
   return `#${color.red.toString(16)}${color.green.toString(16)}${color.blue.toString(16)}`;
 };
+
+export const shouldHideCode = (element: Quality | Criterion | TaskGroup | Task | { code: string } | string): boolean => {
+  return (typeof element === 'string' ? element : element.code).startsWith('_');
+}
+
+export const getQualifiedName = (element: Quality | Criterion | TaskGroup | Task | { code: string, title: string }): string => {
+  const code = element.code.startsWith('_') ? element.code.substring(1) : element.code;
+  if (element.title === code) {
+    return element.title;
+  }
+
+  return `${code} ${element.title}`;
+}

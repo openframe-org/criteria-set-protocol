@@ -148,7 +148,7 @@ class Criterion:
 class Quality:
     type: CriteriaTreeElementType = field(init=False, default='quality')
     code: str
-    title: Optional[str] = None
+    title: str = None
     tags: Optional[list] = None
     documentation: Optional[list[DocumentationItem]] = None
     items: list[Criterion] = field(default_factory=list)
