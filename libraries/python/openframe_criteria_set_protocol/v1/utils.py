@@ -1,6 +1,6 @@
 from typing import Optional
 
-from .types import Quality, Criterion, TaskGroup, Task
+from .types import Quality, CriteriaTreeElement, Criterion, TaskGroup, Task
 
 
 def to_color_hex_string(color):
@@ -9,7 +9,7 @@ def to_color_hex_string(color):
     return f"#{color.red:02x}{color.green:02x}{color.blue:02x}"
 
 
-def should_hide_code(element: Quality | Criterion | TaskGroup | Task | str | dict) -> bool:
+def should_hide_code(element: CriteriaTreeElement | str | dict) -> bool:
     if isinstance(element, str):
         return element.startswith('_')
     if isinstance(element, dict):
@@ -34,7 +34,7 @@ def get_qualified_name(element: Quality | Criterion | TaskGroup | Task | dict) -
     return f"{code} {element.title}"
 
 
-def resolve_code(element: Quality | Criterion | TaskGroup | Task | str | dict) -> str:
+def resolve_code(element: CriteriaTreeElement | str | dict) -> str:
     if isinstance(element, str):
         resolved_code = element
     elif isinstance(element, dict):

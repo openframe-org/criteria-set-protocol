@@ -14,7 +14,7 @@ export const toColorHexString = (color: Color) => {
   return `#${color.red.toString(16)}${color.green.toString(16)}${color.blue.toString(16)}`;
 };
 
-export const shouldHideCode = (element: Quality | Criterion | TaskGroup | Task | { code: string } | string): boolean => {
+export const shouldHideCode = (element: CriteriaTreeElement | { code: string } | string): boolean => {
   return (typeof element === 'string' ? element : element.code).startsWith('_');
 };
 
@@ -27,7 +27,7 @@ export const getQualifiedName = (element: Quality | Criterion | TaskGroup | Task
   return `${code} ${element.title}`;
 };
 
-export const resolveCode = (element: Quality | Criterion | TaskGroup | Task | { code: string } | string): string => {
+export const resolveCode = (element: CriteriaTreeElement | { code: string } | string): string => {
   const resolvedCode = typeof element === 'string' ? element : element.code;
   return resolvedCode.startsWith('_') ? resolvedCode.substring(1) : resolvedCode;
 };
