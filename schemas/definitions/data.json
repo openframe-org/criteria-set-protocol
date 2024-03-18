@@ -101,11 +101,11 @@
             { "type": "null" }
           ]
         },
-        "annotations": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+        "intro": {
+          "type": "string"
+        },
+        "outro": {
+          "type": "string"
         }
       },
       "additionalProperties": false,

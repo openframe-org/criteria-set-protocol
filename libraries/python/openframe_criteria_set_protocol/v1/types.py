@@ -55,7 +55,8 @@ class PointOption:
     value: TaskItemScalarValue
     text: str
     id: Optional[str] = None
-    annotations: Optional[list[str]] = None
+    intro: Optional[str] = None
+    outro: Optional[str] = None
 
 
 @dataclass

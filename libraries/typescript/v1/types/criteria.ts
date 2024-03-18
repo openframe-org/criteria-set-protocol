@@ -119,8 +119,9 @@ export type BooleanType = AbstractDefinition<'boolean'> & {
 export type PointOption = {
   id?: string;
   text: string;
+  intro?: string;
+  outro?: string;
   value: string | number | boolean | null;
-  annotations?: string[];
 };
 
 export type TaskItemScalarValue = string | number | boolean | null;
