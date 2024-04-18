@@ -159,11 +159,13 @@ type AbstractCertificateDefinition<Type extends CertificateDefinitionType, Rules
   description?: string;
 };
 
-type NumberBasedCertificateDefinitionRules =
+export type NumberBasedCertificateDefinitionRules =
   & ({ minimum?: number; exclusiveMinimum?: never; } | { minimum?: never; exclusiveMinimum?: number; })
   & ({ maximum?: number; exclusiveMaximum?: never; } | { maximum?: never; exclusiveMaximum?: number; });
 
+export type PercentageBasedCertificateDefinitionRules = NumberBasedCertificateDefinitionRules;
+
 export type NumberBasedCertificateDefinition = AbstractCertificateDefinition<'number', NumberBasedCertificateDefinitionRules>;
-export type PercentageBasedCertificateDefinition = AbstractCertificateDefinition<'percentage', NumberBasedCertificateDefinitionRules>;
+export type PercentageBasedCertificateDefinition = AbstractCertificateDefinition<'percentage', PercentageBasedCertificateDefinitionRules>;
 
 export type CertificateDefinition = NumberBasedCertificateDefinition | PercentageBasedCertificateDefinition;

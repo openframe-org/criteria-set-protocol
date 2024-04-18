@@ -187,6 +187,7 @@ class CertificateDefinition(ABC):
     type: str
     name: str
     rules: Optional[ABC] = None
+    rulesText: Optional[str] = None
     icon: Optional[str] = None
     url: Optional[str] = None
     description: Optional[str] = None
@@ -200,6 +201,9 @@ class NumberBasedCertificateDefinitionRules(ABC):
     exclusiveMaximum: Optional[float] = None
 
 
+PercentageBasedCertificateDefinitionRules = NumberBasedCertificateDefinitionRules
+
+
 @dataclass
 class NumberBasedCertificateDefinition(CertificateDefinition):
     type: CertificateDefinitionType = field(init=False, default='number')
@@ -209,7 +213,7 @@ class NumberBasedCertificateDefinition(CertificateDefinition):
 @dataclass
 class PercentageBasedCertificateDefinition(CertificateDefinition):
     type: CertificateDefinitionType = field(init=False, default='percentage')
-    rules: NumberBasedCertificateDefinitionRules
+    rules: PercentageBasedCertificateDefinitionRules
 
 
 @dataclass
