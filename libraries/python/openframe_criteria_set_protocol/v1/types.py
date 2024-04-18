@@ -235,6 +235,7 @@ class DataMap:
     version: str
     elements: dict[str, any]
     result: any = None
+    certificates: Optional[list[str]] = None
 
 
 MetadataResponse = Metadata

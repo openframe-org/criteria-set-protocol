@@ -137,6 +137,7 @@ export type DataMap = {
   version: string;
   elements: Record<string, any>;
   result: any;
+  certificates?: string[];
 };
 
 export type CertificateDefinitionType = 'number' | 'percentage';
