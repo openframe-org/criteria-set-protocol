@@ -20,6 +20,9 @@
         },
         "description": {
           "type": "string"
+        },
+        "rulesText": {
+          "type": "string"
         }
       },
       "required": ["code", "name"]
@@ -34,7 +37,7 @@
           "$ref": "#/$defs/number-based-certificate-definition-rules"
         }
       },
-      "required": ["type", "rules"]
+      "required": ["type", "rules", "rulesText"]
     },
     "percentage-based-certificate-definition": {
       "$ref": "#/$defs/abstract-certificate-definition",
@@ -46,7 +49,7 @@
           "$ref": "#/$defs/number-based-certificate-definition-rules"
         }
       },
-      "required": ["type", "rules"]
+      "required": ["type", "rules", "rulesText"]
     },
     "number-based-certificate-definition-rules": {
       "allOf": [

@@ -141,17 +141,23 @@ export type DataMap = {
 
 export type CertificateDefinitionType = 'number' | 'percentage';
 
-type AbstractCertificateDefinition<Type extends CertificateDefinitionType, Rules> = {
+type AbstractCertificateDefinitionRules<Rules> = Rules extends undefined | never
+  ? {
+    rules?: never;
+    rulesText?: string;
+  }
+  : {
+    rules: Rules;
+    rulesText: string;
+  };
+
+type AbstractCertificateDefinition<Type extends CertificateDefinitionType, Rules> = AbstractCertificateDefinitionRules<Rules> & {
   code: string;
   type: Type;
   icon?: string;
   name: string;
   description?: string;
-} & (
-  Rules extends undefined | never
-    ? { rules?: never; }
-    : { rules: Rules; }
-);
+};
 
 type NumberBasedCertificateDefinitionRules =
   & ({ minimum?: number; exclusiveMinimum?: never; } | { minimum?: never; exclusiveMinimum?: number; })
