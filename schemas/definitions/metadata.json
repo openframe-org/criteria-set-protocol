@@ -49,6 +49,12 @@
         "parameters": {},
         "result": {}
       }
+    },
+    "certificates": {
+      "type": "array",
+      "items": {
+        "$ref": "./certificate-definition.json"
+      }
     }
   },
   "required": ["id", "version", "date", "name", "description"],

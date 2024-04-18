@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://criteria-set-protocol-schema.openframe.org/certificate-definition.json",
+  "oneOf": [
+    { "$ref": "#/$defs/percentage-based-certificate-definition" },
+    { "$ref": "#/$defs/number-based-certificate-definition" }
+  ],
+  "$defs": {
+    "abstract-certificate-definition": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": ["code", "name"]
+    },
+    "number-based-certificate-definition": {
+      "$ref": "#/$defs/abstract-certificate-definition",
+      "properties": {
+        "type": {
+          "const": "number"
+        },
+        "rules": {
+          "$ref": "#/$defs/number-based-certificate-definition-rules"
+        }
+      },
+      "required": ["type", "rules"]
+    },
+    "percentage-based-certificate-definition": {
+      "$ref": "#/$defs/abstract-certificate-definition",
+      "properties": {
+        "type": {
+          "const": "percentage"
+        },
+        "rules": {
+          "$ref": "#/$defs/number-based-certificate-definition-rules"
+        }
+      },
+      "required": ["type", "rules"]
+    },
+    "number-based-certificate-definition-rules": {
+      "allOf": [
+        {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "minimum": {
+                  "const": "number"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "exclusiveMinimum": {
+                  "type": "number"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "maximum": {
+                  "const": "number"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "exclusiveMaximum": {
+                  "type": "number"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

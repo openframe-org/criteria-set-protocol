@@ -15,6 +15,12 @@
     "errors": {
       "$ref": "criteria-tree/errors.json"
     },
+    "certificateDefinitions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
     "result": {}
   },
   "required": ["qualities"],

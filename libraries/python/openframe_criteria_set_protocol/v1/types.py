@@ -163,6 +163,7 @@ class CriteriaTree:
     version: str
     qualities: list[Quality] = field(init=False, default_factory=list)
     result: any = None
+    certificates: Optional[list[str]] = None
 
 
 CriteriaTreeElement = typing.Union[Quality, Criterion, TaskGroup, Task, TaskItem]
@@ -177,6 +178,40 @@ class SchemaDefinitions:
     result: Optional[SchemaDefinition] = None
 
 
+CertificateDefinitionType = typing.Literal['number', 'percentage']
+
+
+@dataclass
+class CertificateDefinition(ABC):
+    code: str
+    type: str
+    name: str
+    rules: Optional[ABC] = None
+    icon: Optional[str] = None
+    url: Optional[str] = None
+    description: Optional[str] = None
+
+
+@dataclass
+class NumberBasedCertificateDefinitionRules(ABC):
+    minimum: Optional[float] = None
+    maximum: Optional[float] = None
+    exclusiveMinimum: Optional[float] = None
+    exclusiveMaximum: Optional[float] = None
+
+
+@dataclass
+class NumberBasedCertificateDefinition(CertificateDefinition):
+    type: CertificateDefinitionType = field(init=False, default='number')
+    rules: NumberBasedCertificateDefinitionRules
+
+
+@dataclass
+class PercentageBasedCertificateDefinition(CertificateDefinition):
+    type: CertificateDefinitionType = field(init=False, default='percentage')
+    rules: NumberBasedCertificateDefinitionRules
+
+
 @dataclass
 class Metadata:
     id: str
@@ -188,6 +223,7 @@ class Metadata:
     locales: Optional[list[str]] = None
     defaultLocale: Optional[str] = None
     schemas: Optional[SchemaDefinitions] = None
+    certificateDefinitions: Optional[list[CertificateDefinition]] = None
 
 
 @dataclass

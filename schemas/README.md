@@ -127,6 +127,9 @@ would be:
 }
 ```
 
+### certificationDefinitions (optional)
+The certification definitions property is an array of objects which define the different certifications that can be achieved with the criteria set.
+
 ## Criteria tree schema
 The criteria tree schema is specified in the [criteria-tree.json](definitions/criteria-tree.json) file. The service that requests the
 criteria tree must have prior information about the parameters available and required - if parameters are required, the tree is assembled based
@@ -146,7 +149,8 @@ and may also affect the final structure of the tree.
   ],
   "result": {
     // optional result formatted according to the metadata result schema definition
-  }
+  },
+  "certificates": [] // optional codes of the certifications achieved
 }
 ```
 ### qualities

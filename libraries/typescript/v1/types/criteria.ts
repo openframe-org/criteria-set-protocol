@@ -26,6 +26,7 @@ export type Metadata = {
   locales?: string[];
   defaultLocale?: string;
   schemas?: SchemaDefinitions;
+  certificateDefinitions?: CertificateDefinition[];
 }
 
 export type PdfDocumentationItem = {
@@ -53,6 +54,7 @@ export type DocumentationItem = PdfDocumentationItem | InlineDocumentationItem |
 export type CriteriaTree = {
   version: string;
   qualities: Quality[];
+  certificates?: string[];
   result?: any;
 };
 
@@ -135,4 +137,27 @@ export type DataMap = {
   version: string;
   elements: Record<string, any>;
   result: any;
-}
+};
+
+export type CertificateDefinitionType = 'number' | 'percentage';
+
+type AbstractCertificateDefinition<Type extends CertificateDefinitionType, Rules> = {
+  code: string;
+  type: Type;
+  icon?: string;
+  name: string;
+  description?: string;
+} & (
+  Rules extends undefined | never
+    ? { rules?: never; }
+    : { rules: Rules; }
+);
+
+type NumberBasedCertificateDefinitionRules =
+  & ({ minimum?: number; exclusiveMinimum?: never; } | { minimum?: never; exclusiveMinimum?: number; })
+  & ({ maximum?: number; exclusiveMaximum?: never; } | { maximum?: never; exclusiveMaximum?: number; });
+
+export type NumberBasedCertificateDefinition = AbstractCertificateDefinition<'number', NumberBasedCertificateDefinitionRules>;
+export type PercentageBasedCertificateDefinition = AbstractCertificateDefinition<'percentage', NumberBasedCertificateDefinitionRules>;
+
+export type CertificateDefinition = NumberBasedCertificateDefinition | PercentageBasedCertificateDefinition;
