@@ -50,10 +50,10 @@
         "result": {}
       }
     },
-    "certificates": {
+    "certifications": {
       "type": "array",
       "items": {
-        "$ref": "./certificate-definition.json"
+        "$ref": "./certification-definition.json"
       }
     }
   },

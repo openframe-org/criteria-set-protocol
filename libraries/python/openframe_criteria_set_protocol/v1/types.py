@@ -163,7 +163,7 @@ class CriteriaTree:
     version: str
     qualities: list[Quality] = field(init=False, default_factory=list)
     result: any = None
-    certificates: Optional[list[str]] = None
+    certifications: Optional[list[str]] = None
 
 
 CriteriaTreeElement = typing.Union[Quality, Criterion, TaskGroup, Task, TaskItem]
@@ -178,11 +178,11 @@ class SchemaDefinitions:
     result: Optional[SchemaDefinition] = None
 
 
-CertificateDefinitionType = typing.Literal['number', 'percentage']
+CertificationDefinitionType = typing.Literal['number', 'percentage']
 
 
 @dataclass
-class CertificateDefinition(ABC):
+class CertificationDefinition(ABC):
     code: str
     type: str
     name: str
@@ -194,26 +194,26 @@ class CertificateDefinition(ABC):
 
 
 @dataclass
-class NumberBasedCertificateDefinitionRules(ABC):
+class NumberBasedCertificationDefinitionRules(ABC):
     minimum: Optional[float] = None
     maximum: Optional[float] = None
     exclusiveMinimum: Optional[float] = None
     exclusiveMaximum: Optional[float] = None
 
 
-PercentageBasedCertificateDefinitionRules = NumberBasedCertificateDefinitionRules
+PercentageBasedCertificationDefinitionRules = NumberBasedCertificationDefinitionRules
 
 
 @dataclass
-class NumberBasedCertificateDefinition(CertificateDefinition):
-    type: CertificateDefinitionType = field(init=False, default='number')
-    rules: NumberBasedCertificateDefinitionRules
+class NumberBasedCertificationDefinition(CertificationDefinition):
+    type: CertificationDefinitionType = field(init=False, default='number')
+    rules: NumberBasedCertificationDefinitionRules
 
 
 @dataclass
-class PercentageBasedCertificateDefinition(CertificateDefinition):
-    type: CertificateDefinitionType = field(init=False, default='percentage')
-    rules: PercentageBasedCertificateDefinitionRules
+class PercentageBasedCertificationDefinition(CertificationDefinition):
+    type: CertificationDefinitionType = field(init=False, default='percentage')
+    rules: PercentageBasedCertificationDefinitionRules
 
 
 @dataclass
@@ -227,7 +227,7 @@ class Metadata:
     locales: Optional[list[str]] = None
     defaultLocale: Optional[str] = None
     schemas: Optional[SchemaDefinitions] = None
-    certificateDefinitions: Optional[list[CertificateDefinition]] = None
+    certificationDefinitions: Optional[list[CertificationDefinition]] = None
 
 
 @dataclass
@@ -235,7 +235,7 @@ class DataMap:
     version: str
     elements: dict[str, any]
     result: any = None
-    certificates: Optional[list[str]] = None
+    certifications: Optional[list[str]] = None
 
 
 MetadataResponse = Metadata

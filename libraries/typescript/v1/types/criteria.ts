@@ -26,7 +26,7 @@ export type Metadata = {
   locales?: string[];
   defaultLocale?: string;
   schemas?: SchemaDefinitions;
-  certificateDefinitions?: CertificateDefinition[];
+  certificationDefinitions?: CertificationDefinition[];
 }
 
 export type PdfDocumentationItem = {
@@ -54,7 +54,7 @@ export type DocumentationItem = PdfDocumentationItem | InlineDocumentationItem |
 export type CriteriaTree = {
   version: string;
   qualities: Quality[];
-  certificates?: string[];
+  certifications?: string[];
   result?: any;
 };
 
@@ -137,12 +137,12 @@ export type DataMap = {
   version: string;
   elements: Record<string, any>;
   result: any;
-  certificates?: string[];
+  certifications?: string[];
 };
 
-export type CertificateDefinitionType = 'number' | 'percentage';
+export type CertificationDefinitionType = 'number' | 'percentage';
 
-type AbstractCertificateDefinitionRules<Rules> = Rules extends undefined | never
+type AbstractCertificationDefinitionRules<Rules> = Rules extends undefined | never
   ? {
     rules?: never;
     rulesText?: string;
@@ -152,7 +152,7 @@ type AbstractCertificateDefinitionRules<Rules> = Rules extends undefined | never
     rulesText: string;
   };
 
-type AbstractCertificateDefinition<Type extends CertificateDefinitionType, Rules> = AbstractCertificateDefinitionRules<Rules> & {
+type AbstractCertificationDefinition<Type extends CertificationDefinitionType, Rules> = AbstractCertificationDefinitionRules<Rules> & {
   code: string;
   type: Type;
   icon?: string;
@@ -160,13 +160,13 @@ type AbstractCertificateDefinition<Type extends CertificateDefinitionType, Rules
   description?: string;
 };
 
-export type NumberBasedCertificateDefinitionRules =
+export type NumberBasedCertificationDefinitionRules =
   & ({ minimum?: number; exclusiveMinimum?: never; } | { minimum?: never; exclusiveMinimum?: number; })
   & ({ maximum?: number; exclusiveMaximum?: never; } | { maximum?: never; exclusiveMaximum?: number; });
 
-export type PercentageBasedCertificateDefinitionRules = NumberBasedCertificateDefinitionRules;
+export type PercentageBasedCertificationDefinitionRules = NumberBasedCertificationDefinitionRules;
 
-export type NumberBasedCertificateDefinition = AbstractCertificateDefinition<'number', NumberBasedCertificateDefinitionRules>;
-export type PercentageBasedCertificateDefinition = AbstractCertificateDefinition<'percentage', PercentageBasedCertificateDefinitionRules>;
+export type NumberBasedCertificationDefinition = AbstractCertificationDefinition<'number', NumberBasedCertificationDefinitionRules>;
+export type PercentageBasedCertificationDefinition = AbstractCertificationDefinition<'percentage', PercentageBasedCertificationDefinitionRules>;
 
-export type CertificateDefinition = NumberBasedCertificateDefinition | PercentageBasedCertificateDefinition;
+export type CertificationDefinition = NumberBasedCertificationDefinition | PercentageBasedCertificationDefinition;

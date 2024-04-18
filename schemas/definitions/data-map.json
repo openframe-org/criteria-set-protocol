@@ -13,7 +13,7 @@
     "errors": {
       "$ref": "criteria-tree/errors.json"
     },
-    "certificates": {
+    "certifications": {
       "type": "array",
       "items": {
         "type": "string"

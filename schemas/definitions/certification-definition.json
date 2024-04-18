@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://criteria-set-protocol-schema.openframe.org/certificate-definition.json",
+  "$id": "https://criteria-set-protocol-schema.openframe.org/certification-definition.json",
   "oneOf": [
-    { "$ref": "#/$defs/percentage-based-certificate-definition" },
-    { "$ref": "#/$defs/number-based-certificate-definition" }
+    { "$ref": "#/$defs/percentage-based-certification-definition" },
+    { "$ref": "#/$defs/number-based-certification-definition" }
   ],
   "$defs": {
-    "abstract-certificate-definition": {
+    "abstract-certification-definition": {
       "type": "object",
       "properties": {
         "code": {
@@ -27,31 +27,31 @@
       },
       "required": ["code", "name"]
     },
-    "number-based-certificate-definition": {
-      "$ref": "#/$defs/abstract-certificate-definition",
+    "number-based-certification-definition": {
+      "$ref": "#/$defs/abstract-certification-definition",
       "properties": {
         "type": {
           "const": "number"
         },
         "rules": {
-          "$ref": "#/$defs/number-based-certificate-definition-rules"
+          "$ref": "#/$defs/number-based-certification-definition-rules"
         }
       },
       "required": ["type", "rules", "rulesText"]
     },
-    "percentage-based-certificate-definition": {
-      "$ref": "#/$defs/abstract-certificate-definition",
+    "percentage-based-certification-definition": {
+      "$ref": "#/$defs/abstract-certification-definition",
       "properties": {
         "type": {
           "const": "percentage"
         },
         "rules": {
-          "$ref": "#/$defs/number-based-certificate-definition-rules"
+          "$ref": "#/$defs/number-based-certification-definition-rules"
         }
       },
       "required": ["type", "rules", "rulesText"]
     },
-    "number-based-certificate-definition-rules": {
+    "number-based-certification-definition-rules": {
       "allOf": [
         {
           "oneOf": [

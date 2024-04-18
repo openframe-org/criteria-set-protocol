@@ -150,7 +150,7 @@ and may also affect the final structure of the tree.
   "result": {
     // optional result formatted according to the metadata result schema definition
   },
-  "certificates": [] // optional codes of the certifications achieved
+  "certifications": [] // optional codes of the certifications achieved
 }
 ```
 ### qualities
