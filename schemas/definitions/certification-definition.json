@@ -52,48 +52,21 @@
       "required": ["type", "rules", "rulesText"]
     },
     "number-based-certification-definition-rules": {
-      "allOf": [
-        {
-          "oneOf": [
-            {
-              "type": "object",
-              "properties": {
-                "minimum": {
-                  "const": "number"
-                }
-              }
-            },
-            {
-              "type": "object",
-              "properties": {
-                "exclusiveMinimum": {
-                  "type": "number"
-                }
-              }
-            }
-          ]
+      "type": "object",
+      "properties": {
+        "minimum": {
+          "type": "number"
         },
-        {
-          "oneOf": [
-            {
-              "type": "object",
-              "properties": {
-                "maximum": {
-                  "const": "number"
-                }
-              }
-            },
-            {
-              "type": "object",
-              "properties": {
-                "exclusiveMaximum": {
-                  "type": "number"
-                }
-              }
-            }
-          ]
+        "exclusiveMinimum": {
+          "type": "number"
+        },
+        "maximum": {
+          "type": "number"
+        },
+        "exclusiveMaximum": {
+          "type": "number"
         }
-      ]
+      }
     }
   }
 }

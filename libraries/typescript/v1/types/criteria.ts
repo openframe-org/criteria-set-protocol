@@ -160,9 +160,12 @@ type AbstractCertificationDefinition<Type extends CertificationDefinitionType, R
   description?: string;
 };
 
-export type NumberBasedCertificationDefinitionRules =
-  & ({ minimum?: number; exclusiveMinimum?: never; } | { minimum?: never; exclusiveMinimum?: number; })
-  & ({ maximum?: number; exclusiveMaximum?: never; } | { maximum?: never; exclusiveMaximum?: number; });
+export type NumberBasedCertificationDefinitionRules = {
+  minimum?: number;
+  exclusiveMinimum?: number;
+  maximum?: number;
+  exclusiveMaximum?: number;
+};
 
 export type PercentageBasedCertificationDefinitionRules = NumberBasedCertificationDefinitionRules;
 
