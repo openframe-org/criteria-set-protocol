@@ -26,7 +26,6 @@ export type Metadata = {
   locales?: string[];
   defaultLocale?: string;
   schemas?: SchemaDefinitions;
-  certificationDefinitions?: CertificationDefinition[];
 }
 
 export type PdfDocumentationItem = {
@@ -55,6 +54,7 @@ export type CriteriaTree = {
   version: string;
   qualities: Quality[];
   certifications?: string[];
+  certificationDefinitions?: CertificationDefinition[];
   result?: any;
 };
 
@@ -144,7 +144,7 @@ export type CertificationDefinitionType = 'number' | 'percentage';
 
 type AbstractCertificationDefinitionRules<Rules> = Rules extends undefined | never
   ? {
-    rules?: never;
+    rules?: Rules;
     rulesText?: string;
   }
   : {

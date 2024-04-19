@@ -5,6 +5,44 @@ from dataclasses import dataclass, field
 from typing import Optional
 
 
+CertificationDefinitionType = typing.Literal['number', 'percentage']
+
+
+@dataclass
+class CertificationDefinition(ABC):
+    code: str
+    type: str
+    name: str
+    rules: Optional[ABC] = None
+    rulesText: Optional[str] = None
+    icon: Optional[str] = None
+    url: Optional[str] = None
+    description: Optional[str] = None
+
+
+@dataclass
+class NumberBasedCertificationDefinitionRules(ABC):
+    minimum: Optional[float] = None
+    maximum: Optional[float] = None
+    exclusiveMinimum: Optional[float] = None
+    exclusiveMaximum: Optional[float] = None
+
+
+PercentageBasedCertificationDefinitionRules = NumberBasedCertificationDefinitionRules
+
+
+@dataclass
+class NumberBasedCertificationDefinition(CertificationDefinition):
+    type: CertificationDefinitionType = field(init=False, default='number')
+    rules: NumberBasedCertificationDefinitionRules
+
+
+@dataclass
+class PercentageBasedCertificationDefinition(CertificationDefinition):
+    type: CertificationDefinitionType = field(init=False, default='percentage')
+    rules: PercentageBasedCertificationDefinitionRules
+
+
 @dataclass
 class RgbColor:
     red: int
@@ -164,6 +202,7 @@ class CriteriaTree:
     qualities: list[Quality] = field(init=False, default_factory=list)
     result: any = None
     certifications: Optional[list[str]] = None
+    certificationDefinitions: Optional[list[CertificationDefinition]] = None
 
 
 CriteriaTreeElement = typing.Union[Quality, Criterion, TaskGroup, Task, TaskItem]
@@ -178,44 +217,6 @@ class SchemaDefinitions:
     result: Optional[SchemaDefinition] = None
 
 
-CertificationDefinitionType = typing.Literal['number', 'percentage']
-
-
-@dataclass
-class CertificationDefinition(ABC):
-    code: str
-    type: str
-    name: str
-    rules: Optional[ABC] = None
-    rulesText: Optional[str] = None
-    icon: Optional[str] = None
-    url: Optional[str] = None
-    description: Optional[str] = None
-
-
-@dataclass
-class NumberBasedCertificationDefinitionRules(ABC):
-    minimum: Optional[float] = None
-    maximum: Optional[float] = None
-    exclusiveMinimum: Optional[float] = None
-    exclusiveMaximum: Optional[float] = None
-
-
-PercentageBasedCertificationDefinitionRules = NumberBasedCertificationDefinitionRules
-
-
-@dataclass
-class NumberBasedCertificationDefinition(CertificationDefinition):
-    type: CertificationDefinitionType = field(init=False, default='number')
-    rules: NumberBasedCertificationDefinitionRules
-
-
-@dataclass
-class PercentageBasedCertificationDefinition(CertificationDefinition):
-    type: CertificationDefinitionType = field(init=False, default='percentage')
-    rules: PercentageBasedCertificationDefinitionRules
-
-
 @dataclass
 class Metadata:
     id: str
@@ -227,7 +228,6 @@ class Metadata:
     locales: Optional[list[str]] = None
     defaultLocale: Optional[str] = None
     schemas: Optional[SchemaDefinitions] = None
-    certificationDefinitions: Optional[list[CertificationDefinition]] = None
 
 
 @dataclass

@@ -49,12 +49,6 @@
         "parameters": {},
         "result": {}
       }
-    },
-    "certifications": {
-      "type": "array",
-      "items": {
-        "$ref": "./certification-definition.json"
-      }
     }
   },
   "required": ["id", "version", "date", "name", "description"],

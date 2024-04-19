@@ -18,6 +18,12 @@
     "certificationDefinitions": {
       "type": "array",
       "items": {
+        "$ref": "./certification-definition.json"
+      }
+    },
+    "certifications": {
+      "type": "array",
+      "items": {
         "type": "string"
       }
     },
