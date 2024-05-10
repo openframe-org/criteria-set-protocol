@@ -49,35 +49,22 @@ export const resolveCode = (element: CriteriaTreeElement | { code: string } | st
  * Find an element in the criteria tree by its code
  */
 export const findInTree = (tree: CriteriaTree, code: string): CriteriaTreeElement | null => {
-  for (const quality of tree.qualities) {
-    if (quality.code === code) {
-      return quality;
-    }
-
-    for (const criteria of quality.items) {
-      if (criteria.code === code) {
-        return criteria;
+  const searchElements = (elements: CriteriaTreeElement[]): CriteriaTreeElement | null => {
+    for (const element of elements) {
+      if (element.code == code) {
+        return element;
       }
 
-      for (const taskGroup of criteria.items) {
-        if (taskGroup.code === code) {
-          return taskGroup;
-        }
-
-        for (const task of taskGroup.items) {
-          if (task.code === code) {
-            return task;
-          }
-
-          for (const taskItem of task.items) {
-            if (taskItem.code === code) {
-              return taskItem;
-            }
-          }
+      if (!isTaskItem(element)) {
+        const foundElement = searchElements(element.items);
+        if (foundElement != null) {
+          return foundElement;
         }
       }
     }
+
+    return null;
   }
 
-  return null;
+  return searchElements(tree.qualities)
 }

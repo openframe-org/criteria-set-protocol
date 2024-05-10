@@ -1,6 +1,6 @@
 from typing import Optional
 
-from .types import Quality, CriteriaTreeElement, Criterion, TaskGroup, Task, CriteriaTree
+from .types import Quality, CriteriaTreeElement, Criterion, TaskGroup, Task, TaskItem, CriteriaTree
 
 
 def to_color_hex_string(color):
@@ -62,19 +62,14 @@ def find_in_tree(tree: CriteriaTree, code: str) -> Optional[CriteriaTreeElement]
     """
     Find an element in the criteria tree by its code
     """
-    for quality in tree.qualities:
-        if quality.code == code:
-            return quality
-        for criteria in quality.items:
-            if criteria.code == code:
-                return criteria
-            for task_group in criteria.items:
-                if task_group.code == code:
-                    return task_group
-                for task in task_group.items:
-                    if task.code == code:
-                        return task
-                    for task_item in task.items:
-                        if task_item.code == code:
-                            return task_item
-    return None
+    def _search_elements(elements: list[CriteriaTreeElement]):
+        for element in elements:
+            if element.code == code:
+                return element
+            if not isinstance(element, TaskItem):
+                element = _search_elements(element.items)
+                if element is not None:
+                    return element
+        return None
+
+    return _search_elements(tree.qualities)
