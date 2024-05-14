@@ -1,6 +1,6 @@
 {
   "name": "@openframe-org/criteria-set-protocol",
-  "version": "1.4.8",
+  "version": "1.4.9",
   "description": "A protocol and tools for defining and working with criteria sets",
   "private": false,
   "author": "Andrés Angulo <aa@openframe.org>",
@@ -14,10 +14,10 @@
     "dist/**/*"
   ],
   "dependencies": {
+    "@types/node": "^20.6.3",
     "yup": "^1.2.0"
   },
   "devDependencies": {
-    "@types/node": "^20.6.3",
     "typescript": "^5.2.2"
   },
   "publishConfig": {
