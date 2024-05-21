@@ -1,6 +1,6 @@
 {
   "name": "@openframe-org/criteria-set-protocol",
-  "version": "1.5.5",
+  "version": "1.5.6",
   "description": "A protocol and tools for defining and working with criteria sets",
   "private": false,
   "author": "Andrés Angulo <aa@openframe.org>",
