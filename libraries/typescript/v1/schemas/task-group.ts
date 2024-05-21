@@ -1,9 +1,8 @@
 import { z } from 'zod';
-import { TaskGroup } from '../types';
 import { documentationItemSchema } from './task-item';
 import { taskSchema } from './task';
 
-export const taskGroupSchema: z.Schema<TaskGroup> = z.object({
+export const taskGroupSchema = z.object({
   type: z.literal('task-group'),
   title: z.string(),
   code: z.string(),

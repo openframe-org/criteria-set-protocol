@@ -1,9 +1,8 @@
 import { z } from 'zod';
-import { Color, Quality, QualityStyle } from '../types';
 import { documentationItemSchema } from './task-item';
 import { criterionSchema } from './criterion';
 
-export const colorSchema: z.Schema<Color> = z.union([
+export const colorSchema = z.union([
   z.string(),
   z.object({
     red: z.number(),
@@ -12,12 +11,12 @@ export const colorSchema: z.Schema<Color> = z.union([
   })
 ]);
 
-export const qualityStyleSchema: z.Schema<QualityStyle> = z.object({
+export const qualityStyleSchema = z.object({
   primaryColor: colorSchema,
   secondaryColor: colorSchema
 });
 
-export const qualitySchema: z.Schema<Quality> = z.object({
+export const qualitySchema = z.object({
   type: z.literal('quality'),
   title: z.string(),
   code: z.string(),

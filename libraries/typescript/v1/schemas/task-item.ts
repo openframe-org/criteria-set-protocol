@@ -1,40 +1,26 @@
 import { z } from 'zod';
-import {
-  BooleanType,
-  DocumentationItem,
-  InlineDocumentationItem,
-  LinkDocumentationItem,
-  NumberType,
-  PdfDocumentationItem,
-  PointOption,
-  SelectMultipleType,
-  SelectSingleType,
-  TaskItem,
-  TaskItemDefinition,
-  TaskItemValueMap
-} from '../types';
 
-export const pdfDocumentationItem: z.Schema<PdfDocumentationItem> = z.object({
+export const pdfDocumentationItem = z.object({
   type: z.literal('pdf'),
   label: z.string(),
   url: z.string(),
   text: z.string()
 });
 
-export const inlineDocumentationItem: z.Schema<InlineDocumentationItem> = z.object({
+export const inlineDocumentationItem = z.object({
   type: z.literal('text'),
   label: z.string(),
   text: z.string()
 });
 
-export const linkDocumentationItem: z.Schema<LinkDocumentationItem> = z.object({
+export const linkDocumentationItem = z.object({
   type: z.literal('link'),
   label: z.string(),
   url: z.string(),
   text: z.string()
 });
 
-export const documentationItemSchema: z.Schema<DocumentationItem> = z.union([
+export const documentationItemSchema = z.union([
   pdfDocumentationItem,
   inlineDocumentationItem,
   linkDocumentationItem
@@ -49,9 +35,9 @@ export const taskItemScalarValueSchema = z.union([
 
 export const taskItemValueSchema = z.union([taskItemScalarValueSchema, z.array(taskItemScalarValueSchema)]);
 
-export const taskItemValueMapSchema: z.Schema<TaskItemValueMap> = z.record(z.string(), taskItemValueSchema);
+export const taskItemValueMapSchema = z.record(z.string(), taskItemValueSchema);
 
-export const pointOptionSchema: z.Schema<PointOption> = z.object({
+export const pointOptionSchema = z.object({
   id: z.string().optional(),
   text: z.string(),
   intro: z.string().optional(),
@@ -59,24 +45,24 @@ export const pointOptionSchema: z.Schema<PointOption> = z.object({
   value: taskItemScalarValueSchema
 });
 
-export const selectSingleTypeSchema: z.Schema<SelectSingleType> = z.object({
+export const selectSingleTypeSchema = z.object({
   type: z.literal('select-single'),
   options: z.array(pointOptionSchema)
 });
 
-export const selectMultipleTypeSchema: z.Schema<SelectMultipleType> = z.object({
+export const selectMultipleTypeSchema = z.object({
   type: z.literal('select-multiple'),
   options: z.array(pointOptionSchema)
 });
 
-export const numberTypeSchema: z.Schema<NumberType> = z.object({
+export const numberTypeSchema = z.object({
   type: z.literal('number'),
   minimum: z.number().optional(),
   maximum: z.number().optional(),
   step: z.number().optional()
 });
 
-export const booleanTypeSchema: z.Schema<BooleanType> = z.object({
+export const booleanTypeSchema = z.object({
   type: z.literal('boolean'),
   labels: z.object({
     true: z.string().optional(),
@@ -84,12 +70,12 @@ export const booleanTypeSchema: z.Schema<BooleanType> = z.object({
   }).optional()
 });
 
-export const taskItemDefinitionSchema: z.Schema<TaskItemDefinition> = z.union([
+export const taskItemDefinitionSchema = z.union([
   selectSingleTypeSchema,
   selectMultipleTypeSchema
 ]);
 
-export const taskItemSchema: z.Schema<TaskItem> = z.object({
+export const taskItemSchema = z.object({
   type: z.literal('task-item'),
   code: z.string(),
   tags: z.array(z.string()).optional(),

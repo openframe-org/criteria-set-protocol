@@ -1,9 +1,8 @@
 import { z } from 'zod';
-import { Criterion } from '../types';
 import { documentationItemSchema } from './task-item';
 import { taskGroupSchema } from './task-group';
 
-export const criterionSchema: z.Schema<Criterion> = z.object({
+export const criterionSchema = z.object({
   type: z.literal('criterion'),
   title: z.string(),
   code: z.string(),
