@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { taskItemValueMapSchema } from './task-item';
+import { taskItemValueMapSchema } from '../task-item';
 
 /**
  * Validates the request body for the matrix endpoints

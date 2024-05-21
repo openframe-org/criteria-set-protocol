@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { TreeAndDataRequestBody } from '../types';
-import { taskItemValueMapSchema } from './task-item';
+import { TreeAndDataRequestBody } from '../../types';
+import { taskItemValueMapSchema } from '../task-item';
 
 /**
  * Validates the request body for the tree and data endpoints
