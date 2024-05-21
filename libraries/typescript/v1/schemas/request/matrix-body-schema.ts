@@ -6,7 +6,7 @@ import { taskItemValueMapSchema } from '../task-item';
  */
 export const matrixBodySchema = z.object({
   locale: z.string().optional(),
-  parameters: z.record(z.string()).optional(),
+  parameters: z.record(z.string(), z.any()).optional(),
   values: taskItemValueMapSchema.optional(),
   additional: z.any().optional()
 }).optional();

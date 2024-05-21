@@ -82,7 +82,7 @@ export const taskItemSchema = z.object({
   code: z.string(),
   tags: z.array(z.string()).optional(),
   documentation: z.array(documentationItemSchema).optional(),
-  data: z.record(z.string()).optional(),
+  data: z.record(z.string(), z.any()).optional(),
   sortOrder: z.number().optional(),
   definition: taskItemDefinitionSchema,
   description: z.string().optional(),

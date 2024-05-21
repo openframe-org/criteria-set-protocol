@@ -6,6 +6,6 @@ import { taskItemValueMapSchema } from '../task-item';
  */
 export const treeAndDataBodySchema = z.object({
   locale: z.string().optional(),
-  parameters: z.record(z.string()).optional(),
+  parameters: z.record(z.string(), z.any()).optional(),
   values: taskItemValueMapSchema.optional()
 }).optional();

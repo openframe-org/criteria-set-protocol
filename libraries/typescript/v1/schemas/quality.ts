@@ -22,7 +22,7 @@ export const qualitySchema = z.object({
   code: z.string(),
   tags: z.array(z.string()).optional(),
   documentation: z.array(documentationItemSchema).optional(),
-  data: z.record(z.any()).optional(),
+  data: z.record(z.string(), z.any()).optional(),
   sortOrder: z.number().optional(),
   style: qualityStyleSchema.optional(),
   items: z.array(criterionSchema)
