@@ -11,7 +11,7 @@ export const numberBasedCertificationDefinitionRulesSchema = z.object({
 
 export const percentageBasedCertificationDefinitionRulesSchema = numberBasedCertificationDefinitionRulesSchema;
 
-const abstractCertificationDefinitionSchema = z.object({
+export const abstractCertificationDefinitionSchema = z.object({
   code: z.string(),
   type: certificationDefinitionTypeSchema,
   icon: z.string().optional(),

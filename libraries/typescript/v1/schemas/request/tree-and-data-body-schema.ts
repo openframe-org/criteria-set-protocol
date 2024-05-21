@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import { TreeAndDataRequestBody } from '../../types';
 import { taskItemValueMapSchema } from '../task-item';
 
 /**
