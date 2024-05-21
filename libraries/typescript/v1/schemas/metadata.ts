@@ -1,10 +1,10 @@
 import { z } from 'zod';
 
-export const schemaDefinition = z.record(z.string(), z.any());
+export const schemaDefinitionSchema = z.record(z.string(), z.any());
 
-export const schemaDefinitions = z.object({
-  parameters: schemaDefinition.optional(),
-  result: schemaDefinition.optional()
+export const schemaDefinitionsSchema = z.object({
+  parameters: schemaDefinitionSchema.optional(),
+  result: schemaDefinitionSchema.optional()
 });
 
 export const metadataSchema = z.object({
@@ -16,5 +16,5 @@ export const metadataSchema = z.object({
   documentation: z.string().optional(),
   locales: z.array(z.string()).optional(),
   defaultLocale: z.string().optional(),
-  schemas: schemaDefinitions.optional()
+  schemas: schemaDefinitionsSchema.optional()
 });
