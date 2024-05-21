@@ -70,9 +70,11 @@ export const booleanTypeSchema = z.object({
   }).optional()
 });
 
-export const taskItemDefinitionSchema = z.union([
+export const taskItemDefinitionSchema = z.discriminatedUnion('type', [
   selectSingleTypeSchema,
-  selectMultipleTypeSchema
+  selectMultipleTypeSchema,
+  numberTypeSchema,
+  booleanTypeSchema
 ]);
 
 export const taskItemSchema = z.object({
