@@ -10,27 +10,28 @@ export const numberBasedCertificationDefinitionRulesSchema = z.object({
 });
 
 export const percentageBasedCertificationDefinitionRulesSchema = numberBasedCertificationDefinitionRulesSchema;
-export const numberBasedCertificationDefinitionSchema = z.object({
+
+const abstractCertificationDefinitionSchema = z.object({
   code: z.string(),
+  type: certificationDefinitionTypeSchema,
+  icon: z.string().optional(),
+  name: z.string(),
+  description: z.string().optional(),
+  rules: z.any(),
+  rulesText: z.string()
+});
+
+export const numberBasedCertificationDefinitionSchema = abstractCertificationDefinitionSchema.extend({
   type: z.literal('number'),
-  icon: z.string().optional(),
-  name: z.string(),
-  description: z.string().optional(),
-  rules: numberBasedCertificationDefinitionRulesSchema,
-  rulesText: z.string()
+  rules: numberBasedCertificationDefinitionRulesSchema
 });
 
-export const percentageBasedCertificationDefinitionSchema = z.object({
-  code: z.string(),
+export const percentageBasedCertificationDefinitionSchema = abstractCertificationDefinitionSchema.extend({
   type: z.literal('percentage'),
-  icon: z.string().optional(),
-  name: z.string(),
-  description: z.string().optional(),
-  rules: percentageBasedCertificationDefinitionRulesSchema,
-  rulesText: z.string()
+  rules: percentageBasedCertificationDefinitionRulesSchema
 });
 
-export const certificationDefinitionSchema = z.union([
+export const certificationDefinitionSchema = z.discriminatedUnion('type', [
   numberBasedCertificationDefinitionSchema,
   percentageBasedCertificationDefinitionSchema
 ]);
