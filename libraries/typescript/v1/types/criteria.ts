@@ -64,7 +64,7 @@ export type ElementData = Record<string, any> & {
 };
 
 export type TaskItemData = ElementData & {
-  valueReference?: TaskItemScalarValue;
+  valueReference?: TaskItemValue;
 };
 
 type BaseElement<Type extends CriteriaTreeElementType> = {
