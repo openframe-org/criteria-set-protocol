@@ -58,13 +58,22 @@ export type CriteriaTree = {
   result?: any;
 };
 
+export type ElementData = Record<string, any> & {
+  value?: TaskItemValue;
+  text?: string;
+};
+
+export type TaskItemData = ElementData & {
+  valueReference?: TaskItemScalarValue;
+};
+
 type BaseElement<Type extends CriteriaTreeElementType> = {
   type: Type;
   title: string;
   code: string;
   tags?: string[];
   documentation?: DocumentationItem[];
-  data?: Record<string, any>;
+  data?: ElementData;
   sortOrder?: number;
 };
 
@@ -87,10 +96,11 @@ export type Task = BaseElement<'task'> & {
   items: TaskItem[];
 };
 
-export type TaskItem = Omit<BaseElement<'task-item'>, 'title'> & {
+export type TaskItem = Omit<BaseElement<'task-item'>, 'title' | 'data'> & {
   definition: TaskItemDefinition;
   description?: string;
   providedData?: Record<string, TaskItemValue>;
+  data: TaskItemData;
 };
 
 export type AbstractDefinition<Type extends 'select-single' | 'select-multiple' | 'number' | 'boolean'> = {

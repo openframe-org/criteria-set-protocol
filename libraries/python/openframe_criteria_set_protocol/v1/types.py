@@ -132,6 +132,15 @@ TaskItemDefinition = typing.Union[SelectSingleType, SelectMultipleType, NumberTy
 CriteriaTreeElementType = typing.Literal['quality', 'criterion', 'task-group', 'task', 'task-item']
 
 
+class ElementData(typing.TypedDict):
+    value: Optional[TaskItemValue]
+    text: Optional[str]
+
+
+class TaskItemData(ElementData):
+    valueReference: Optional[TaskItemValue]
+
+
 @dataclass
 class TaskItem:
     type: CriteriaTreeElementType = field(init=False, default='task-item')
@@ -141,7 +150,7 @@ class TaskItem:
     documentation: Optional[list[DocumentationItem]] = None
     providedData: Optional[dict[str, TaskItemValue]] = None
     description: Optional[str] = None
-    data: Optional[dict[str, any]] = None
+    data: Optional[TaskItemData] = None
     sortOrder: Optional[int] = None
 
 
@@ -155,7 +164,7 @@ class Task:
     documentation: Optional[list[DocumentationItem]] = None
     description: Optional[str] = None
     items: list[TaskItem] = field(default_factory=list)
-    data: Optional[dict[str, any]] = None
+    data: Optional[ElementData] = None
     sortOrder: Optional[int] = None
 
 
@@ -167,7 +176,7 @@ class TaskGroup:
     tags: Optional[list] = None
     documentation: Optional[list[DocumentationItem]] = None
     items: list[Task] = field(default_factory=list)
-    data: Optional[dict[str, any]] = None
+    data: Optional[ElementData] = None
     sortOrder: Optional[int] = None
 
 
@@ -179,7 +188,7 @@ class Criterion:
     tags: Optional[list] = None
     documentation: Optional[list[DocumentationItem]] = None
     items: list[TaskGroup] = field(default_factory=list)
-    data: Optional[dict[str, any]] = None
+    data: Optional[ElementData] = None
     sortOrder: Optional[int] = None
 
 
@@ -191,7 +200,7 @@ class Quality:
     tags: Optional[list] = None
     documentation: Optional[list[DocumentationItem]] = None
     items: list[Criterion] = field(default_factory=list)
-    data: Optional[dict[str, any]] = None
+    data: Optional[ElementData] = None
     style: Optional[QualityStyle] = None
     sortOrder: Optional[int] = None
 
