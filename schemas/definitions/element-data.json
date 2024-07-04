@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://criteria-set-protocol-schema.openframe.org/data.json",
+  "element-data": {
+    "type": "object",
+    "properties": {
+      "value": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          },
+          {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "text": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "task-item-data": {
+    "$ref": "#/element-data",
+    "properties": {
+      "valueReference": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "additionalProperties": {
+      "type": "string"
+    }
+  }
+}

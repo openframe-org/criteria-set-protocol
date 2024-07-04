@@ -28,9 +28,7 @@
       "$ref": "../documentation.json"
     },
     "data": {
-      "additionalProperties": {
-        "type": "string"
-      }
+      "$ref": "../element-data.json#/element-data"
     },
     "sortOrder": {
       "type": "number"

@@ -31,9 +31,7 @@
     },
     "providedData": {},
     "data": {
-      "additionalProperties": {
-        "type": "string"
-      }
+      "$ref": "../element-data.json#/task-item-data"
     },
     "sortOrder": {
       "type": "number"
